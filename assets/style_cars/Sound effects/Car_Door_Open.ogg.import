@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://i8imqthplbny"
+path="res://.godot/imported/Car_Door_Open.ogg-27861a4984a690fa1be4e5a1d2a5e559.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/style_cars/Sound effects/Car_Door_Open.ogg"
+dest_files=["res://.godot/imported/Car_Door_Open.ogg-27861a4984a690fa1be4e5a1d2a5e559.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
