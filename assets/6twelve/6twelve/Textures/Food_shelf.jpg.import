@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cdhfnjgpoltgc"
-path.s3tc="res://.godot/imported/Food_shelf.jpg-035ade2c9019c8cd03742782802758e6.s3tc.ctex"
+path.s3tc="res://.godot/imported/Food_shelf.jpg-9654a9f42335663cfb4bc5ff82ac269c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/6twelve/6twelve/textures/Food_shelf.jpg"
-dest_files=["res://.godot/imported/Food_shelf.jpg-035ade2c9019c8cd03742782802758e6.s3tc.ctex"]
+source_file="res://assets/6twelve/6twelve/Textures/Food_shelf.jpg"
+dest_files=["res://.godot/imported/Food_shelf.jpg-9654a9f42335663cfb4bc5ff82ac269c.s3tc.ctex"]
 
 [params]
 

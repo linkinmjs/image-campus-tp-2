@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhmh5sfludh7a"
-path.s3tc="res://.godot/imported/Cup.png-81708e78e0c7a146699b09de1d947019.s3tc.ctex"
+path.s3tc="res://.godot/imported/Cup.png-bc103958f969482f796b2f67845cf31d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/survival/Survival/textures/Cup.png"
-dest_files=["res://.godot/imported/Cup.png-81708e78e0c7a146699b09de1d947019.s3tc.ctex"]
+source_file="res://assets/survival/Survival/Textures/Cup.png"
+dest_files=["res://.godot/imported/Cup.png-bc103958f969482f796b2f67845cf31d.s3tc.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://e4kod1fsuioy"
-path.s3tc="res://.godot/imported/Alcohol.jpg-fddb8ba42576149d97e65270aedcdab0.s3tc.ctex"
+path.s3tc="res://.godot/imported/Alcohol.jpg-fb73e3b8db25d125ea6a0543f1778915.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/6twelve/6twelve/textures/Alcohol.jpg"
-dest_files=["res://.godot/imported/Alcohol.jpg-fddb8ba42576149d97e65270aedcdab0.s3tc.ctex"]
+source_file="res://assets/6twelve/6twelve/Textures/Alcohol.jpg"
+dest_files=["res://.godot/imported/Alcohol.jpg-fb73e3b8db25d125ea6a0543f1778915.s3tc.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cuudxext3w2k8"
-path.s3tc="res://.godot/imported/D_Kicker.png-9fc2a915f4f0db1b019c2fd4e955da2a.s3tc.ctex"
+path.s3tc="res://.godot/imported/D_Kicker.png-acfcd7a46730151edab4d0cb26a172a3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/skateboard_pack/textures/D_Kicker.png"
-dest_files=["res://.godot/imported/D_Kicker.png-9fc2a915f4f0db1b019c2fd4e955da2a.s3tc.ctex"]
+source_file="res://assets/skateboard_pack/Textures/D_Kicker.png"
+dest_files=["res://.godot/imported/D_Kicker.png-acfcd7a46730151edab4d0cb26a172a3.s3tc.ctex"]
 
 [params]
 

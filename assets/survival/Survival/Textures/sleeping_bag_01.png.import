@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmvwuiuxrpspo"
-path.s3tc="res://.godot/imported/sleeping_bag_01.png-f5cd6431378e63c5308a07df3e86a6e3.s3tc.ctex"
+path.s3tc="res://.godot/imported/sleeping_bag_01.png-55b895e79d6198883f4421f3ab1c4610.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/survival/Survival/textures/sleeping_bag_01.png"
-dest_files=["res://.godot/imported/sleeping_bag_01.png-f5cd6431378e63c5308a07df3e86a6e3.s3tc.ctex"]
+source_file="res://assets/survival/Survival/Textures/sleeping_bag_01.png"
+dest_files=["res://.godot/imported/sleeping_bag_01.png-55b895e79d6198883f4421f3ab1c4610.s3tc.ctex"]
 
 [params]
 

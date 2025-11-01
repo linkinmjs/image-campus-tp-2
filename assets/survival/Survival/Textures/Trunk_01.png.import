@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwujfrlf3bm74"
-path.s3tc="res://.godot/imported/Trunk_01.png-6918cde739c42d4c609e183d5c24bc52.s3tc.ctex"
+path.s3tc="res://.godot/imported/Trunk_01.png-101ade659d8d267523aff037ec6dc338.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/survival/Survival/textures/Trunk_01.png"
-dest_files=["res://.godot/imported/Trunk_01.png-6918cde739c42d4c609e183d5c24bc52.s3tc.ctex"]
+source_file="res://assets/survival/Survival/Textures/Trunk_01.png"
+dest_files=["res://.godot/imported/Trunk_01.png-101ade659d8d267523aff037ec6dc338.s3tc.ctex"]
 
 [params]
 

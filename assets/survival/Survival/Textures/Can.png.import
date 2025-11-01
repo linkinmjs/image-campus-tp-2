@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsbxmr51n1v81"
-path.s3tc="res://.godot/imported/Can.png-a014374a76b7d8f6a7ad1e208e074096.s3tc.ctex"
+path.s3tc="res://.godot/imported/Can.png-3cea41c67e9290fc741ad83362de3e40.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/survival/Survival/textures/Can.png"
-dest_files=["res://.godot/imported/Can.png-a014374a76b7d8f6a7ad1e208e074096.s3tc.ctex"]
+source_file="res://assets/survival/Survival/Textures/Can.png"
+dest_files=["res://.godot/imported/Can.png-3cea41c67e9290fc741ad83362de3e40.s3tc.ctex"]
 
 [params]
 

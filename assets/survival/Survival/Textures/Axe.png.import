@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctjxf7c1hsush"
-path.s3tc="res://.godot/imported/Axe.png-1c2d4c90fd50f277e18c389a5b0d36d7.s3tc.ctex"
+path.s3tc="res://.godot/imported/Axe.png-01756c5b08a4da20b76e3fc32dd6019c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/survival/Survival/textures/Axe.png"
-dest_files=["res://.godot/imported/Axe.png-1c2d4c90fd50f277e18c389a5b0d36d7.s3tc.ctex"]
+source_file="res://assets/survival/Survival/Textures/Axe.png"
+dest_files=["res://.godot/imported/Axe.png-01756c5b08a4da20b76e3fc32dd6019c.s3tc.ctex"]
 
 [params]
 

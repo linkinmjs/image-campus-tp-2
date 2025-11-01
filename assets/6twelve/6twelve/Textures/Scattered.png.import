@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bunahrwmvxxws"
-path.s3tc="res://.godot/imported/Scattered.png-c51dd7b1eb8fd2408abf503d5d799ad5.s3tc.ctex"
+path.s3tc="res://.godot/imported/Scattered.png-fe03e78ed1f88ee7caf762bf3efb7ef9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/6twelve/6twelve/textures/Scattered.png"
-dest_files=["res://.godot/imported/Scattered.png-c51dd7b1eb8fd2408abf503d5d799ad5.s3tc.ctex"]
+source_file="res://assets/6twelve/6twelve/Textures/Scattered.png"
+dest_files=["res://.godot/imported/Scattered.png-fe03e78ed1f88ee7caf762bf3efb7ef9.s3tc.ctex"]
 
 [params]
 

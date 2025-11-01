@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c88fg0oyaybde"
-path.s3tc="res://.godot/imported/D_Skateboard.png-331955b03d5396281a68eb8d529b47a8.s3tc.ctex"
+path.s3tc="res://.godot/imported/D_Skateboard.png-e800ca114b12464ceb6014670e04b111.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/skateboard_pack/textures/D_Skateboard.png"
-dest_files=["res://.godot/imported/D_Skateboard.png-331955b03d5396281a68eb8d529b47a8.s3tc.ctex"]
+source_file="res://assets/skateboard_pack/Textures/D_Skateboard.png"
+dest_files=["res://.godot/imported/D_Skateboard.png-e800ca114b12464ceb6014670e04b111.s3tc.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bb634y5oq3cal"
-path.s3tc="res://.godot/imported/Lantern.png-343b1a5c500589cfab3ae748a65f2d06.s3tc.ctex"
+path.s3tc="res://.godot/imported/Lantern.png-ba36b729a0b0eed608b01928fa1207e3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/survival/Survival/textures/Lantern.png"
-dest_files=["res://.godot/imported/Lantern.png-343b1a5c500589cfab3ae748a65f2d06.s3tc.ctex"]
+source_file="res://assets/survival/Survival/Textures/Lantern.png"
+dest_files=["res://.godot/imported/Lantern.png-ba36b729a0b0eed608b01928fa1207e3.s3tc.ctex"]
 
 [params]
 

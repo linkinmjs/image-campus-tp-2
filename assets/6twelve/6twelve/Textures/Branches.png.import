@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqrpqah1w81sq"
-path.s3tc="res://.godot/imported/Branches.png-05a96bf576276894fec3d321d631e60d.s3tc.ctex"
+path.s3tc="res://.godot/imported/Branches.png-521851e323b6329551fa2ab7f1386390.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/6twelve/6twelve/textures/Branches.png"
-dest_files=["res://.godot/imported/Branches.png-05a96bf576276894fec3d321d631e60d.s3tc.ctex"]
+source_file="res://assets/6twelve/6twelve/Textures/Branches.png"
+dest_files=["res://.godot/imported/Branches.png-521851e323b6329551fa2ab7f1386390.s3tc.ctex"]
 
 [params]
 

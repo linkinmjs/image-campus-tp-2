@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7wexm28e7mw3"
-path.s3tc="res://.godot/imported/D_JBarrier.png-77c62d7cbc358699f77807529de43bf6.s3tc.ctex"
+path.s3tc="res://.godot/imported/D_JBarrier.png-2ff1a59165d42e49280bb653e20f5f47.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/skateboard_pack/textures/D_JBarrier.png"
-dest_files=["res://.godot/imported/D_JBarrier.png-77c62d7cbc358699f77807529de43bf6.s3tc.ctex"]
+source_file="res://assets/skateboard_pack/Textures/D_JBarrier.png"
+dest_files=["res://.godot/imported/D_JBarrier.png-2ff1a59165d42e49280bb653e20f5f47.s3tc.ctex"]
 
 [params]
 

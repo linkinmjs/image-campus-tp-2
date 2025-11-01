@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnv06435vy7tp"
-path.s3tc="res://.godot/imported/Mop.png-c65bd9770a63982270b3657a7fae9189.s3tc.ctex"
+path.s3tc="res://.godot/imported/Mop.png-595d073933f42e45ecf5a238ffca7e7f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/6twelve/6twelve/textures/Mop.png"
-dest_files=["res://.godot/imported/Mop.png-c65bd9770a63982270b3657a7fae9189.s3tc.ctex"]
+source_file="res://assets/6twelve/6twelve/Textures/Mop.png"
+dest_files=["res://.godot/imported/Mop.png-595d073933f42e45ecf5a238ffca7e7f.s3tc.ctex"]
 
 [params]
 

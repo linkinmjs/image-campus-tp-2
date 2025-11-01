@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dttq62nrieq6x"
-path.s3tc="res://.godot/imported/D_Zombie.png-7ddf1f706b8b46e32dbe283e5f9d9e63.s3tc.ctex"
+path.s3tc="res://.godot/imported/D_Zombie.png-e27e892fb175cdd0a60d619fbbfef942.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://assets/zombie_pack/textures/D_Zombie.png"
-dest_files=["res://.godot/imported/D_Zombie.png-7ddf1f706b8b46e32dbe283e5f9d9e63.s3tc.ctex"]
+source_file="res://assets/zombie_pack/Textures/D_Zombie.png"
+dest_files=["res://.godot/imported/D_Zombie.png-e27e892fb175cdd0a60d619fbbfef942.s3tc.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmbqgeqh82kbh"
-path.s3tc="res://.godot/imported/Candys.png-253168e4a9fd7c67715255c7dd694f2f.s3tc.ctex"
+path.s3tc="res://.godot/imported/Candys.png-ade07e070dca7f977d18acb694fa7fb2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/6twelve/6twelve/textures/Candys.png"
-dest_files=["res://.godot/imported/Candys.png-253168e4a9fd7c67715255c7dd694f2f.s3tc.ctex"]
+source_file="res://assets/6twelve/6twelve/Textures/Candys.png"
+dest_files=["res://.godot/imported/Candys.png-ade07e070dca7f977d18acb694fa7fb2.s3tc.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c2658t5p0cg1k"
-path.s3tc="res://.godot/imported/Lantern_Emissor.jpg-3f943f6d6f221b236c26630fa40dfd19.s3tc.ctex"
+path.s3tc="res://.godot/imported/Lantern_Emissor.jpg-3136b0b97e36159961853307c0f84436.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/survival/Survival/textures/Lantern_Emissor.jpg"
-dest_files=["res://.godot/imported/Lantern_Emissor.jpg-3f943f6d6f221b236c26630fa40dfd19.s3tc.ctex"]
+source_file="res://assets/survival/Survival/Textures/Lantern_Emissor.jpg"
+dest_files=["res://.godot/imported/Lantern_Emissor.jpg-3136b0b97e36159961853307c0f84436.s3tc.ctex"]
 
 [params]
 

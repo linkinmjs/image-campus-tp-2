@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2d8abrsgib3q"
-path.s3tc="res://.godot/imported/Plaste.jpg-cad7bf8f675cb5ba7cbdd1f528b7bf07.s3tc.ctex"
+path.s3tc="res://.godot/imported/Plaste.jpg-fc390338134c7f606852abea8c4d59ac.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/6twelve/6twelve/textures/Plaste.jpg"
-dest_files=["res://.godot/imported/Plaste.jpg-cad7bf8f675cb5ba7cbdd1f528b7bf07.s3tc.ctex"]
+source_file="res://assets/6twelve/6twelve/Textures/Plaste.jpg"
+dest_files=["res://.godot/imported/Plaste.jpg-fc390338134c7f606852abea8c4d59ac.s3tc.ctex"]
 
 [params]
 

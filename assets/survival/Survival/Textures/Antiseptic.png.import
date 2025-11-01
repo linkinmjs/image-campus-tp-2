@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rhdq8a88trlw"
-path.s3tc="res://.godot/imported/Antiseptic.png-fbc44681a98dd5e8697d4db256481348.s3tc.ctex"
+path.s3tc="res://.godot/imported/Antiseptic.png-3a7f82dc550df0f19179dfc26b4e5fa3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/survival/Survival/textures/Antiseptic.png"
-dest_files=["res://.godot/imported/Antiseptic.png-fbc44681a98dd5e8697d4db256481348.s3tc.ctex"]
+source_file="res://assets/survival/Survival/Textures/Antiseptic.png"
+dest_files=["res://.godot/imported/Antiseptic.png-3a7f82dc550df0f19179dfc26b4e5fa3.s3tc.ctex"]
 
 [params]
 
