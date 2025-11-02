@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cocdmcnq4fyg3"]
+[gd_scene load_steps=8 format=3 uid="uid://cocdmcnq4fyg3"]
 
 [ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/test_player/TestPlayer.tscn" id="1_alwyk"]
-[ext_resource type="PackedScene" uid="uid://ca0wevg1lb4rx" path="res://scenes/WaterMaker3D/WaterMaker3D.tscn" id="2_62xr1"]
+[ext_resource type="Texture2D" uid="uid://cnxepiabwocme" path="res://assets/6twelve/6twelve/Textures/Asphalt.jpg" id="3_vxsof"]
+[ext_resource type="PackedScene" uid="uid://cm4h2vp44ggqj" path="res://scenes/zombie/zombie.tscn" id="4_yetkn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_alwyk"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -15,38 +16,8 @@ background_mode = 2
 sky = SubResource("Sky_62xr1")
 tonemap_mode = 2
 
-[sub_resource type="BoxMesh" id="BoxMesh_ey22s"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_alwyk"]
-albedo_color = Color(0.30397037, 0.3039704, 0.30397037, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_vxsof"]
-resource_local_to_scene = true
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yetkn"]
-resource_local_to_scene = true
-noise = SubResource("FastNoiseLite_vxsof")
-seamless = true
-as_normal_map = true
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q0l7r"]
-resource_local_to_scene = true
-noise = SubResource("FastNoiseLite_vxsof")
-seamless = true
-as_normal_map = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2iya"]
-resource_local_to_scene = true
-transparency = 1
-cull_mode = 2
-depth_draw_mode = 1
-albedo_color = Color(0.30980393, 0.5411765, 0.8666667, 0.3882353)
-roughness = 0.0
-normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_yetkn")
-refraction_enabled = true
-refraction_texture = SubResource("NoiseTexture2D_q0l7r")
-uv1_scale = Vector3(0.04, 0.04, 0.04)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yetkn"]
+albedo_texture = ExtResource("3_vxsof")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
@@ -59,15 +30,16 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vxsof")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
-transform = Transform3D(55.83201, 0, 0, 0, 0.3260284, 0, 0, 0, 67.05422, 0, 0, 0)
+[node name="TestPlayer" parent="." instance=ExtResource("1_alwyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.017005205, -29.63101)
+
+[node name="Zombie" parent="." instance=ExtResource("4_yetkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0264578, -45.69172)
+player_path = NodePath("../TestPlayer")
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map"]
+transform = Transform3D(100, 0, 0, 0, 0.1, 0, 0, 0, 100, 0, 0, 0)
 use_collision = true
-mesh = SubResource("BoxMesh_ey22s")
-material = SubResource("StandardMaterial3D_alwyk")
-
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_alwyk")]
-
-[node name="WaterMaker3D" parent="." instance=ExtResource("2_62xr1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3578877, 0.60406494, -0.791553)
-size = Vector3(3.7371826, 2.20813, 3.0170898)
-material = SubResource("StandardMaterial3D_q2iya")
+material = SubResource("StandardMaterial3D_yetkn")
