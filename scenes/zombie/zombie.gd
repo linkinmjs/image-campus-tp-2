@@ -1,20 +1,45 @@
 extends CharacterBody3D
 
 var player = null
+var hp = 15.0
+var state_machine
 
 const SPEED = 5.0
+const ATTACK_RANGE = 2.0
+const DAMAGE = 2.0
 
 @export var player_path: NodePath
 @onready var nav_agent = $NavigationAgent3D
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
 func _ready() -> void:
 	player = get_node(player_path)
+	state_machine = animation_tree.get('parameters/playback')
+
 
 func _physics_process(_delta: float) -> void:
-	velocity = Vector3.ZERO
-	
-	nav_agent.set_target_position(player.global_position)
-	var next_nav_point = nav_agent.get_next_path_position()
-	velocity = (next_nav_point - global_position).normalized() * SPEED
+	print(state_machine.get_current_node())
+	match state_machine.get_current_node():
+		"idle":
+			animation_tree.set('parameters/conditions/running', true)
+		"running":
+			velocity = Vector3.ZERO
+			
+			nav_agent.set_target_position(player.global_position)
+			var next_nav_point = nav_agent.get_next_path_position()
+			velocity = (next_nav_point - global_position).normalized() * SPEED
+			animation_tree.set('parameters/conditions/attack', target_on_range())
+			move_and_slide()
+		"attack":
+			animation_tree.set('parameters/conditions/running', !target_on_range())
+		"hitted":
+			pass
+		"dying":
+			pass
+		
+		
 
-	move_and_slide()
+
+func target_on_range():
+	return global_position.distance_to(player.global_position) < ATTACK_RANGE
