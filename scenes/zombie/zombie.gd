@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var player = null
-var hp = 15.0
+var hp: float = 15.0
 var state_machine
 
 const SPEED = 5.0
@@ -12,10 +12,12 @@ const DAMAGE = 2.0
 @onready var nav_agent = $NavigationAgent3D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+@onready var hit_area: Area3D = $HitArea
 
 func _ready() -> void:
 	player = get_node(player_path)
 	state_machine = animation_tree.get('parameters/playback')
+	hit_area.body_entered.connect(zombie_hitted)
 
 
 func _physics_process(_delta: float) -> void:
@@ -46,8 +48,9 @@ func hit_player():
 	if target_on_range():
 		print("Player Golpeado!")
 
-func zombie_hitted(damage):
-	hp -= damage
+func zombie_hitted(_body) -> void:
+	print("Zombie Golpeado!")
+	hp -= 1
 	if hp <= 0:
 		animation_tree.set('parameters/conditions/dying', true)
 	else:
