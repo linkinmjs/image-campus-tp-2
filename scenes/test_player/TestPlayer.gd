@@ -23,6 +23,7 @@ const FOV_CHANGE = 1.5
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
+@onready var skate_tricks_animations: AnimationPlayer = $SkateTricksAnimations
 
 
 func _ready() -> void:
@@ -43,6 +44,10 @@ func _physics_process(delta: float) -> void:
 	# Handle jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	
+	# Handle Backflip
+	if Input.is_action_just_pressed("jump") and !is_on_floor():
+		skate_tricks_animations.play("skate - Kickflip")
 	
 	# Handle speed
 	if is_on_floor():
@@ -75,7 +80,6 @@ func _physics_process(delta: float) -> void:
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
 	move_and_slide()
-
 
 func _headbob(time: float) -> Vector3:
 	var pos = Vector3.ZERO

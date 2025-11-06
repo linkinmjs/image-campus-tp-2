@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dhs31wl5368w3"]
+[gd_scene load_steps=25 format=4 uid="uid://dhs31wl5368w3"]
 
 [ext_resource type="Script" uid="uid://cqgta8fiv0ebj" path="res://scenes/test_player/TestPlayer.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://btw35mhqlwjos" path="res://assets/skateboard_pack/Textures/N_Skateboard.png" id="2_g53to"]
@@ -260,7 +260,45 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ctvmh")
 
+[sub_resource type="Animation" id="Animation_g53to"]
+resource_name = "skate - Kickflip"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skate:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.14865094, 0.4204483, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 3.1415927), Vector3(0, 0, 6.2831855)]
+}
+
+[sub_resource type="Animation" id="Animation_n51df"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skate:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qvvak"]
+_data = {
+&"RESET": SubResource("Animation_n51df"),
+&"skate - Kickflip": SubResource("Animation_g53to")
+}
+
 [node name="TestPlayer" type="CharacterBody3D"]
+collision_mask = 2147483650
 script = ExtResource("1_8afob")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -271,46 +309,51 @@ mesh = SubResource("CapsuleMesh_spoc0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0055978, 0)
 shape = SubResource("ConvexPolygonShape3D_8afob")
 
-[node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5054641, 0)
+[node name="Skate" type="Node3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.15900779, 0)
 
-[node name="Skate" type="Node3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3464563, 0)
-
-[node name="Skateboard2" type="MeshInstance3D" parent="Head/Skate"]
+[node name="Skateboard2" type="MeshInstance3D" parent="Skate"]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, -0.0067688525, 0.013084888, 0.008877993)
 mesh = SubResource("ArrayMesh_ml2ns")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_qvvak")
 
-[node name="TruckR" type="MeshInstance3D" parent="Head/Skate/Skateboard2"]
+[node name="TruckR" type="MeshInstance3D" parent="Skate/Skateboard2"]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 5.553159e-05, 0.0071819215, -0.0006636783)
 mesh = SubResource("ArrayMesh_vp41i")
 skeleton = NodePath("")
 
-[node name="WheelRL" type="MeshInstance3D" parent="Head/Skate/Skateboard2/TruckR"]
+[node name="WheelRL" type="MeshInstance3D" parent="Skate/Skateboard2/TruckR"]
 transform = Transform3D(-0.99999994, 0, 6.3573026e-08, 0, -0.99999994, 0, -6.357302e-08, 0, -1, -0.0025402624, 8.302808e-05, 0.00016632468)
 mesh = SubResource("ArrayMesh_r1vrf")
 skeleton = NodePath("")
 
-[node name="WheelRR" type="MeshInstance3D" parent="Head/Skate/Skateboard2/TruckR"]
+[node name="WheelRR" type="MeshInstance3D" parent="Skate/Skateboard2/TruckR"]
 transform = Transform3D(-0.99999994, 0, 6.3573026e-08, 0, -0.99999994, 0, -6.357302e-08, 0, -1, 0.002567439, 8.302808e-05, 0.00016632512)
 mesh = SubResource("ArrayMesh_aui03")
 skeleton = NodePath("")
 
-[node name="TruckF" type="MeshInstance3D" parent="Head/Skate/Skateboard2"]
+[node name="TruckF" type="MeshInstance3D" parent="Skate/Skateboard2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.553159e-05, -0.0067126243, -0.0006636783)
 mesh = SubResource("ArrayMesh_b5ab5")
 skeleton = NodePath("")
 
-[node name="WheelFL" type="MeshInstance3D" parent="Head/Skate/Skateboard2/TruckF"]
+[node name="WheelFL" type="MeshInstance3D" parent="Skate/Skateboard2/TruckF"]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0.0025402624, -8.302808e-05, -0.00016632468)
 mesh = SubResource("ArrayMesh_fiqv5")
 skeleton = NodePath("")
 
-[node name="WheelFR" type="MeshInstance3D" parent="Head/Skate/Skateboard2/TruckF"]
+[node name="WheelFR" type="MeshInstance3D" parent="Skate/Skateboard2/TruckF"]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -0.002567439, -8.302808e-05, -0.00016632512)
 mesh = SubResource("ArrayMesh_jesw5")
 skeleton = NodePath("")
 
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5054641, 0)
+
 [node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="SkateTricksAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qvvak")
+}
