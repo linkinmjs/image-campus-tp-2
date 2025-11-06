@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dhs31wl5368w3"]
+[gd_scene load_steps=26 format=4 uid="uid://dhs31wl5368w3"]
 
 [ext_resource type="Script" uid="uid://cqgta8fiv0ebj" path="res://scenes/test_player/TestPlayer.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://btw35mhqlwjos" path="res://assets/skateboard_pack/Textures/N_Skateboard.png" id="2_g53to"]
@@ -291,10 +291,27 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_qvvak"]
+resource_name = "skate - Pop shoveit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skate:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.18417113, 0.4),
+"transitions": PackedFloat32Array(0.39229205, 1.7411013, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0), Vector3(0, 3.1415927, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qvvak"]
 _data = {
 &"RESET": SubResource("Animation_n51df"),
-&"skate - Kickflip": SubResource("Animation_g53to")
+&"skate - Kickflip": SubResource("Animation_g53to"),
+&"skate - Pop shoveit": SubResource("Animation_qvvak")
 }
 
 [node name="TestPlayer" type="CharacterBody3D"]

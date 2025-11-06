@@ -24,6 +24,7 @@ const FOV_CHANGE = 1.5
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var skate_tricks_animations: AnimationPlayer = $SkateTricksAnimations
+@onready var skate: Node3D = $Skate
 
 
 func _ready() -> void:
@@ -47,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle Backflip
 	if Input.is_action_just_pressed("jump") and !is_on_floor():
-		skate_tricks_animations.play("skate - Kickflip")
+		skate_tricks_animations.play("skate - Pop shoveit")
 	
 	# Handle speed
 	if is_on_floor():
@@ -78,6 +79,11 @@ func _physics_process(delta: float) -> void:
 	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
+	
+	# Orientar el skate según la velocidad horizontal
+	var move_dir := Vector3(velocity.x, 0.0, velocity.z)
+	if move_dir.length() > 0.05:
+		skate.look_at(skate.global_transform.origin + move_dir, Vector3.UP)
 	
 	move_and_slide()
 
