@@ -35,12 +35,23 @@ func _physics_process(_delta: float) -> void:
 			animation_tree.set('parameters/conditions/running', !target_on_range())
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 		"hitted":
-			pass
+			animation_tree.set('parameters/conditions/hitted', false)
+			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 		"dying":
-			pass
+			collision_shape_3d.disabled = true
 		
 		
 
+func hit_player():
+	if target_on_range():
+		print("Player Golpeado!")
+
+func zombie_hitted(damage):
+	hp -= damage
+	if hp <= 0:
+		animation_tree.set('parameters/conditions/dying', true)
+	else:
+		animation_tree.set('parameters/conditions/hitted', true)
 
 func target_on_range():
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE
