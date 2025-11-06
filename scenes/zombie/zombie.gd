@@ -19,7 +19,6 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	print(state_machine.get_current_node())
 	match state_machine.get_current_node():
 		"idle":
 			animation_tree.set('parameters/conditions/running', true)
@@ -29,10 +28,12 @@ func _physics_process(_delta: float) -> void:
 			nav_agent.set_target_position(player.global_position)
 			var next_nav_point = nav_agent.get_next_path_position()
 			velocity = (next_nav_point - global_position).normalized() * SPEED
+			look_at(Vector3(next_nav_point.x, global_position.y, next_nav_point.z), Vector3.UP)
 			animation_tree.set('parameters/conditions/attack', target_on_range())
 			move_and_slide()
 		"attack":
 			animation_tree.set('parameters/conditions/running', !target_on_range())
+			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 		"hitted":
 			pass
 		"dying":
