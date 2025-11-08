@@ -46,9 +46,14 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
-	# Handle Backflip
+	# Handle Trick
 	if Input.is_action_just_pressed("jump") and !is_on_floor():
-		skate_tricks_animations.play("skate - Pop shoveit")
+		var tween = get_tree().create_tween()
+		var pop_shovit = skate.rotation_degrees + Vector3(0.0, 180.0, 0.0)
+		var backflip = skate.rotation_degrees + Vector3(0.0, 0.0, 360.0)
+		tween.tween_property(skate, "rotation_degrees",[pop_shovit, backflip].pick_random(), 0.4)
+		tween.play()
+
 	
 	# Handle speed
 	if is_on_floor():
