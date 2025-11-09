@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq57gwj2jku4i"]
+[gd_scene load_steps=10 format=3 uid="uid://bq57gwj2jku4i"]
 
 [ext_resource type="Script" uid="uid://d3y87mohf2p1y" path="res://scenes/zombie_with_state_machine/enemy.gd" id="1_ymfc5"]
 [ext_resource type="PackedScene" uid="uid://b5js1opfkn7ci" path="res://scenes/zombie_with_state_machine/components/health_component.tscn" id="2_ncoeh"]
+[ext_resource type="Script" uid="uid://bubhc6cb4of4v" path="res://scenes/zombie_with_state_machine/StateMachine/state_machine.gd" id="3_h76so"]
+[ext_resource type="Script" uid="uid://oxaialcvyo6f" path="res://scenes/zombie_with_state_machine/enemy_wander.gd" id="4_8e8p1"]
+[ext_resource type="Script" uid="uid://bmeaealphni1v" path="res://scenes/zombie_with_state_machine/enemy_chase.gd" id="5_8e8p1"]
+[ext_resource type="Script" uid="uid://kyxh4ttmeyq6" path="res://scenes/zombie_with_state_machine/enemy_attack.gd" id="6_nbiw2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ymfc5"]
 
@@ -11,6 +15,8 @@ albedo_color = Color(0.64705884, 0.23529412, 0.27058825, 1)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ymfc5"]
 
 [node name="Enemy" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 2147483648
 script = ExtResource("1_ymfc5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -25,3 +31,20 @@ shape = SubResource("CapsuleShape3D_ymfc5")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ncoeh")]
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("InitialState")]
+script = ExtResource("3_h76so")
+InitialState = NodePath("EnemyChase")
+metadata/_custom_type_script = "uid://bubhc6cb4of4v"
+
+[node name="EnemyWander" type="Node" parent="StateMachine"]
+script = ExtResource("4_8e8p1")
+metadata/_custom_type_script = "uid://oxaialcvyo6f"
+
+[node name="EnemyChase" type="Node" parent="StateMachine"]
+script = ExtResource("5_8e8p1")
+metadata/_custom_type_script = "uid://bmeaealphni1v"
+
+[node name="EnemyAttack" type="Node" parent="StateMachine"]
+script = ExtResource("6_nbiw2")
+metadata/_custom_type_script = "uid://kyxh4ttmeyq6"

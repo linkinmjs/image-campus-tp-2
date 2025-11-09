@@ -97,5 +97,5 @@ size = Vector3(5, 1.5881653, 12.105591)
 material = SubResource("StandardMaterial3D_q2iya")
 
 [node name="Enemy" parent="NavigationRegion3D" node_paths=PackedStringArray("player") instance=ExtResource("5_q0l7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05000007, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4842757, -33.04847)
 player = NodePath("../../TestPlayer")
