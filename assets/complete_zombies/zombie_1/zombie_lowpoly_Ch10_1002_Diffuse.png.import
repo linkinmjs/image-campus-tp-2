@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1mxox05kes1a"
-path.s3tc="res://.godot/imported/zombie_1_lowpoly_Ch10_1002_Normal.png-ead0963bed6108ca9dc1c1dcba94f96c.s3tc.ctex"
+uid="uid://ui5v2k560m03"
+path.s3tc="res://.godot/imported/zombie_lowpoly_Ch10_1002_Diffuse.png-51788fe5e14dc61d182d438abb42f2fe.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "fbcb539949b0c2c46b3b5aebebbbab8a"
+"md5": "dc730558ce0ee843d4ca73ac33a16155"
 }
 
 [deps]
 
-source_file="res://assets/complete_zombies/zombie_1/zombie_1_lowpoly_Ch10_1002_Normal.png"
-dest_files=["res://.godot/imported/zombie_1_lowpoly_Ch10_1002_Normal.png-ead0963bed6108ca9dc1c1dcba94f96c.s3tc.ctex"]
+source_file="res://assets/complete_zombies/zombie_1/zombie_lowpoly_Ch10_1002_Diffuse.png"
+dest_files=["res://.godot/imported/zombie_lowpoly_Ch10_1002_Diffuse.png-51788fe5e14dc61d182d438abb42f2fe.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://assets/complete_zombies/zombie_1/zombie_1_lowpoly_Ch10_1002_Normal.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

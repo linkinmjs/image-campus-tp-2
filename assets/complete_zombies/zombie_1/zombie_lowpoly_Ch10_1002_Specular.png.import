@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csom2l4d8fk40"
-path="res://.godot/imported/zombie_1_lowpoly_Ch10_1001_Specular.png-98db2a1afe75b2eff82a3aca2a18c94f.ctex"
+uid="uid://yo5luj5iyha5"
+path="res://.godot/imported/zombie_lowpoly_Ch10_1002_Specular.png-ffac8d9537cca86eea266cb3202c5a38.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "cc54f89ab2f803775b259523df174726"
+"md5": "0c0141a0585bf9584b5b9d04fa92068d"
 }
 
 [deps]
 
-source_file="res://assets/complete_zombies/zombie_1/zombie_1_lowpoly_Ch10_1001_Specular.png"
-dest_files=["res://.godot/imported/zombie_1_lowpoly_Ch10_1001_Specular.png-98db2a1afe75b2eff82a3aca2a18c94f.ctex"]
+source_file="res://assets/complete_zombies/zombie_1/zombie_lowpoly_Ch10_1002_Specular.png"
+dest_files=["res://.godot/imported/zombie_lowpoly_Ch10_1002_Specular.png-ffac8d9537cca86eea266cb3202c5a38.ctex"]
 
 [params]
 

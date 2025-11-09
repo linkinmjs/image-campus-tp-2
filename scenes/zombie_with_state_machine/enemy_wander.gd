@@ -6,13 +6,21 @@ var wander_time: float = 0.0
 
 @onready var enemy: CharacterBody3D = get_parent().get_parent()
 @onready var player: CharacterBody3D = enemy.player
+@onready var animation_tree: AnimationTree = $"../../AnimationTree"
+
+var animation_playback = AnimationNodeStateMachinePlayback
+
+func _ready() -> void:
+	animation_playback = animation_tree.get("parameters/playback")
 
 func randomize_variables():
 	wander_time = randf_range(1.5, 4)
 	if randi_range(0, 3) != 1:
 		wander_direction = Vector3(randf_range(-1.0, 1.0), 0.0, randf_range(-1.0, 1.0))
+		animation_playback.travel("walking")
 	else:
 		wander_direction = Vector3.ZERO
+		animation_playback.travel("idle")
 	
 func enter():
 	randomize_variables()

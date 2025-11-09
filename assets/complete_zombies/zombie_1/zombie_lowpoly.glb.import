@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b4jidiggk0eev"
-path="res://.godot/imported/animations.glb-67c27853c1bd5ed8b3e367ad0ce3b7ca.scn"
+uid="uid://eo8swdmt5fro"
+path="res://.godot/imported/zombie_lowpoly.glb-2f47f2c01f6112bfb1f7ba1e2d4c01d1.scn"
 
 [deps]
 
-source_file="res://assets/complete_zombies/zombie_1/animations.glb"
-dest_files=["res://.godot/imported/animations.glb-67c27853c1bd5ed8b3e367ad0ce3b7ca.scn"]
+source_file="res://assets/complete_zombies/zombie_1/zombie_lowpoly.glb"
+dest_files=["res://.godot/imported/zombie_lowpoly.glb-2f47f2c01f6112bfb1f7ba1e2d4c01d1.scn"]
 
 [params]
 

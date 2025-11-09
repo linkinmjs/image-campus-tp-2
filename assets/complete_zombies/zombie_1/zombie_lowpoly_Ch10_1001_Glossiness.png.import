@@ -2,23 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brscigbboifx6"
-path="res://.godot/imported/zombie_1_Ch10_1001_Specular.png-d04bd457728b28709e9896927d6dbaab.ctex"
+uid="uid://3rmiguxpo70i"
+path.s3tc="res://.godot/imported/zombie_lowpoly_Ch10_1001_Glossiness.png-dd30fe96008c0311a0214b67436305dc.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "cc54f89ab2f803775b259523df174726"
+"md5": "b12fbbbf236f76785ff0299b31d006d6"
 }
 
 [deps]
 
-source_file="res://assets/complete_zombies/zombie_1/zombie_1_Ch10_1001_Specular.png"
-dest_files=["res://.godot/imported/zombie_1_Ch10_1001_Specular.png-d04bd457728b28709e9896927d6dbaab.ctex"]
+source_file="res://assets/complete_zombies/zombie_1/zombie_lowpoly_Ch10_1001_Glossiness.png"
+dest_files=["res://.godot/imported/zombie_lowpoly_Ch10_1001_Glossiness.png-dd30fe96008c0311a0214b67436305dc.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
