@@ -8,7 +8,7 @@ func enter():
 func exit():
 	pass
 
-func process(_delta: float):
+func process(delta: float):
 	pass
 	
 func physics_process(delta: float):

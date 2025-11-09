@@ -23,8 +23,9 @@ const FOV_CHANGE = 1.5
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
-@onready var skate_tricks_animations: AnimationPlayer = $SkateTricksAnimations
 @onready var skate: Node3D = $Skate
+@onready var health_lbl: Label = $HealthLbl
+@onready var health_component: Node = $HealthComponent
 
 
 func _ready() -> void:
@@ -35,6 +36,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		head.rotate_y(-event.relative.x * SENSITIVITY_Y)
 		camera.rotate_x(-event.relative.y * SENSITIVITY_X)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+
+func _process(delta: float) -> void:
+	health_lbl.text = str(health_component.health)
 
 func _physics_process(delta: float) -> void:
 
@@ -97,3 +101,7 @@ func _headbob(time: float) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
+
+func on_death() -> void:
+	get_tree().quit()
+	

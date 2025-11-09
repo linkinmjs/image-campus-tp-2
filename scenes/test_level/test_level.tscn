@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cocdmcnq4fyg3"]
+[gd_scene load_steps=12 format=3 uid="uid://cocdmcnq4fyg3"]
 
 [ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/test_player/TestPlayer.tscn" id="1_alwyk"]
 [ext_resource type="Texture2D" uid="uid://cnxepiabwocme" path="res://assets/6twelve/6twelve/Textures/Asphalt.jpg" id="3_vxsof"]
 [ext_resource type="Texture2D" uid="uid://k4ctoq3iop24" path="res://assets/6twelve/6twelve/Textures/Bricks.jpg" id="4_q0l7r"]
 [ext_resource type="PackedScene" uid="uid://cm4h2vp44ggqj" path="res://scenes/zombie/zombie.tscn" id="4_yetkn"]
+[ext_resource type="PackedScene" uid="uid://bq57gwj2jku4i" path="res://scenes/zombie_with_state_machine/enemy.tscn" id="5_q0l7r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_alwyk"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -94,3 +95,7 @@ collision_layer = 2147483648
 collision_mask = 0
 size = Vector3(5, 1.5881653, 12.105591)
 material = SubResource("StandardMaterial3D_q2iya")
+
+[node name="Enemy" parent="NavigationRegion3D" node_paths=PackedStringArray("player") instance=ExtResource("5_q0l7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05000007, 0)
+player = NodePath("../../TestPlayer")

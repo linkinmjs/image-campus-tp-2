@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bq57gwj2jku4i"]
+
+[ext_resource type="Script" uid="uid://d3y87mohf2p1y" path="res://scenes/zombie_with_state_machine/enemy.gd" id="1_ymfc5"]
+[ext_resource type="PackedScene" uid="uid://b5js1opfkn7ci" path="res://scenes/zombie_with_state_machine/components/health_component.tscn" id="2_ncoeh"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ymfc5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3w46"]
+albedo_color = Color(0.64705884, 0.23529412, 0.27058825, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ymfc5"]
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_ymfc5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ymfc5")
+surface_material_override/0 = SubResource("StandardMaterial3D_e3w46")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ymfc5")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_ncoeh")]
