@@ -882,7 +882,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 2147483648
+collision_mask = 2147483650
 script = ExtResource("1_ymfc5")
 
 [node name="zombie_lowpoly" type="Node3D" parent="."]

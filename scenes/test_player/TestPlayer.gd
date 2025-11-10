@@ -24,8 +24,9 @@ const FOV_CHANGE = 1.5
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var skate: Node3D = $Skate
-@onready var health_lbl: Label = $HealthLbl
+@onready var health_lbl: Label = $CanvasLayer/HealthLbl
 @onready var health_component: Node = $HealthComponent
+@onready var animation_player: AnimationPlayer = $CanvasLayer/AnimationPlayer
 
 
 func _ready() -> void:
@@ -101,6 +102,9 @@ func _headbob(time: float) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
+
+func on_damage(damage):
+	animation_player.play("hit")
 
 func on_death() -> void:
 	get_tree().quit()
