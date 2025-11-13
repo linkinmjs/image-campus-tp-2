@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cocdmcnq4fyg3"]
+[gd_scene load_steps=12 format=3 uid="uid://cocdmcnq4fyg3"]
 
 [ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/test_player/TestPlayer.tscn" id="1_alwyk"]
 [ext_resource type="Texture2D" uid="uid://cnxepiabwocme" path="res://assets/6twelve/6twelve/Textures/Asphalt.jpg" id="3_vxsof"]
 [ext_resource type="Texture2D" uid="uid://k4ctoq3iop24" path="res://assets/6twelve/6twelve/Textures/Bricks.jpg" id="4_q0l7r"]
 [ext_resource type="PackedScene" uid="uid://bq57gwj2jku4i" path="res://scenes/zombie_with_state_machine/enemy.tscn" id="5_q0l7r"]
+[ext_resource type="PackedScene" uid="uid://bm1hnp6c0nmoy" path="res://scenes/test_level/jersey_barrier/jersey_barrier.tscn" id="5_q2iya"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_alwyk"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -47,7 +48,7 @@ shadow_enabled = true
 environment = SubResource("Environment_vxsof")
 
 [node name="TestPlayer" parent="." instance=ExtResource("1_alwyk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.017005205, -29.63101)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.017005205, 23.452997)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_vxsof")
@@ -92,13 +93,16 @@ size = Vector3(5, 1.5881653, 12.105591)
 material = SubResource("StandardMaterial3D_q2iya")
 
 [node name="Enemy" parent="NavigationRegion3D" node_paths=PackedStringArray("player") instance=ExtResource("5_q0l7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05000007, -33.04847)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.435501, 0.05000007, -33.04847)
 player = NodePath("../../TestPlayer")
 
 [node name="Enemy2" parent="NavigationRegion3D" node_paths=PackedStringArray("player") instance=ExtResource("5_q0l7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.08855, 0.05000007, -33.04847)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.390156, 0.05000007, -33.04847)
 player = NodePath("../../TestPlayer")
 
 [node name="Enemy3" parent="NavigationRegion3D" node_paths=PackedStringArray("player") instance=ExtResource("5_q0l7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.034555, 0.05000007, -33.04847)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.034555, 0.05000007, -17.576443)
 player = NodePath("../../TestPlayer")
+
+[node name="JerseyBarrier" parent="NavigationRegion3D" instance=ExtResource("5_q2iya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28.911077)
