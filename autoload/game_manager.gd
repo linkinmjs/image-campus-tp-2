@@ -1,6 +1,31 @@
 extends Node
 
-var last_point_before_jump: Vector3
+var jumping_pos: Vector3
+var landing_pos: Vector3
 
-func _update_last_point_before_jump(global_position: Vector3) -> void:
-	last_point_before_jump = global_position
+var debug: bool = true
+
+func _update_jumping_pos(global_position: Vector3) -> void:
+	jumping_pos = global_position
+	print("jumping_pos: %s" % jumping_pos)
+
+func _update_landing_pos(global_position: Vector3) -> void:
+	landing_pos = global_position
+	print("landing_pos: %s" % landing_pos)
+	if debug:
+		_debug_jump_land_vector()
+
+func _debug_jump_land_vector() -> void:
+	var last_jump_vec = landing_pos - jumping_pos
+	# Opcional:
+	# Se puede usar algo como: last_jump_vec.length() > 0.2
+	# para evitar "baches"
+	print("Aterrizaje en: ", landing_pos, "  Vector salto: ", jumping_pos, "  Dist: ", last_jump_vec.length())
+
+#################
+# DEBUG FUNCTIONS
+func _toggle_debug() -> void:
+	if debug:
+		debug = false
+	else:
+		debug = true

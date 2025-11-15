@@ -4,6 +4,7 @@ extends CharacterBody3D
 # https://www.youtube.com/watch?v=A3HLeyaBCq4&list=PLQZiuyZoMHcgqP-ERsVE4x4JSFojLdcBZ&index=1&t=2s
 
 var speed: float
+var on_floor: bool
 
 const WALK_SPEED = 3.0
 const SPRINT_SPEED = 8.0
@@ -41,7 +42,6 @@ func _process(_delta: float) -> void:
 	health_lbl.text = str(health_component.health)
 
 func _physics_process(delta: float) -> void:
-
 	# Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -49,6 +49,15 @@ func _physics_process(delta: float) -> void:
 	# Handle jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		GameManager._update_jumping_pos(global_position)
+		on_floor = false
+	# Handle landing
+	elif not on_floor and is_on_floor():
+		GameManager._update_landing_pos(global_position)
+		on_floor = true
+		if GameManager.debug:
+			drawn_line(GameManager.jumping_pos, GameManager.landing_pos)
+	
 	
 	# Handle Trick
 	if Input.is_action_just_pressed("jump") and !is_on_floor():
@@ -58,7 +67,6 @@ func _physics_process(delta: float) -> void:
 		tween.tween_property(skate, "rotation_degrees",[pop_shovit, backflip].pick_random(), 0.4)
 		tween.play()
 
-	
 	# Handle speed
 	if is_on_floor():
 		if Input.is_action_pressed("sprint"):
@@ -108,3 +116,33 @@ func on_damage(damage):
 func on_death() -> void:
 	get_tree().quit()
 	
+#################
+# DEBUG FUNCTIONS
+func drawn_line(pos1: Vector3, pos2: Vector3, color = Color.WHITE_SMOKE, persist_ms = 0):
+	var mesh_instance := MeshInstance3D.new()
+	var immediate_mesh := ImmediateMesh.new()
+	var material := ORMMaterial3D.new()
+
+	mesh_instance.mesh = immediate_mesh
+	mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+
+	immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES, material)
+	immediate_mesh.surface_add_vertex(pos1)
+	immediate_mesh.surface_add_vertex(pos2)
+	immediate_mesh.surface_end()
+
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.albedo_color = color
+
+	return await final_cleanup(mesh_instance, persist_ms)
+	
+func final_cleanup(mesh_instance: MeshInstance3D, persist_ms: float):
+	get_tree().get_root().add_child(mesh_instance)
+	if persist_ms == 1:
+		await get_tree().physics_frame
+		mesh_instance.queue_free()
+	elif persist_ms > 0:
+		await get_tree().create_timer(persist_ms).timeout
+		mesh_instance.queue_free()
+	else:
+		return mesh_instance
