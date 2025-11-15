@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5js1opfkn7ci"]
-
-[ext_resource type="Script" uid="uid://cpd7bg0xuabbj" path="res://scenes/zombie_with_state_machine/components/health_component.gd" id="1_a50r2"]
-
-[node name="HealthComponent" type="Node"]
-script = ExtResource("1_a50r2")
-MaxHealth = null
