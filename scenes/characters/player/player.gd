@@ -28,6 +28,15 @@ const FOV_CHANGE = 1.5
 @onready var health_component: Node = $HealthComponent
 @onready var animation_player: AnimationPlayer = $CanvasLayer/AnimationPlayer
 
+# Audios
+@onready var moving: AudioStreamPlayer3D = $Sfx/Moving
+@onready var jump_start: AudioStreamPlayer3D = $Sfx/JumpStart
+@onready var jump_end: AudioStreamPlayer3D = $Sfx/JumpEnd
+@onready var slide_start: AudioStreamPlayer3D = $Sfx/SlideStart
+@onready var slide_mid: AudioStreamPlayer3D = $Sfx/SlideMid
+@onready var slide_end: AudioStreamPlayer3D = $Sfx/SlideEnd
+@onready var rotate: AudioStreamPlayer3D = $Sfx/Rotate
+
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -51,10 +60,12 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		GameManager._update_jumping_pos(global_position)
 		on_floor = false
+		jump_start.play()
 	# Handle landing
 	elif not on_floor and is_on_floor():
 		GameManager._update_landing_pos(global_position)
 		on_floor = true
+		jump_end.play()
 		if GameManager.debug:
 			drawn_line(GameManager.jumping_pos, GameManager.landing_pos)
 	
@@ -71,8 +82,10 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		if Input.is_action_pressed("sprint"):
 			speed = SPRINT_SPEED
+			moving.pitch_scale= 1.2
 		else:
 			speed = WALK_SPEED
+			moving.pitch_scale= 1.0
 	
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("left", "right", "up", "down")
@@ -87,6 +100,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
+	
+	# Add sound to skating
+	if is_on_floor() and velocity != Vector3.ZERO and !moving.is_playing():
+		moving.play()
+	elif (not is_on_floor()) or (direction == Vector3.ZERO):
+		moving.stop()
 	
 	# Head Bob
 	t_bob += delta * velocity.length() * float(is_on_floor())

@@ -1,9 +1,16 @@
-[gd_scene load_steps=26 format=4 uid="uid://dhs31wl5368w3"]
+[gd_scene load_steps=33 format=4 uid="uid://dhs31wl5368w3"]
 
 [ext_resource type="Script" uid="uid://cqgta8fiv0ebj" path="res://scenes/characters/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://btw35mhqlwjos" path="res://art/skateboard_pack/Textures/N_Skateboard.png" id="2_g53to"]
 [ext_resource type="Texture2D" uid="uid://c88fg0oyaybde" path="res://art/skateboard_pack/Textures/D_Skateboard.png" id="3_n51df"]
 [ext_resource type="PackedScene" uid="uid://b5js1opfkn7ci" path="res://scenes/characters/zombie/components/health_component.tscn" id="4_n51df"]
+[ext_resource type="AudioStream" uid="uid://bi3x8loctb0py" path="res://assets/audios/sfx/moving.mp3" id="5_qd3e3"]
+[ext_resource type="AudioStream" uid="uid://bue6pc0cds3jp" path="res://assets/audios/sfx/jump-start.mp3" id="6_djydg"]
+[ext_resource type="AudioStream" uid="uid://de1owai8dvdwb" path="res://assets/audios/sfx/jump-end.mp3" id="7_bsn6e"]
+[ext_resource type="AudioStream" uid="uid://do8pbhrac6sks" path="res://assets/audios/sfx/slide-start.mp3" id="8_blysn"]
+[ext_resource type="AudioStream" uid="uid://b34236uhnvwgs" path="res://assets/audios/sfx/slide-mid.mp3" id="9_hv5x3"]
+[ext_resource type="AudioStream" uid="uid://ccbog2xquhwso" path="res://assets/audios/sfx/slide-end.mp3" id="10_ykrpk"]
+[ext_resource type="AudioStream" uid="uid://cw83e30cv7as3" path="res://assets/audios/sfx/rotate.mp3" id="11_i1nod"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_spoc0"]
 radius = 0.2
@@ -379,3 +386,40 @@ libraries = {
 }
 
 [node name="Debug" type="Node3D" parent="."]
+
+[node name="Sfx" type="Node3D" parent="."]
+
+[node name="Moving" type="AudioStreamPlayer3D" parent="Sfx"]
+stream = ExtResource("5_qd3e3")
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="JumpStart" type="AudioStreamPlayer3D" parent="Sfx"]
+stream = ExtResource("6_djydg")
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="JumpEnd" type="AudioStreamPlayer3D" parent="Sfx"]
+stream = ExtResource("7_bsn6e")
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="SlideStart" type="AudioStreamPlayer3D" parent="Sfx"]
+stream = ExtResource("8_blysn")
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="SlideMid" type="AudioStreamPlayer3D" parent="Sfx"]
+stream = ExtResource("9_hv5x3")
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="SlideEnd" type="AudioStreamPlayer3D" parent="Sfx"]
+stream = ExtResource("10_ykrpk")
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="Rotate" type="AudioStreamPlayer3D" parent="Sfx"]
+stream = ExtResource("11_i1nod")
+panning_strength = 0.0
+bus = &"SFX"
