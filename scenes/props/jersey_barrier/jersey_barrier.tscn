@@ -61,4 +61,4 @@ collision_mask = 3
 shape = SubResource("ConcavePolygonShape3D_3dwnv")
 
 [node name="SlidePath" parent="." instance=ExtResource("2_wmwdo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01484108, 1.1870639, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01484108, 1.1485459, 0)

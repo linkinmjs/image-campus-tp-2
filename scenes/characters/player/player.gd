@@ -8,9 +8,12 @@ var on_floor: bool
 
 const WALK_SPEED = 3.0
 const SPRINT_SPEED = 8.0
-const JUMP_VELOCITY = 9.5
+const MAX_JUMP_VELOCITY = 7.0
+const MIN_JUMP_VELOCITY = 1.0
 const SENSITIVITY_X = 0.003
 const SENSITIVITY_Y = 0.0025
+var jump_velocity: float = 0.0 # Jump force
+var jump_charge_velocity: float = 7.0
 
 # Bob variables
 const BOB_FREQ: float = 2.0
@@ -37,7 +40,6 @@ const FOV_CHANGE = 1.5
 @onready var slide_end: AudioStreamPlayer3D = $Sfx/SlideEnd
 @onready var rotate: AudioStreamPlayer3D = $Sfx/Rotate
 
-
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -56,11 +58,16 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	# Handle jump
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_pressed("jump") and is_on_floor():
+		jump_velocity += jump_charge_velocity * delta
+	if Input.is_action_just_released("jump") and is_on_floor():
+		if GameManager.player_on_powerslide: jump_velocity = 10
+		velocity.y = clamp(jump_velocity, MIN_JUMP_VELOCITY, MAX_JUMP_VELOCITY)
+		jump_velocity = 0.0
 		GameManager._update_jumping_pos(global_position)
 		on_floor = false
 		jump_start.play()
+		
 	# Handle landing
 	elif not on_floor and is_on_floor():
 		GameManager._update_landing_pos(global_position)
@@ -90,7 +97,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if is_on_floor():
+	if is_on_floor() and not GameManager.player_on_powerslide:
 		if direction:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed

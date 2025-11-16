@@ -22,12 +22,14 @@ func _process(delta: float) -> void:
 		
 func on_body_exited(_body: CharacterBody3D) -> void:
 	player_on_barrier = false
+	GameManager.player_on_powerslide = false
 	player = null
 	
 func on_body_connected(body: CharacterBody3D) -> void:
 	if player_on_barrier:
 		return
 	player_on_barrier = true
+	GameManager.player_on_powerslide = true
 	player = body
 	
 	var closest_offset = slide_path.curve.get_closest_offset(slide_path.to_local(body.global_position))

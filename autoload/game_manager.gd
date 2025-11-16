@@ -3,16 +3,19 @@ extends Node
 var jumping_pos: Vector3
 var landing_pos: Vector3
 
+var player_on_powerslide: bool = false
+
 var debug: bool = true
 
 func _update_jumping_pos(global_position: Vector3) -> void:
 	jumping_pos = global_position
-	print("jumping_pos: %s" % jumping_pos)
+	if debug:
+		print("jumping_pos: %s" % jumping_pos)
 
 func _update_landing_pos(global_position: Vector3) -> void:
 	landing_pos = global_position
-	print("landing_pos: %s" % landing_pos)
 	if debug:
+		print("landing_pos: %s" % landing_pos)
 		_debug_jump_land_vector()
 
 func _debug_jump_land_vector() -> void:
