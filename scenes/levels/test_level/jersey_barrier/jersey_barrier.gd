@@ -7,8 +7,9 @@ extends Node3D
 @onready var marker_3d: Marker3D = $Path3D/PathFollow3D/Marker3D
 
 @export var player_parent_node: Node3D
-var player_on_barrier: bool
 
+var slide_dir := 1.0
+var player_on_barrier: bool
 var player: CharacterBody3D
 
 func _ready() -> void:
@@ -18,15 +19,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if player_on_barrier and path_follow_3d.progress_ratio < 1:
-		path_follow_3d.progress_ratio -= 0.2 * delta
+		path_follow_3d.progress_ratio += slide_dir * 0.2 * delta
 		player.global_position = marker_3d.global_position
 		
-
 func on_body_exited(_body: CharacterBody3D) -> void:
 	player_on_barrier = false
 	player = null
 	
-
 func on_body_connected(body: CharacterBody3D) -> void:
 	if player_on_barrier:
 		return
@@ -39,3 +38,17 @@ func on_body_connected(body: CharacterBody3D) -> void:
 	
 	path_follow_3d.progress_ratio = new_progress_ration
 	
+	# Tangente del path donde cayó el player
+	# (PathFollow apunta "forward" en -Z de su basis)
+	var tangent := -path_follow_3d.global_transform.basis.z
+	
+	# Velocidad horizontal del player al entrar
+	var v := body.velocity
+	v.y = 0.0
+	if v.length() < 0.001:
+		# fallback si llegó casi quieto: usa vector desde player hacia la tangente
+		v = (path_follow_3d.global_transform.origin - body.global_transform.origin)
+		v.y = 0.0
+
+	# Decidir sentido: +1 avanza, -1 retrocede
+	slide_dir = 1.0 if v.normalized().dot(tangent.normalized()) >= 0.0 else -1.0
