@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhkklo71158s2"]
+
+[ext_resource type="Script" uid="uid://cuq5bfr7g1jku" path="res://scenes/props/slide_path/slide_path.gd" id="1_vp07q"]
+
+[sub_resource type="Curve3D" id="Curve3D_6qbbn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 29.847677, -0.00917244, 0.015928656, 0, 0, 0, 0, 0, 0, -0.009691238, -0.009587884, -0.00026595592),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3dwnv"]
+size = Vector3(30.365845, 0.18579102, 0.18666077)
+
+[node name="SlidePath" type="Path3D"]
+curve = SubResource("Curve3D_6qbbn")
+script = ExtResource("1_vp07q")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(0.00054223934, -1.3914296e-05, 0.9999999, -4.5474735e-13, 1, 1.3914298e-05, -0.9999999, -7.545334e-09, 0.00054223934, 29.847677, -0.00917244, 0.015928656)
+loop = false
+
+[node name="Marker3D" type="Marker3D" parent="PathFollow3D"]
+transform = Transform3D(0.00054223934, -4.5474735e-13, -0.9999999, -1.3914296e-05, 1, -7.545334e-09, 0.9999999, 1.3914298e-05, 0.00054223934, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15695214, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.179871, 0, 0)
+shape = SubResource("BoxShape3D_3dwnv")
+debug_color = Color(0.8244077, 0.7887884, 0.41997176, 0.41960785)

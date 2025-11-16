@@ -1,12 +1,10 @@
 extends Node3D
 
-@onready var area_3d: Area3D = $Path3D/Area3D
-@onready var collision_shape_3d: CollisionShape3D = $Path3D/Area3D/CollisionShape3D
-@onready var path_follow_3d: PathFollow3D = $Path3D/PathFollow3D
-@onready var path_3d: Path3D = $Path3D
-@onready var marker_3d: Marker3D = $Path3D/PathFollow3D/Marker3D
-
-@export var player_parent_node: Node3D
+@onready var area_3d: Area3D = $Area3D
+@onready var collision_shape_3d: CollisionShape3D = $Area3D/CollisionShape3D
+@onready var path_follow_3d: PathFollow3D = $PathFollow3D
+@onready var slide_path: Path3D = $"."
+@onready var marker_3d: Marker3D = $PathFollow3D/Marker3D
 
 var slide_dir := 1.0
 var player_on_barrier: bool
@@ -32,8 +30,8 @@ func on_body_connected(body: CharacterBody3D) -> void:
 	player_on_barrier = true
 	player = body
 	
-	var closest_offset = path_3d.curve.get_closest_offset(path_3d.to_local(body.global_position))
-	var backed_length = path_3d.curve.get_baked_length()
+	var closest_offset = slide_path.curve.get_closest_offset(slide_path.to_local(body.global_position))
+	var backed_length = slide_path.curve.get_baked_length()
 	var new_progress_ration = closest_offset / backed_length
 	
 	path_follow_3d.progress_ratio = new_progress_ration

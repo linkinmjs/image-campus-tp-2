@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://cocdmcnq4fyg3"]
 
-[ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/player/player.tscn" id="1_alwyk"]
+[ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/player/Player.tscn" id="1_alwyk"]
 [ext_resource type="Texture2D" uid="uid://cnxepiabwocme" path="res://art/6twelve/6twelve/Textures/Asphalt.jpg" id="3_vxsof"]
 [ext_resource type="Texture2D" uid="uid://k4ctoq3iop24" path="res://art/6twelve/6twelve/Textures/Bricks.jpg" id="4_q0l7r"]
 [ext_resource type="PackedScene" uid="uid://bq57gwj2jku4i" path="res://scenes/characters/zombie/enemy.tscn" id="5_q0l7r"]
-[ext_resource type="PackedScene" uid="uid://bm1hnp6c0nmoy" path="res://scenes/levels/test_level/jersey_barrier/jersey_barrier.tscn" id="5_q2iya"]
+[ext_resource type="PackedScene" uid="uid://bm1hnp6c0nmoy" path="res://scenes/props/jersey_barrier/jersey_barrier.tscn" id="5_q2iya"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_alwyk"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
