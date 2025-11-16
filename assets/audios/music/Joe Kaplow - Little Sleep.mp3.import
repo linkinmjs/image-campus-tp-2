@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://n24s1m2g5j3m"
+path="res://.godot/imported/Joe Kaplow - Little Sleep.mp3-e8ff478a6b2510f56c0d4d798f866868.mp3str"
+
+[deps]
+
+source_file="res://assets/audios/music/Joe Kaplow - Little Sleep.mp3"
+dest_files=["res://.godot/imported/Joe Kaplow - Little Sleep.mp3-e8ff478a6b2510f56c0d4d798f866868.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

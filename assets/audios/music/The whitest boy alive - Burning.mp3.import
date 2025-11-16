@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bhr5reyxwj387"
+path="res://.godot/imported/The whitest boy alive - Burning.mp3-b322b58f23d681cd9df9dad6643f6107.mp3str"
+
+[deps]
+
+source_file="res://assets/audios/music/The whitest boy alive - Burning.mp3"
+dest_files=["res://.godot/imported/The whitest boy alive - Burning.mp3-b322b58f23d681cd9df9dad6643f6107.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

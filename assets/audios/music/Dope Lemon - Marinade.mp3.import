@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://doevgjeb1hrl3"
+path="res://.godot/imported/Dope Lemon - Marinade.mp3-f0cce9fb0999b8054e3d6df58e9ad3c3.mp3str"
+
+[deps]
+
+source_file="res://assets/audios/music/Dope Lemon - Marinade.mp3"
+dest_files=["res://.godot/imported/Dope Lemon - Marinade.mp3-f0cce9fb0999b8054e3d6df58e9ad3c3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
