@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=4 uid="uid://dr37dg0qihkd8"]
+
+[ext_resource type="Texture2D" uid="uid://xff0j17hd8yq" path="res://art/abandoned_Interiors/PS1 Derelict Pack/PS1TextureAtlas 256x256px.png" id="1_8hcpp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ntk7k"]
+albedo_texture = ExtResource("1_8hcpp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4cqm7"]
+resource_name = "01 - Default"
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(0, 0, 0, 0)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_f450c"]
+_surfaces = [{
+"aabb": AABB(-9.536743e-09, -4.5, -1.4901161e-10, 0.1, 4.5, 4.5),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAgAEAAAAAQADAAUABQACAAEABgAEAAIAAgAFAAYABwAAAAQAAAAHAAMABAAGAAcABQADAAcABwAGAAUA"),
+"name": "01 - Default",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("zMzMPQrXo68K1yOvCtcjsgrXo68K1yOvCtcjsgAAkMAK1yOvCtcjsgrXo68AAJBAzMzMPQAAkMAK1yOvCtcjsgAAkMAAAJBAzMzMPQAAkMAAAJBAzMzMPQrXo68AAJBA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2h5qn"]
+resource_name = "Wall010"
+_surfaces = [{
+"aabb": AABB(-9.536743e-09, -4.5, -1.4901161e-10, 0.1, 4.5, 4.5),
+"attribute_data": PackedByteArray("f9JMP4MMAD+0ogo/pn/8PrXQfz+DDAA/nvEHP6Z//D610H8/6fJ/P57xBz8g16M8f9JMP+nyfz+0ogo/INejPLXQfz+HDAA/tKIKPyzAAT+10H8/7fJ/P7SiCj9I4Xo/f9JMP+3yfz+e8Qc/SOF6P3/STD+HDAA/nvEHPyzAAT/C0V8/UMj8vkVxBD8uwAE/wtFfPwBPuLtFcQQ/SOF6P+oKXT8AT7i7LMABP0jhej/qCl0/UMj8vizAAT8uwAE/tdB/P4cMAD+mf/w+LMABP7XQfz/q8n8/pn/8Pkjhej9/0kw/6vJ/PwrXozxI4Xo/f9JMP4cMAD8K16M8LMABP1JQZT9o9vy+Q3EEPyDXozxSUGU/ANDDu0NxBD+qf/w+fIliPwDQw7sswAE/qn/8PnyJYj9o9vy+LMABPyDXozy10H8/hwwAP6Z//D4g16M8tdB/P+jyfz+mf/w+qH/8Pn/STD/o8n8/CtejPKh//D5/0kw/hwwAPwrXozwg16M8"),
+"format": 34359742519,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_4cqm7"),
+"name": "01 - Default",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("zMzMPQrXo68K1yOvCtcjsgrXo68K1yOvCtcjsgAAkMAK1yOvzMzMPQAAkMAK1yOvzMzMPQrXo68AAJBAzMzMPQAAkMAAAJBACtcjsgAAkMAAAJBACtcjsgrXo68AAJBAzMzMPQAAkMAAAJBAzMzMPQAAkMAK1yOvCtcjsgAAkMAK1yOvCtcjsgAAkMAAAJBAzMzMPQrXo68AAJBAzMzMPQrXo68K1yOvzMzMPQAAkMAK1yOvzMzMPQAAkMAAAJBACtcjsgrXo68AAJBACtcjsgrXo68K1yOvzMzMPQrXo68K1yOvzMzMPQrXo68AAJBACtcjsgAAkMAAAJBACtcjsgAAkMAK1yOvCtcjsgrXo68K1yOvCtcjsgrXo68AAJBA/////wAA/7//////AAD/v/////8AAP+//////wAA/7//f/9/////v/9//3////+//3//f////7//f/9/////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+/////f/9///////9//3///////3//f///////f/9/////f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/vwAA/3//fwCAAAD/f/9/AIAAAP9//38AgAAA/3//fwCA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_f450c")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pre2i"]
+data = PackedVector3Array(0.099999994, 0, 0, 0, 0, 0, 0, -4.5, 0, 0, -4.5, 0, 0.099999994, -4.5, 0, 0.099999994, 0, 0, 0.099999994, 0, 4.5, 0.099999994, -4.5, 4.5, 0, -4.5, 4.5, 0, -4.5, 4.5, 0, 0, 4.5, 0.099999994, 0, 4.5, 0.099999994, -4.5, 4.5, 0.099999994, -4.5, 0, 0, -4.5, 0, 0, -4.5, 0, 0, -4.5, 4.5, 0.099999994, -4.5, 4.5, 0.099999994, 0, 4.5, 0.099999994, 0, 0, 0.099999994, -4.5, 0, 0.099999994, -4.5, 0, 0.099999994, -4.5, 4.5, 0.099999994, 0, 4.5, 0, 0, 4.5, 0, 0, 0, 0.099999994, 0, 0, 0.099999994, 0, 0, 0.099999994, 0, 4.5, 0, 0, 4.5, 0, -4.5, 4.5, 0, -4.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4.5, 0, -4.5, 4.5)
+
+[node name="WallGreen" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ntk7k")
+mesh = SubResource("ArrayMesh_2h5qn")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pre2i")

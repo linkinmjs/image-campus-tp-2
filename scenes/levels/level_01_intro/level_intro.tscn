@@ -1,0 +1,66 @@
+[gd_scene load_steps=14 format=3 uid="uid://bxncs2ssy1jb"]
+
+[ext_resource type="Texture2D" uid="uid://bc75pcj80u8no" path="res://art/6twelve/6twelve/Textures/Tiles.jpg" id="1_bnqyd"]
+[ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/player/Player.tscn" id="1_ty7qy"]
+[ext_resource type="PackedScene" uid="uid://dlx7coa1sg61n" path="res://scenes/props/level/door_way_wood.tscn" id="2_p0c1w"]
+[ext_resource type="PackedScene" uid="uid://bojwkd2odf4oi" path="res://scenes/props/level/bed.tscn" id="3_p0c1w"]
+[ext_resource type="PackedScene" uid="uid://1iah734bt4rt" path="res://scenes/props/level/door_way_dark_grey.tscn" id="4_soydq"]
+[ext_resource type="PackedScene" uid="uid://bwmllj5mn6o5j" path="res://scenes/props/level/wall_dark_grey.tscn" id="6_63tf7"]
+[ext_resource type="PackedScene" uid="uid://xmjssy8jg0i3" path="res://scenes/props/level/wall_wood.tscn" id="7_oqxut"]
+[ext_resource type="PackedScene" uid="uid://cf0ap6cd8f5d6" path="res://scenes/props/level/window_wall_wood.tscn" id="8_3f4bn"]
+[ext_resource type="PackedScene" uid="uid://bw10cwmtxx88j" path="res://scenes/props/level/window_wall_dark_grey.tscn" id="9_ebanu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ty7qy"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_bnqyd"]
+sky_material = SubResource("ProceduralSkyMaterial_ty7qy")
+
+[sub_resource type="Environment" id="Environment_p0c1w"]
+background_mode = 2
+sky = SubResource("Sky_bnqyd")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0c1w"]
+albedo_texture = ExtResource("1_bnqyd")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="LevelIntro" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p0c1w")
+
+[node name="Player" parent="." instance=ExtResource("1_ty7qy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9125094, -0.027994633, 0)
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Level"]
+use_collision = true
+collision_layer = 2147483648
+size = Vector3(100, 0.01, 100)
+material = SubResource("StandardMaterial3D_p0c1w")
+
+[node name="Bed" parent="." instance=ExtResource("3_p0c1w")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -4, 0, -2)
+
+[node name="DoorWayDarkGrey" parent="." instance=ExtResource("4_soydq")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -8, 0, -4)
+
+[node name="DoorWayWood" parent="." instance=ExtResource("2_p0c1w")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -8, 0, -9)
+
+[node name="WallDarkGrey" parent="." instance=ExtResource("6_63tf7")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -5.3866577, 0.0050001144, -8.164128)
+
+[node name="WallWood" parent="." instance=ExtResource("7_oqxut")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -8.142785, 0.0050001144, -14.424459)
+
+[node name="WindowWallWood" parent="." instance=ExtResource("8_3f4bn")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -6.191851, 0.0049996395, -13.636876)
+
+[node name="WindowWallDarkGrey" parent="." instance=ExtResource("9_ebanu")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -3.7013035, 0.0050001163, -10.5446415)

@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=4 uid="uid://bwmllj5mn6o5j"]
+
+[ext_resource type="Texture2D" uid="uid://xff0j17hd8yq" path="res://art/abandoned_Interiors/PS1 Derelict Pack/PS1TextureAtlas 256x256px.png" id="1_4irpd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rf08f"]
+albedo_texture = ExtResource("1_4irpd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rryqs"]
+resource_name = "01 - Default"
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(0, 0, 0, 0)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fr0pt"]
+_surfaces = [{
+"aabb": AABB(0, -4.5, 4.772596e-09, 0.1, 4.5, 4.5),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAgAEAAAAAQADAAUABQACAAEABgAEAAIAAgAFAAYABwAAAAQAAAAHAAMABAAGAAcABQADAAcABwAGAAUA"),
+"name": "01 - Default",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("zczMPQihIzIz/KMxAAAAAAihIzIz/KMxAAAAAAAAkMAz/KMxAAAAAAihIzIAAJBAzczMPQAAkMAz/KMxAAAAAAAAkMAAAJBAzczMPQAAkMAAAJBAzczMPQihIzIAAJBA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_52mis"]
+resource_name = "Wall004"
+_surfaces = [{
+"aabb": AABB(0, -4.5, 4.772596e-09, 0.1, 4.5, 4.5),
+"attribute_data": PackedByteArray("mONMPgAwSDm0ogo/pn/8PjhuzD4AMEg5nvEHP6Z//D44bsw+0uX/Pp7xBz8g16M8mONMPtLl/z60ogo/INejPDhuzD4AcEg5tKIKPyzAAT84bsw+2uX/PrSiCj9I4Xo/mONMPtrl/z6e8Qc/SOF6P5jjTD4AcEg5nvEHPyzAAT9ScIw+KGR+v0VxBD8uwAE/UnCMPp5wAb9FcQQ/SOF6P6Lihj6ecAG/LMABP0jhej+i4oY+KGR+vyzAAT8uwAE/OG7MPgBwSDmmf/w+LMABPzhuzD7U5f8+pn/8Pkjhej+Y40w+1OX/PgrXozxI4Xo/mONMPgBwSDkK16M8LMABP3Jtlz40e36/Q3EEPyDXozxybZc+oIcBv0NxBD+qf/w+xt+RPqCHAb8swAE/qn/8PsbfkT40e36/LMABPyDXozw4bsw+AHBIOaZ//D4g16M8OG7MPtDl/z6mf/w+qH/8PpjjTD7Q5f8+CtejPKh//D6Y40w+AHBIOQrXozwg16M8"),
+"format": 34359742519,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
+"material": SubResource("StandardMaterial3D_rryqs"),
+"name": "01 - Default",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("zczMPQihIzIz/KMxAAAAAAihIzIz/KMxAAAAAAAAkMAz/KMxzczMPQAAkMAz/KMxzczMPQihIzIAAJBAzczMPQAAkMAAAJBAAAAAAAAAkMAAAJBAAAAAAAihIzIAAJBAzczMPQAAkMAAAJBAzczMPQAAkMAz/KMxAAAAAAAAkMAz/KMxAAAAAAAAkMAAAJBAzczMPQihIzIAAJBAzczMPQihIzIz/KMxzczMPQAAkMAz/KMxzczMPQAAkMAAAJBAAAAAAAihIzIAAJBAAAAAAAihIzIz/KMxzczMPQihIzIz/KMxzczMPQihIzIAAJBAAAAAAAAAkMAAAJBAAAAAAAAAkMAz/KMxAAAAAAihIzIz/KMxAAAAAAihIzIAAJBA/////wAA/7//////AAD/v/////8AAP+//////wAA/7//f/9/////v/9//3////+//3//f////7//f/9/////v/9/AAD///+//38AAP///7//fwAA////v/9/AAD///+/////f/9///////9//3///////3//f///////f/9/////f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/vwAA/3//fwCAAAD/f/9/AIAAAP9//38AgAAA/3//fwCA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_fr0pt")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e85th"]
+data = PackedVector3Array(0.099999994, 0, 0, 0, 0, 0, 0, -4.5, 0, 0, -4.5, 0, 0.099999994, -4.5, 0, 0.099999994, 0, 0, 0.099999994, 0, 4.5, 0.099999994, -4.5, 4.5, 0, -4.5, 4.5, 0, -4.5, 4.5, 0, 0, 4.5, 0.099999994, 0, 4.5, 0.099999994, -4.5, 4.5, 0.099999994, -4.5, 0, 0, -4.5, 0, 0, -4.5, 0, 0, -4.5, 4.5, 0.099999994, -4.5, 4.5, 0.099999994, 0, 4.5, 0.099999994, 0, 0, 0.099999994, -4.5, 0, 0.099999994, -4.5, 0, 0.099999994, -4.5, 4.5, 0.099999994, 0, 4.5, 0, 0, 4.5, 0, 0, 0, 0.099999994, 0, 0, 0.099999994, 0, 0, 0.099999994, 0, 4.5, 0, 0, 4.5, 0, -4.5, 4.5, 0, -4.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4.5, 0, -4.5, 4.5)
+
+[node name="WallDarkGrey" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_rf08f")
+mesh = SubResource("ArrayMesh_52mis")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_e85th")

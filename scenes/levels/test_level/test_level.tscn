@@ -17,7 +17,6 @@ sky_material = SubResource("ProceduralSkyMaterial_alwyk")
 background_mode = 2
 sky = SubResource("Sky_62xr1")
 tonemap_mode = 2
-fog_enabled = true
 fog_light_color = Color(0.29803923, 0.3254902, 0.5019608, 1)
 fog_light_energy = 0.9
 fog_sun_scatter = 0.1
@@ -51,7 +50,7 @@ shadow_enabled = true
 environment = SubResource("Environment_vxsof")
 
 [node name="TestPlayer" parent="." instance=ExtResource("1_alwyk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.017005205, 23.452997)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.004879, 0.017005205, 34.45687)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_vxsof")
@@ -109,3 +108,6 @@ player = NodePath("../../TestPlayer")
 
 [node name="JerseyBarrier" parent="NavigationRegion3D" instance=ExtResource("5_q2iya")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28.911077)
+
+[node name="BORRAR" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.389168, 0, 32.467632)
