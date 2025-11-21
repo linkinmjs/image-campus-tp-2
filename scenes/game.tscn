@@ -1,0 +1,44 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjaosrlk0gbfw"]
+
+[ext_resource type="Script" uid="uid://bl4u6ivyxygyh" path="res://scenes/scripts/system/game.gd" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://bnt5irwaji2gq" path="res://scenes/ui/main_menu.tscn" id="2_vtaks"]
+[ext_resource type="AudioStream" uid="uid://bhmg2ie0x7oox" path="res://assets/audios/sfx/main_menu_rain.mp3" id="2_yqjtg"]
+[ext_resource type="AudioStream" uid="uid://c65a4a36bt7k8" path="res://assets/audios/music/Arcade Fire - The Suburbs.mp3" id="4_kvpfn"]
+[ext_resource type="AudioStream" uid="uid://doevgjeb1hrl3" path="res://assets/audios/music/Dope Lemon - Marinade.mp3" id="5_dinhu"]
+[ext_resource type="AudioStream" uid="uid://c6s1svqemecf2" path="res://assets/audios/music/Dope Lemon - Stonecutters.mp3" id="6_kvuet"]
+[ext_resource type="AudioStream" uid="uid://n24s1m2g5j3m" path="res://assets/audios/music/Joe Kaplow - Little Sleep.mp3" id="7_trtic"]
+[ext_resource type="AudioStream" uid="uid://bocmgvs7n4pig" path="res://assets/audios/music/Motorama - Sailor's Song.mp3" id="8_ir15t"]
+[ext_resource type="AudioStream" uid="uid://bhr5reyxwj387" path="res://assets/audios/music/The whitest boy alive - Burning.mp3" id="9_ca42v"]
+[ext_resource type="AudioStream" uid="uid://c1m81fh820os1" path="res://assets/audios/music/Ugly Night - Human Tetris.mp3" id="10_rysoc"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_uwrxv")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_vtaks")]
+
+[node name="Audios" type="Node" parent="."]
+
+[node name="AudioRainBackground" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("2_yqjtg")
+bus = &"Music"
+
+[node name="Song01" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("4_kvpfn")
+
+[node name="Song02" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("5_dinhu")
+
+[node name="Song03" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("6_kvuet")
+
+[node name="Song04" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("7_trtic")
+
+[node name="Song05" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("8_ir15t")
+
+[node name="Song06" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("9_ca42v")
+
+[node name="Song07" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("10_rysoc")
