@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnt5irwaji2gq"]
+[gd_scene load_steps=10 format=3 uid="uid://bnt5irwaji2gq"]
 
 [ext_resource type="Script" uid="uid://bugo7ip70xp3q" path="res://scenes/ui/main_menu.gd" id="1_fe2o3"]
 [ext_resource type="Theme" uid="uid://dsgtgqkj76ccl" path="res://scenes/scripts/data/theme_main_menu.tres" id="1_sl1te"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://poc37fiouwjx" path="res://assets/fonts/Toreadore.otf" id="4_wb0q5"]
 [ext_resource type="AudioStream" uid="uid://cgf84breh1yuc" path="res://assets/audios/sfx/menu_select_sfx.mp3" id="5_btxxm"]
 [ext_resource type="FontFile" uid="uid://cmomp6mff66r2" path="res://assets/fonts/Bottled It - Central.otf" id="5_q85j6"]
+[ext_resource type="Script" uid="uid://c32wtj8q5q1dp" path="res://scenes/scripts/system/volume_slider.gd" id="6_q85j6"]
 [ext_resource type="AudioStream" uid="uid://dkqo8wqkildjn" path="res://assets/audios/sfx/menu_select_with_zombie_sfx.mp3" id="6_wb0q5"]
 
 [node name="MainMenu" type="Node"]
@@ -100,6 +101,11 @@ text = "Master"
 
 [node name="MasterVolSlide" type="HSlider" parent="CanvasLayer/Control/Options"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 1.0
+script = ExtResource("6_q85j6")
+bus_name = "Master"
 
 [node name="Music" type="Label" parent="CanvasLayer/Control/Options"]
 layout_mode = 2
@@ -109,6 +115,11 @@ text = "Music"
 
 [node name="MusicVolSlide" type="HSlider" parent="CanvasLayer/Control/Options"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 1.0
+script = ExtResource("6_q85j6")
+bus_name = "Music"
 
 [node name="SFX" type="Label" parent="CanvasLayer/Control/Options"]
 layout_mode = 2
@@ -118,6 +129,11 @@ text = "SFX"
 
 [node name="SfxVolSlide" type="HSlider" parent="CanvasLayer/Control/Options"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
+value = 1.0
+script = ExtResource("6_q85j6")
+bus_name = "SFX"
 
 [node name="BackButton" type="Button" parent="CanvasLayer/Control/Options"]
 layout_mode = 2
