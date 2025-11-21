@@ -1,0 +1,36 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://eg6fbg7htbek"
+path="res://.godot/imported/Memorial Lane.otf-d1d1b97f998ff9d9339415298a514bf2.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/Memorial Lane.otf"
+dest_files=["res://.godot/imported/Memorial Lane.otf-d1d1b97f998ff9d9339415298a514bf2.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+modulate_color_glyphs=false
+hinting=1
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

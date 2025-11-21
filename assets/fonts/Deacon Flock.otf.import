@@ -1,0 +1,36 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://ck02f72lwxoyk"
+path="res://.godot/imported/Deacon Flock.otf-4eddddac6ef757838036afb9b9f011c2.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/Deacon Flock.otf"
+dest_files=["res://.godot/imported/Deacon Flock.otf-4eddddac6ef757838036afb9b9f011c2.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+modulate_color_glyphs=false
+hinting=1
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

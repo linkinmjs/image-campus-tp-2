@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dsgtgqkj76ccl"]
+
+[ext_resource type="FontFile" uid="uid://eg6fbg7htbek" path="res://assets/fonts/Memorial Lane.otf" id="1_1xtkf"]
+[ext_resource type="FontFile" uid="uid://b5vpfoh80sj6y" path="res://assets/fonts/Finished Sympathy.otf" id="1_tntof"]
+
+[resource]
+Button/colors/font_color = Color(0.79607844, 0.7176471, 0.6901961, 1)
+Button/colors/font_focus_color = Color(0.9098039, 0.30588236, 0.09411765, 1)
+Button/colors/font_hover_color = Color(0.9098039, 0.30588236, 0.09411765, 1)
+Button/colors/font_hover_pressed_color = Color(0.8132166, 0.26290286, 0.06282391, 1)
+Button/colors/font_pressed_color = Color(0.9098039, 0.30588236, 0.09411765, 1)
+Button/font_sizes/font_size = 65
+Button/fonts/font = ExtResource("1_1xtkf")
+Label/colors/font_color = Color(0.79607844, 0.7176471, 0.6901961, 1)
+Label/font_sizes/font_size = 130
+Label/fonts/font = ExtResource("1_tntof")
