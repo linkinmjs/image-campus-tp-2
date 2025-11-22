@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bxncs2ssy1jb"]
+[gd_scene load_steps=29 format=3 uid="uid://bxncs2ssy1jb"]
 
 [ext_resource type="Texture2D" uid="uid://bc75pcj80u8no" path="res://art/6twelve/6twelve/Textures/Tiles.jpg" id="1_bnqyd"]
 [ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/player/Player.tscn" id="1_ty7qy"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://m8ka0uuipvh6" path="res://scenes/props/level/wall_grey.tscn" id="18_b3xfw"]
 [ext_resource type="PackedScene" uid="uid://kiywv5u6vblw" path="res://scenes/props/level/pillow.tscn" id="19_xqxfp"]
 [ext_resource type="PackedScene" uid="uid://bj364nkds4ksn" path="res://scenes/props/level/pipe.tscn" id="20_36fa3"]
+[ext_resource type="PackedScene" uid="uid://iqad6inf03w" path="res://scenes/props/level/light.tscn" id="23_xqxfp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ty7qy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -317,3 +318,17 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -9, 
 
 [node name="Pipe" parent="Level" instance=ExtResource("20_36fa3")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -4.0244226, 1.536131, 14.952789)
+
+[node name="Light" parent="Level" instance=ExtResource("23_xqxfp")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 4.026146, 4.1290836, 6.5014873)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Level/Light"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -0.026145935, 0.015588284, 0.06155157)
+light_energy = 3.309
+
+[node name="Light2" parent="Level" instance=ExtResource("23_xqxfp")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 11.378935, 4.1290836, 3.8330388)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Level/Light2"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -0.026145935, 0.015588284, 0.06155157)
+light_energy = 3.309
