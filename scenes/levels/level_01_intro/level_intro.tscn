@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bxncs2ssy1jb"]
+[gd_scene load_steps=62 format=3 uid="uid://bxncs2ssy1jb"]
 
 [ext_resource type="Texture2D" uid="uid://bc75pcj80u8no" path="res://art/6twelve/6twelve/Textures/Tiles.jpg" id="1_bnqyd"]
 [ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/player/Player.tscn" id="1_ty7qy"]
@@ -22,7 +22,26 @@
 [ext_resource type="PackedScene" uid="uid://m8ka0uuipvh6" path="res://scenes/props/level/wall_grey.tscn" id="18_b3xfw"]
 [ext_resource type="PackedScene" uid="uid://kiywv5u6vblw" path="res://scenes/props/level/pillow.tscn" id="19_xqxfp"]
 [ext_resource type="PackedScene" uid="uid://bj364nkds4ksn" path="res://scenes/props/level/pipe.tscn" id="20_36fa3"]
+[ext_resource type="Texture2D" uid="uid://b4blndoijhsdy" path="res://art/all_fences/Fences/white_picket_fence/white_picket_fence_gate_poles_white_picket_fence.jpg" id="22_gbywf"]
 [ext_resource type="PackedScene" uid="uid://iqad6inf03w" path="res://scenes/props/level/light.tscn" id="23_xqxfp"]
+[ext_resource type="Texture2D" uid="uid://bxixnbhnru7n3" path="res://art/6twelve/6twelve/Textures/Metal_07.jpg" id="24_36fa3"]
+[ext_resource type="Texture2D" uid="uid://c43hqa6inll7" path="res://art/buildings/diffuse_.jpg" id="25_3q48d"]
+[ext_resource type="ArrayMesh" uid="uid://ec4n2itqh412" path="res://art/buildings/building_06_smooth.obj" id="26_ggggd"]
+[ext_resource type="ArrayMesh" uid="uid://bbbws4w0jgu8c" path="res://art/buildings/building_05_smooth.obj" id="27_ggggd"]
+[ext_resource type="PackedScene" uid="uid://cff2pgek1qgj8" path="res://scenes/props/level/door_way_grey.tscn" id="29_w41xa"]
+[ext_resource type="PackedScene" uid="uid://dwmh1kn85bly1" path="res://scenes/props/level/table.tscn" id="30_xsvfj"]
+[ext_resource type="PackedScene" uid="uid://dx3j8vlqgc8de" path="res://scenes/props/level/radio.tscn" id="31_gffq6"]
+[ext_resource type="PackedScene" uid="uid://dq2nk02hekab" path="res://scenes/props/level/wooden_plank.tscn" id="32_h0ckx"]
+[ext_resource type="Texture2D" uid="uid://p3srmvu742g" path="res://art/style_cars/Car 02/car2_black.png" id="33_fus6f"]
+[ext_resource type="ArrayMesh" uid="uid://dm87mq8er28o3" path="res://art/style_cars/Car 02/Car2.obj" id="34_mawwr"]
+[ext_resource type="Texture2D" uid="uid://d4ixgvr06f2sw" path="res://art/style_cars/Car 03/car3_yellow.png" id="35_our46"]
+[ext_resource type="ArrayMesh" uid="uid://c7sn7kj1a2ha0" path="res://art/style_cars/Car 03/Car3.obj" id="36_ctw71"]
+[ext_resource type="Texture2D" uid="uid://5rwy45avqei8" path="res://art/style_cars/Car 04/car4_lightgrey.png" id="37_af7de"]
+[ext_resource type="ArrayMesh" uid="uid://bbnffs7xt55so" path="res://art/style_cars/Car 04/Car4.obj" id="38_4umgx"]
+[ext_resource type="Texture2D" uid="uid://drpg15is8h2kh" path="res://art/style_cars/Car 06/car6.png" id="39_1ftij"]
+[ext_resource type="ArrayMesh" uid="uid://bn4vijb64qmmh" path="res://art/style_cars/Car 06/Car6.obj" id="40_j4opi"]
+[ext_resource type="Texture2D" uid="uid://dfip5eur1ilw5" path="res://art/style_cars/Wheel/wheel.png" id="41_aq6ah"]
+[ext_resource type="ArrayMesh" uid="uid://bnr80r8bmwnc1" path="res://art/style_cars/Wheel/Wheel.obj" id="42_08v51"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ty7qy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -46,6 +65,53 @@ uv1_world_triplanar = true
 albedo_texture = ExtResource("3_gm1k7")
 uv1_triplanar = true
 uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eugl6"]
+albedo_texture = ExtResource("22_gbywf")
+uv1_scale = Vector3(0.2, 0.2, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1j1nd"]
+albedo_texture = ExtResource("25_3q48d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2uqc"]
+albedo_texture = ExtResource("24_36fa3")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbywf"]
+albedo_texture = ExtResource("25_3q48d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72led"]
+albedo_texture = ExtResource("33_fus6f")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4n0u1"]
+points = PackedVector3Array(1.3830689, 1.4425758, 0.8259201, 1.1948048, 1.2690876, 3.0799627, 1.1171778, -0.004576691, -1.8720282, -0.91577417, 2.1257458, -1.6743739, -1.1916, 0.010847029, 1.8800651, -1.164178, 0.501776, -3.0178058, 1.1948048, 1.683786, -3.1410627, -1.1896049, 1.2690876, 3.0799627, 1.1274751, -0.01442917, 1.9260147, 0.88406014, 2.0826774, 0.4333898, -1.1896049, 1.683786, -3.1410627, 1.298718, 0.95823115, -3.34895, -1.1916, 0.010847029, -1.845395, 0.75460845, 0.56067455, 3.1781032, -1.3792701, 1.4429622, 0.8267893, -0.87871736, 2.082817, 0.43345326, 0.92117757, 2.1256635, -1.6742468, -1.1178639, 0.47712904, 2.9904761, 1.169358, 0.50178564, -3.0177546, 1.1181909, 0.47967196, 2.9773378, -0.99477893, 2.01163, 0.53847736, 0.999849, 2.0115066, 0.5384033, -0.72274065, 0.48138043, 3.0654893, -1.0087987, 2.0249808, -1.7646457, 1.0103601, 2.0215158, -1.7584072, 0.6312651, 0.48138043, 3.0654893, -1.1916, 0.20199457, 2.1667771)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hd1fw"]
+albedo_texture = ExtResource("35_our46")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hnyry"]
+points = PackedVector3Array(-0.97612196, 0.55649924, -2.6371262, 0.76824886, 2.0241768, 0.50383633, -0.9765994, 0.6423258, 2.7786033, 1.0630571, -0.02220521, 1.7926838, 0.91215885, 0.5576803, -2.7164001, -0.7060915, 2.0003269, -1.9161133, -1.0318203, -0.014808645, -1.8936859, 1.0178802, 1.2299448, 2.5215917, -1.2239934, 1.5471097, 0.42516106, -1.1901512, -0.08421707, 1.6295598, 0.72718114, 1.9966071, -1.9086715, 1.0556622, -0.014808645, -1.8936859, -0.74538004, 2.0257907, 0.5046097, 1.3926303, 1.6076915, 0.29316348, -0.9941169, 1.2299623, 2.5218093, 0.9080087, 1.3274348, -2.6182146, -1.1901512, 0.8956646, -2.0213969, 0.996346, 0.64392525, 2.7672231, -0.9371926, 1.3177289, -2.532172, 1.0822995, 0.3869152, -2.2850347, 0.71080905, 2.0569627, -1.535134, -0.19918035, 0.39492008, 2.563491, -0.8918159, 0.55571526, -2.7278366, -0.6872784, 2.0574262, -1.5358381, -1.0411541, 0.060186964, -2.0792549, -1.1101999, 0.0730311, 2.021991, -1.1047144, 0.9877459, 2.0951738, 1.0525469, 0.071639925, 2.024894, 1.0649939, 0.060186964, -2.0792549, -1.0009469, 1.393348, -1.9988458, 1.0462425, 1.1527822, -2.124703, -0.9717295, 0.72965246, -2.711049)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lxie"]
+albedo_texture = ExtResource("37_af7de")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c340d"]
+points = PackedVector3Array(-1.2548097, 2.0579913, -2.6975513, 1.7513298, 1.7135081, 1.7006736, -1.2112924, 0.44022006, 3.0117753, 1.3847, -0.02141249, -2.000749, -1.3826219, -0.022924, -2.0030165, -1.7476863, 2.0132413, 1.5015104, 1.0837336, 2.6310377, -2.5380225, 1.3790951, -0.01600093, 2.2819853, -1.1689632, 2.625503, 1.2202314, 0.81928664, 0.6406092, -3.0766757, 1.1808215, 1.5963461, 2.7378147, -1.3754516, -0.01600093, 2.2819853, 1.1699212, 2.6221354, 1.2171042, -1.1023061, 2.5617633, -2.6864402, -1.176875, 1.5963509, 2.7378616, -1.1034902, 0.73705804, -3.0741637, 1.297015, 1.6972666, -2.8767033, 1.2133646, 0.44159064, 3.0070531, 1.7513298, 2.0132413, 1.5015104, -0.046255864, 1.3137727, 2.9816036, -0.3330833, 2.654064, -2.6783953, -1.2962296, 1.6980153, -2.8823237, -1.7476863, 1.7132342, 1.7012999, 1.2051924, 2.2761219, -2.7900634, 1.3847, 0.26481065, -2.3819695, -1.3847, 0.26204693, -2.3882508, 0.5326892, 0.44460222, 3.0935092, -0.23831208, 1.9864844, -2.88186, -1.366319, 0.08720771, -2.2625678, 1.1070049, 0.7371252, -3.0738053, -1.0822498, 2.6336672, -2.5430932, -1.363359, 0.08986133, 2.5439293)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dp6h5"]
+albedo_texture = ExtResource("39_1ftij")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3u8hg"]
+points = PackedVector3Array(-1.170728, 1.0415119, -2.0815752, 1.2215792, 0.85808176, 1.3189574, 1.2328374, 0.67176884, 1.3310753, -1.0884774, 0.85808176, 3.0549068, -1.1897049, -0.05047536, -2.4954305, 1.132104, 1.2616675, -2.6971345, 1.0630274, 0.006043904, 2.8665757, 1.2330747, -0.05047536, -2.4954305, -0.6973065, 1.6673036, 0.2966451, -1.0268017, 0, 2.886715, 1.0311335, 0.85808176, 3.0549068, 0.74090225, 1.6673002, 0.29664403, -1.0393338, 1.0510268, -3.0593696, -0.6980561, 1.6681472, -1.1423448, 1.0758128, 0.18739927, -3.0386128, -1.2906754, 1.0599636, 0.63256204, -1.2906754, 0.45431814, 2.3486269, -1.0557724, 0.17239746, -3.1071947, 1.3340452, 0.55552584, -2.0920227, 1.2330747, 0.050554514, 2.5503306, 0.7416568, 1.6681492, -1.1423479, -1.2906754, 0.25243628, -2.3948948, -0.07484524, 0.27610937, 3.130999, -0.98750687, 1.5645792, -0.17425391, 1.132104, 1.3626974, -1.3851101, 1.053832, 1.0457332, -2.974679, 0.22336908, 0.85808176, 3.156075, 1.132104, 0.95875585, 2.449795, -1.1897049, 1.2616675, -1.4862783, -1.1132663, 0.0068544396, 2.580114, 0.2121644, 1.110223e-16, 2.9822626, 0.50820297, 0.46878347, 3.1415317)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlbbi"]
+albedo_texture = ExtResource("41_aq6ah")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_byr7k"]
+points = PackedVector3Array(-0.13679999, -0.096783064, -0.41485882, 0.13679999, 0.02703722, 0.43293458, 0.13679999, 0.09467266, 0.4058126, -0.13679999, 0.096783064, 0.41485882, 0.13679999, 0.43293458, -0.026952466, 0.13679999, -0.43293458, -0.013476233, -0.13679999, -0.31807575, 0.31807575, -0.13679999, 0.44258538, 0.0137766395, 0.12842244, 0.014135353, -0.45127115, -0.13679999, 0.31807575, -0.31807575, -0.13679999, -0.31807575, -0.31807575, 0.1279454, 0.32309896, 0.32309896, 0.13679999, -0.31113994, 0.31113994, 0.13679999, -0.31113994, -0.31113994, -0.13679999, -0.44258538, 0.027553279, 0.1279454, 0.32309896, -0.32309896, -0.13679999, 0.31807575, 0.31807575, -0.13679999, -0.0137766395, 0.44258538, -0.13679999, 0.0137766395, -0.44258538, 0.12752941, -0.12597214, 0.4060759, 0.1276236, 0.43438435, 0.05592216, -0.13679999, 0.44258538, -0.027553279, 0.12761699, 0.028003504, 0.44840723, 0.12716502, -0.09770473, -0.41880953, 0.13679999, 0.25698072, -0.33817717, -0.13679999, -0.42872208, -0.055193204, 0.13679999, -0.43293458, 0.026952466, -0.13679999, 0.2626226, -0.34571567, -0.13679999, 0.34571567, 0.2626226, 0.13679999, -0.33817717, -0.256896, 0.13679999, 0.31105518, 0.31113994, 0.13679999, -0.026952466, -0.43293458)
 
 [node name="LevelIntro" type="Node3D"]
 
@@ -167,7 +233,7 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 7.86549, 0.0050001144, 11.65
 transform = Transform3D(-1, 8.742278e-08, 3.821371e-15, 0, -4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 8.325666, 0.0049996376, -1.4132577)
 
 [node name="Barrel001" parent="Level" instance=ExtResource("14_aucsr")]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -4.3293557, 0.0049996376, 19.907713)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 11.926157, 0.0049996376, 14.888681)
 
 [node name="Desk" parent="Level" instance=ExtResource("15_xqxfp")]
 transform = Transform3D(-1, 8.742278e-08, 3.821371e-15, 0, -4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 7.364, 0, 12.746569)
@@ -188,7 +254,19 @@ transform = Transform3D(0.7815205, 0.6238796, 2.7270644e-08, 0, -4.371139e-08, 1
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 9, 0, 4.5)
 
 [node name="brick_wall" parent="Level" instance=ExtResource("16_c4vw5")]
-transform = Transform3D(-8.742278e-06, -199.99998, -8.742277e-06, 0, -8.742277e-06, 199.99998, -200, 8.742277e-06, 3.8213706e-13, 9, 0, -0.01)
+transform = Transform3D(-8.6985665e-06, -209.126, -9.1411885e-06, 0, -9.1411885e-06, 209.126, -199, 9.1411885e-06, 3.99574e-13, 9, 0, -0.01)
+
+[node name="brick_wall11" parent="Level" instance=ExtResource("16_c4vw5")]
+transform = Transform3D(-8.742278e-06, -199.99998, -8.742277e-06, 0, -8.742277e-06, 199.99998, -200, 8.742277e-06, 3.8213706e-13, 13.142382, 0, -0.01)
+
+[node name="brick_wall12" parent="Level" instance=ExtResource("16_c4vw5")]
+transform = Transform3D(-8.742278e-06, -199.99998, -8.742277e-06, 0, -8.742277e-06, 199.99998, -200, 8.742277e-06, 3.8213706e-13, 13.142, 0, -8.01)
+
+[node name="brick_wall13" parent="Level" instance=ExtResource("16_c4vw5")]
+transform = Transform3D(-8.742278e-06, -199.99998, -8.742277e-06, 0, -8.742277e-06, 199.99998, -200, 8.742277e-06, 3.8213706e-13, 13.142, 0, -16.01)
+
+[node name="brick_wall14" parent="Level" instance=ExtResource("16_c4vw5")]
+transform = Transform3D(-8.742278e-06, -199.99998, -8.742277e-06, 0, -8.742277e-06, 199.99998, -200, 8.742277e-06, 3.8213706e-13, 13.142, 0, -24.01)
 
 [node name="brick_wall2" parent="Level" instance=ExtResource("16_c4vw5")]
 transform = Transform3D(-8.742278e-06, -199.99998, -8.742277e-06, 0, -8.742277e-06, 199.99998, -200, 8.742277e-06, 3.8213706e-13, -9, 0, 0)
@@ -218,19 +296,19 @@ transform = Transform3D(-8.742278e-06, -199.99998, 0, -8.742278e-06, 3.8213706e-
 transform = Transform3D(-8.742278e-06, -199.99998, 0, -8.742278e-06, 3.8213706e-13, 199.99998, -200, 8.742277e-06, -8.742277e-06, 13, 0, 21.45)
 
 [node name="Chair2" parent="Level" instance=ExtResource("12_dxqn4")]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -3.624771, 0.0050001144, 15.547497)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -7.607963, 0.0050001144, -28.737045)
 
 [node name="Cupboard2" parent="Level" instance=ExtResource("13_b3xfw")]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -3.7584395, 0.005000353, 17.48469)
+transform = Transform3D(-4.371139e-08, -1, 0, 0, 0, 1, -1, 4.371139e-08, 0, 1.0288081, 0.005000353, 23.285471)
 
 [node name="Barrel002" parent="Level" instance=ExtResource("14_aucsr")]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -1.7322445, 0.005000353, 14.962864)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 12.371655, 0.005000353, 13.962864)
 
 [node name="MetalPlane" parent="Level" instance=ExtResource("18_aucsr")]
-transform = Transform3D(0.677787, 0, 0, 0, 0, 1, 0, -1, 0, -4.859181, 0.005000191, 17.349016)
+transform = Transform3D(0.654692, 0, -0.25881904, 0.17542419, 0, 0.9659258, 0, -1, 0, -8.252702, 0.005000191, 22.841526)
 
 [node name="Pillow" parent="Level" instance=ExtResource("19_xqxfp")]
-transform = Transform3D(0, -1, 0, 0, 0, 1, -1, 0, 0, -2.5119038, 0.118496545, 15.966687)
+transform = Transform3D(0, -1, 0, 0, 0, 1, -1, 0, 0, -7.8362494, 0.118496545, 23.12371)
 
 [node name="WallGrey" parent="Level" instance=ExtResource("18_b3xfw")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 9, 0, -12.5)
@@ -268,14 +346,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 9, 4.5, -30.5)
 [node name="WallGrey12" parent="Level" instance=ExtResource("18_b3xfw")]
 transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 9, 4.5, -30.5)
 
-[node name="WallGrey13" parent="Level" instance=ExtResource("18_b3xfw")]
-transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 4.5, 0, -30.5)
-
 [node name="WallGrey14" parent="Level" instance=ExtResource("18_b3xfw")]
 transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 4.5, 4.5, -30.5)
 
-[node name="WallGrey15" parent="Level" instance=ExtResource("18_b3xfw")]
-transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0, -30.5)
+[node name="WallGrey33" parent="Level" instance=ExtResource("18_b3xfw")]
+transform = Transform3D(-4.3711385e-08, 2, 4.371139e-08, 0, -8.742278e-08, 1, 0.99999994, 8.742278e-08, 1.9106855e-15, 4.5, 0.009, -30.5)
+material_override = SubResource("StandardMaterial3D_eugl6")
 
 [node name="WallGrey16" parent="Level" instance=ExtResource("18_b3xfw")]
 transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 4.5, -30.5)
@@ -285,6 +361,27 @@ transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 
 
 [node name="WallGrey18" parent="Level" instance=ExtResource("18_b3xfw")]
 transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, -4.5, 4.5, -30.5)
+
+[node name="WallGrey13" parent="Level" instance=ExtResource("18_b3xfw")]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 9, 0, -8)
+
+[node name="WallGrey15" parent="Level" instance=ExtResource("18_b3xfw")]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 9, 4.5, -8)
+
+[node name="WallGrey29" parent="Level" instance=ExtResource("18_b3xfw")]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 4.5, 4.5, -8)
+
+[node name="WallGrey30" parent="Level" instance=ExtResource("18_b3xfw")]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 4.5, -8)
+
+[node name="WallGrey31" parent="Level" instance=ExtResource("18_b3xfw")]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, -4.5, 0, -8)
+
+[node name="WallGrey35" parent="Level" instance=ExtResource("18_b3xfw")]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 4.5, 0, -8)
+
+[node name="WallGrey32" parent="Level" instance=ExtResource("18_b3xfw")]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, -4.5, 4.5, -8)
 
 [node name="WallGrey19" parent="Level" instance=ExtResource("18_b3xfw")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -9, 0, -30.5)
@@ -317,18 +414,138 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -9, 
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -9, 4.5, -12.5)
 
 [node name="Pipe" parent="Level" instance=ExtResource("20_36fa3")]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -4.0244226, 1.536131, 14.952789)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.04424846, 1.536131, 8.54702)
+
+[node name="Pipe2" parent="Level" instance=ExtResource("20_36fa3")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 7.499566, 1.536131, -8.181444)
+
+[node name="Pipe3" parent="Level" instance=ExtResource("20_36fa3")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 7.499566, 4.6038756, -8.181444)
 
 [node name="Light" parent="Level" instance=ExtResource("23_xqxfp")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 4.026146, 4.1290836, 6.5014873)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Level/Light"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -0.026145935, 0.015588284, 0.06155157)
-light_energy = 3.309
+light_color = Color(0.9647059, 0.9647059, 0.8352941, 1)
 
 [node name="Light2" parent="Level" instance=ExtResource("23_xqxfp")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 11.378935, 4.1290836, 3.8330388)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Level/Light2"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -0.026145935, 0.015588284, 0.06155157)
-light_energy = 3.309
+light_color = Color(0.9638341, 0.9633191, 0.83545816, 1)
+light_energy = 0.875
+
+[node name="Building05Smooth" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.975458, -16, 69.39912)
+material_override = SubResource("StandardMaterial3D_1j1nd")
+mesh = ExtResource("27_ggggd")
+skeleton = NodePath("../..")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 0.21938151, 0, -1, -9.5894706e-09, 0, 8.084327, -19.251354)
+radius = 11.018555
+height = 23.818848
+material = SubResource("StandardMaterial3D_c2uqc")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Level/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.18957615)
+operation = 2
+radius = 11.018555
+height = 23.818848
+
+[node name="Building06Smooth" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -26.497868, 0, 8.215969)
+material_override = SubResource("StandardMaterial3D_gbywf")
+mesh = ExtResource("26_ggggd")
+
+[node name="Building06Smooth2" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 31.463062, 0, 8.215969)
+material_override = SubResource("StandardMaterial3D_gbywf")
+mesh = ExtResource("26_ggggd")
+
+[node name="DoorWayGrey" parent="Level" instance=ExtResource("29_w41xa")]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0.005, -7.997)
+
+[node name="Light3" parent="Level" instance=ExtResource("23_xqxfp")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.035972357, 5.3868155, -30.144234)
+
+[node name="Table" parent="Level" instance=ExtResource("30_xsvfj")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -5.3738585, 0.0049996376, -28.679508)
+
+[node name="Radio" parent="Level" instance=ExtResource("31_gffq6")]
+transform = Transform3D(-0.64126223, 0.7673218, 0, 0, 0, 1, 0.7673218, 0.64126223, 0, -5.432309, 1.0146997, -28.938261)
+
+[node name="WoodenPlank" parent="Level" instance=ExtResource("32_h0ckx")]
+transform = Transform3D(0.9659258, 0, 0.22979921, -0.25881904, 0, 0.8576223, 0, -0.8700829, 0, 8.419435, 0.005000353, -29.25292)
+
+[node name="Car2" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(-0.0695824, 0, 0.9975762, 0, 1, 0, -0.9975762, 0, -0.0695824, 5.218568, 0.032024115, -20.975681)
+material_override = SubResource("StandardMaterial3D_72led")
+mesh = ExtResource("34_mawwr")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Car2"]
+collision_layer = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Car2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_4n0u1")
+
+[node name="Car3" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(-0.02383899, 0, 0.9997159, 0, 1, 0, -0.9997159, 0, -0.02383899, 3.9819136, 0.044882115, -25.764769)
+material_override = SubResource("StandardMaterial3D_hd1fw")
+mesh = ExtResource("36_ctw71")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Car3"]
+collision_layer = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Car3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_hnyry")
+
+[node name="Car4" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(0.03992249, 0, 0.9992027, 0, 1, 0, -0.9992027, 0, 0.03992249, 5.254233, 0.040998116, -15.71836)
+material_override = SubResource("StandardMaterial3D_8lxie")
+mesh = ExtResource("38_4umgx")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Car4"]
+collision_layer = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Car4/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_c340d")
+
+[node name="Car6" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(0.1925048, 0, -0.981296, 0, 1, 0, 0.981296, 0, 0.1925048, 3.5228357, 0.0049996376, -10.309398)
+material_override = SubResource("StandardMaterial3D_dp6h5")
+mesh = ExtResource("40_j4opi")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Car6"]
+collision_layer = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Car6/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_3u8hg")
+
+[node name="Wheel" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(-4.3555133e-08, 0.99642533, 0.08447785, -1, -4.371139e-08, 0, 3.692644e-09, -0.08447785, 0.99642533, -0.32488608, 0.14180005, -9.53116)
+material_override = SubResource("StandardMaterial3D_tlbbi")
+mesh = ExtResource("42_08v51")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Wheel"]
+collision_layer = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Wheel/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_byr7k")
+
+[node name="Wheel2" type="MeshInstance3D" parent="Level"]
+transform = Transform3D(-4.371139e-08, 1, 0, -0.3271849, -1.4301706e-08, 0.94496036, 0.94496036, 4.130553e-08, 0.3271849, -0.45544708, 0.47619238, -8.302218)
+material_override = SubResource("StandardMaterial3D_tlbbi")
+mesh = ExtResource("42_08v51")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Wheel2"]
+collision_layer = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Wheel2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_byr7k")
