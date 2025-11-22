@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bxncs2ssy1jb"]
+[gd_scene load_steps=63 format=3 uid="uid://bxncs2ssy1jb"]
 
 [ext_resource type="Texture2D" uid="uid://bc75pcj80u8no" path="res://art/6twelve/6twelve/Textures/Tiles.jpg" id="1_bnqyd"]
 [ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/player/Player.tscn" id="1_ty7qy"]
@@ -42,6 +42,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bn4vijb64qmmh" path="res://art/style_cars/Car 06/Car6.obj" id="40_j4opi"]
 [ext_resource type="Texture2D" uid="uid://dfip5eur1ilw5" path="res://art/style_cars/Wheel/wheel.png" id="41_aq6ah"]
 [ext_resource type="ArrayMesh" uid="uid://bnr80r8bmwnc1" path="res://art/style_cars/Wheel/Wheel.obj" id="42_08v51"]
+[ext_resource type="PackedScene" uid="uid://cvtq1rxes8lml" path="res://scenes/props/level/skateboard.tscn" id="43_mawwr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ty7qy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -549,3 +550,6 @@ collision_layer = 2147483648
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Wheel2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_byr7k")
+
+[node name="Skateboard" parent="." instance=ExtResource("43_mawwr")]
+transform = Transform3D(-28.131191, -95.88658, 3.7944822, 0.780941, 3.725286, 99.927536, -95.95844, 28.140434, -0.29915, 7.5758867, 1.2032734, 12.714085)

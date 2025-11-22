@@ -13,7 +13,7 @@ const MIN_JUMP_VELOCITY = 1.0
 const SENSITIVITY_X = 0.003
 const SENSITIVITY_Y = 0.0025
 var jump_velocity: float = 0.0 # Jump force
-var jump_charge_velocity: float = 7.0
+var jump_charge_velocity: float = 8.0
 
 # Bob variables
 const BOB_FREQ: float = 2.0
