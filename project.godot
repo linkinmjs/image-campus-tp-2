@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://autoload/game_manager.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 
@@ -56,6 +61,7 @@ sprint={
 
 3d_physics/layer_1="player"
 3d_physics/layer_2="zombie"
+3d_physics/layer_3="riggid_body"
 3d_physics/layer_32="terrain"
 
 [physics]

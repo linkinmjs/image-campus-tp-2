@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://rxoklxom3t07"]
+
+[ext_resource type="PackedScene" uid="uid://8bh6331i44gl" path="res://scenes/props/level/traffic_cone.tscn" id="1_u7t54"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vlk6o"]
+points = PackedVector3Array(-0.21186382, -0.2105, 0.0038826214, 0.2080211, -0.2105, 0.0038826214, 0.2087, 0.21009958, 0.0027391282, -0.035943862, -0.034565087, 0.7206746, -0.21753794, 0.21509522, 0.017077148, 0.03205894, 0.033485707, 0.7206746, 0.21369523, -0.2161746, 0.017077148, -0.013276262, 0.04484158, 0.7206746, 0.009349127, -0.04592096, 0.7206746, -0.21753794, -0.2161746, 0.017077148, 0.21369523, 0.21509522, 0.017077148, -0.04729877, -0.011853347, 0.70929873, -0.2119, 0.2094568, 0.0038216908, 0.038196526, -0.010551334, 0.67887926, 0.009349127, 0.04484158, 0.7206746, -0.0019635672, -0.04592096, 0.7206746)
+
+[node name="TrafficConeTutorial" type="RigidBody3D"]
+collision_layer = 4
+
+[node name="TrafficCone" parent="." instance=ExtResource("1_u7t54")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_vlk6o")
