@@ -5,7 +5,8 @@ extends CharacterBody3D
 
 var speed: float
 var on_floor: bool
-var fall_off: bool = false
+var player_fall_off: bool = false
+var player_is_tricking: bool = false
 
 const WALK_SPEED = 3.0
 const SPRINT_SPEED = 8.0
@@ -34,7 +35,7 @@ const FOV_CHANGE = 1.5
 
 # Shake variables:
 @onready var shaker: Node3D = $Head/Shaker
-@export var fall_off_shake_intensity: float = 5.0
+@export var fall_off_shake_intensity: float = 3.0
 @export var fall_off_shake_duration: float = 1.5
 @export var hitted_shake_intensity: float = 1.0
 @export var hitted_shake_duration: float = 0.5
@@ -61,6 +62,7 @@ func _process(_delta: float) -> void:
 	health_lbl.text = str(health_component.health)
 
 func _physics_process(delta: float) -> void:
+	print(player_fall_off)
 	# Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -86,14 +88,25 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle Trick
 	if Input.is_action_just_pressed("jump") and !is_on_floor():
+		player_is_tricking = true
 		var tween = get_tree().create_tween()
 		var pop_shovit = skate.rotation_degrees + Vector3(0.0, 180.0, 0.0)
 		var backflip = skate.rotation_degrees + Vector3(0.0, 0.0, 360.0)
 		tween.tween_property(skate, "rotation_degrees",[pop_shovit, backflip].pick_random(), 0.4)
 		tween.play()
+		await tween.finished
+		player_is_tricking = false
+
+	# Handle Fall Off (caída del skate)
+	if player_is_tricking and is_on_floor():
+		rotate.play()
+		player_fall_off = true
+		shaker.shake(fall_off_shake_duration, fall_off_shake_intensity)
+		await get_tree().create_timer(fall_off_shake_duration).timeout
+		player_fall_off = false
 
 	# Handle speed
-	if is_on_floor():
+	if is_on_floor() and not player_fall_off:
 		if Input.is_action_pressed("sprint"):
 			speed = SPRINT_SPEED
 			moving.pitch_scale= 1.2
@@ -105,6 +118,8 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if is_on_floor() and not GameManager.player_on_powerslide:
+		if player_fall_off:
+			return
 		if direction:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
@@ -112,6 +127,8 @@ func _physics_process(delta: float) -> void:
 			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
 			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
 	else:
+		if player_fall_off:
+			return
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
 	
@@ -135,9 +152,6 @@ func _physics_process(delta: float) -> void:
 	if move_dir.length() > 0.05:
 		skate.look_at(skate.global_transform.origin + move_dir, Vector3.UP)
 	
-	# Handle Shaker
-	
-	
 	move_and_slide()
 
 func _headbob(time: float) -> Vector3:
@@ -146,7 +160,7 @@ func _headbob(time: float) -> Vector3:
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
 
-func on_damage(damage):
+func on_damage(_damage):
 	shaker.shake(hitted_shake_duration, hitted_shake_intensity)
 	animation_player.play("hit")
 

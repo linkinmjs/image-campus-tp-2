@@ -6,7 +6,7 @@ var landing_pos: Vector3
 var player_on_powerslide: bool = false
 signal player_fall_off
 
-var debug: bool = true
+var debug: bool = false
 
 # Func used to shake camera
 func fall_off_player() -> void:
