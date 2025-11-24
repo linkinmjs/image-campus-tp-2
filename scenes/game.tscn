@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://cjaosrlk0gbfw"]
+[gd_scene load_steps=20 format=3 uid="uid://cjaosrlk0gbfw"]
 
 [ext_resource type="Script" uid="uid://bl4u6ivyxygyh" path="res://scripts/system/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://bnt5irwaji2gq" path="res://scenes/ui/main_menu.tscn" id="2_vtaks"]
 [ext_resource type="AudioStream" uid="uid://bhmg2ie0x7oox" path="res://assets/audios/sfx/main_menu_rain.mp3" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://r26fj8nhgupb" path="res://scenes/ui/pause_menu.tscn" id="3_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://c65a4a36bt7k8" path="res://assets/audios/music/Arcade Fire - The Suburbs.mp3" id="4_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://doevgjeb1hrl3" path="res://assets/audios/music/Dope Lemon - Marinade.mp3" id="5_dinhu"]
 [ext_resource type="AudioStream" uid="uid://c6s1svqemecf2" path="res://assets/audios/music/Dope Lemon - Stonecutters.mp3" id="6_kvuet"]
@@ -86,6 +87,7 @@ _data = {
 script = ExtResource("1_uwrxv")
 
 [node name="MainMenu" parent="." instance=ExtResource("2_vtaks")]
+pause_menu = ExtResource("3_kvpfn")
 
 [node name="Audios" type="Node" parent="."]
 

@@ -11,6 +11,7 @@ extends Node
 
 @onready var scene_transition_helper: CanvasLayer = %SceneTransitionHelper
 @export var first_level: PackedScene
+@export var pause_menu: PackedScene
 
 func _ready() -> void:
 	start_button.pressed.connect(_on_start_button_pressed)
@@ -35,5 +36,7 @@ func _on_quit_button_pressed() -> void:
 
 func _on_screen_totally_black() -> void:
 	var first_level_instance = first_level.instantiate()
+	var pause_menu_instance = pause_menu.instantiate()
 	add_sibling(first_level_instance)
+	add_sibling(pause_menu_instance)
 	queue_free()

@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 @onready var pause_menu: Panel = $CanvasLayer/Panel
 
@@ -9,7 +9,9 @@ func _process(_delta: float) -> void:
 func pause_or_unpause() -> void:
 	if get_tree().paused == true:
 		pause_menu.hide()
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		get_tree().paused = false
 	elif get_tree().paused == false:
 		pause_menu.show()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().paused = true
