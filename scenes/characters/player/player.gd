@@ -26,6 +26,7 @@ const FOV_CHANGE = 1.5
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
+@onready var shaker: Node3D = $Head/Shaker
 @onready var skate: Node3D = $Skate
 @onready var health_lbl: Label = $CanvasLayer/HealthLbl
 @onready var health_component: Node = $HealthComponent
@@ -75,7 +76,6 @@ func _physics_process(delta: float) -> void:
 		jump_end.play()
 		if GameManager.debug:
 			drawn_line(GameManager.jumping_pos, GameManager.landing_pos)
-	
 	
 	# Handle Trick
 	if Input.is_action_just_pressed("jump") and !is_on_floor():
@@ -128,6 +128,9 @@ func _physics_process(delta: float) -> void:
 	if move_dir.length() > 0.05:
 		skate.look_at(skate.global_transform.origin + move_dir, Vector3.UP)
 	
+	# Handle Shaker
+	
+	
 	move_and_slide()
 
 func _headbob(time: float) -> Vector3:
@@ -137,11 +140,14 @@ func _headbob(time: float) -> Vector3:
 	return pos
 
 func on_damage(damage):
+	GameManager.fall_off_player()
 	animation_player.play("hit")
+	
 
 func on_death() -> void:
 	get_tree().quit()
-	
+
+
 #################
 # DEBUG FUNCTIONS
 func drawn_line(pos1: Vector3, pos2: Vector3, color = Color.WHITE_SMOKE, persist_ms = 0):

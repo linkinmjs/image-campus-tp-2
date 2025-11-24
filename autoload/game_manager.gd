@@ -4,8 +4,13 @@ var jumping_pos: Vector3
 var landing_pos: Vector3
 
 var player_on_powerslide: bool = false
+signal player_fall_off
 
 var debug: bool = true
+
+# Func used to shake camera
+func fall_off_player() -> void:
+	emit_signal("player_fall_off")
 
 func _update_jumping_pos(global_position: Vector3) -> void:
 	jumping_pos = global_position

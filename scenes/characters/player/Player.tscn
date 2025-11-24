@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dhs31wl5368w3"]
+[gd_scene load_steps=18 format=3 uid="uid://dhs31wl5368w3"]
 
 [ext_resource type="Script" uid="uid://cqgta8fiv0ebj" path="res://scenes/characters/player/player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://cvtq1rxes8lml" path="res://scenes/props/level/skateboard.tscn" id="2_5edqu"]
+[ext_resource type="Script" uid="uid://ctneaclj2qp82" path="res://scripts/utils/shaker.gd" id="3_wwjds"]
 [ext_resource type="PackedScene" uid="uid://b5js1opfkn7ci" path="res://scenes/characters/zombie/components/health_component.tscn" id="4_n51df"]
 [ext_resource type="AudioStream" uid="uid://bi3x8loctb0py" path="res://assets/audios/sfx/moving.mp3" id="5_qd3e3"]
 [ext_resource type="AudioStream" uid="uid://bue6pc0cds3jp" path="res://assets/audios/sfx/jump-start.mp3" id="6_djydg"]
@@ -16,6 +17,10 @@ radius = 0.2
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8afob"]
 points = PackedVector3Array(0.22852795, 0.8569689, 0.03805797, -0.2158295, -0.8887895, 0.06981022, -0.2158295, 0.8887895, 0.06981022, -0.08886402, 0.8569689, -0.2158295, 0.1967757, -0.8887895, -0.120572776, 0.03805797, -0.8569689, 0.22852795, -0.057111777, 0.8253471, 0.22852795, -0.08886402, -0.8569689, -0.2158295, 0.10156246, 0.8569689, -0.2158295, 0.1967757, -0.8569689, 0.13327122, 0.13327122, 0.8569689, 0.1967757, -0.2158295, 0.8569689, -0.08886402, -0.120572776, -0.8887895, 0.1967757, 0.10156246, -0.8569689, -0.2158295, 0.1967757, 0.8887895, -0.120572776, -0.18407726, -0.8569689, -0.15232502, -0.054408707, -0.9726028, -0.08480849, 0.036637127, 0.9703526, 0.09729603, 0.22852795, -0.8253471, -0.057111777, -0.2158295, 0.8569689, 0.10156246, -0.05440873, 0.9726031, -0.08480852, 0.03663719, -0.97035456, 0.097296216, -0.15232502, 0.8569689, -0.18407726, -0.2158295, -0.8569689, -0.08886402, -0.120572776, 0.8887895, 0.1967757, 0.13327122, -0.8569689, 0.1967757, 0.1967757, 0.8569689, 0.13327122, 0.03805797, 0.8569689, 0.22852795, 0.22852795, -0.8569689, 0.03805797, -0.2158295, -0.8569689, 0.10156246, 0.22852795, 0.8253471, -0.057111777, -0.057111777, -0.8253471, 0.22852795)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wwjds"]
+noise_type = 3
+frequency = 0.5
 
 [sub_resource type="Animation" id="Animation_qvvak"]
 length = 0.001
@@ -76,7 +81,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5054641, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
+[node name="Shaker" type="Node3D" parent="Head" node_paths=PackedStringArray("camera")]
+script = ExtResource("3_wwjds")
+camera = NodePath("../Camera3D")
+noise = SubResource("FastNoiseLite_wwjds")
+intensity = 1.0
+max_intensity = 5.0
+frequency = 5.0
+
 [node name="HealthComponent" parent="." instance=ExtResource("4_n51df")]
+MaxHealth = 1000.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

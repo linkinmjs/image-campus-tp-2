@@ -1,6 +1,6 @@
 extends Node
 
-@export var MaxHealth: float = 100.0
+@export var MaxHealth: float = 1000.0
 
 var health: float = MaxHealth
 
