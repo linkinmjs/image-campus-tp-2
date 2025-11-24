@@ -5,6 +5,7 @@ extends CharacterBody3D
 
 var speed: float
 var on_floor: bool
+var fall_off: bool = false
 
 const WALK_SPEED = 3.0
 const SPRINT_SPEED = 8.0
@@ -26,11 +27,17 @@ const FOV_CHANGE = 1.5
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
-@onready var shaker: Node3D = $Head/Shaker
 @onready var skate: Node3D = $Skate
 @onready var health_lbl: Label = $CanvasLayer/HealthLbl
 @onready var health_component: Node = $HealthComponent
 @onready var animation_player: AnimationPlayer = $CanvasLayer/AnimationPlayer
+
+# Shake variables:
+@onready var shaker: Node3D = $Head/Shaker
+@export var fall_off_shake_intensity: float = 5.0
+@export var fall_off_shake_duration: float = 1.5
+@export var hitted_shake_intensity: float = 1.0
+@export var hitted_shake_duration: float = 0.5
 
 # Audios
 @onready var moving: AudioStreamPlayer3D = $Sfx/Moving
@@ -140,9 +147,11 @@ func _headbob(time: float) -> Vector3:
 	return pos
 
 func on_damage(damage):
-	GameManager.fall_off_player()
+	shaker.shake(hitted_shake_duration, hitted_shake_intensity)
 	animation_player.play("hit")
-	
+
+func on_fall_off() -> void:
+	pass
 
 func on_death() -> void:
 	get_tree().quit()

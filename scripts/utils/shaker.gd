@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 	else:
 		camera.h_offset = 0.0
 		camera.v_offset = 0.0
+		
 
 func shake(duration: float, shake_intensity: float = intensity) -> void:
 	shake_time_left = duration

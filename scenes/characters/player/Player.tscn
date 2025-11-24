@@ -86,7 +86,7 @@ script = ExtResource("3_wwjds")
 camera = NodePath("../Camera3D")
 noise = SubResource("FastNoiseLite_wwjds")
 intensity = 1.0
-max_intensity = 5.0
+max_intensity = 500.0
 frequency = 5.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_n51df")]
