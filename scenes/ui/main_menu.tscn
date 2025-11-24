@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnt5irwaji2gq"]
+[gd_scene load_steps=11 format=3 uid="uid://bnt5irwaji2gq"]
 
 [ext_resource type="Script" uid="uid://bugo7ip70xp3q" path="res://scenes/ui/main_menu.gd" id="1_fe2o3"]
 [ext_resource type="Theme" uid="uid://dsgtgqkj76ccl" path="res://scripts/data/theme_main_menu.tres" id="1_sl1te"]
+[ext_resource type="PackedScene" uid="uid://bxncs2ssy1jb" path="res://scenes/levels/level_01_intro/level_intro.tscn" id="2_8g5eo"]
 [ext_resource type="Script" uid="uid://isrt5hf5dgmd" path="res://scenes/ui/button.gd" id="3_btxxm"]
 [ext_resource type="AudioStream" uid="uid://b0xrj85wars2w" path="res://assets/audios/sfx/menu_move_sfx.mp3" id="4_uhagc"]
 [ext_resource type="FontFile" uid="uid://poc37fiouwjx" path="res://assets/fonts/Toreadore.otf" id="4_wb0q5"]
@@ -12,6 +13,7 @@
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_fe2o3")
+first_level = ExtResource("2_8g5eo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -55,16 +57,20 @@ layout_mode = 2
 text = "Start Game"
 script = ExtResource("3_btxxm")
 is_start_button = true
+is_quit_button = null
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/Control/Main"]
 layout_mode = 2
 text = "Options"
 script = ExtResource("3_btxxm")
+is_start_button = null
+is_quit_button = null
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/Control/Main"]
 layout_mode = 2
 text = "Quit"
 script = ExtResource("3_btxxm")
+is_start_button = null
 is_quit_button = true
 
 [node name="Options" type="VBoxContainer" parent="CanvasLayer/Control"]
@@ -139,6 +145,8 @@ bus_name = "SFX"
 layout_mode = 2
 text = "Back"
 script = ExtResource("3_btxxm")
+is_start_button = null
+is_quit_button = null
 
 [node name="AudioButtonMove" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_uhagc")

@@ -17,7 +17,3 @@ var is_game_paused: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	audio_rain_background.play()
-
-func start_game() -> void:
-	# go to intro/tutorial
-	pass

@@ -3,14 +3,20 @@ extends Node
 var jumping_pos: Vector3
 var landing_pos: Vector3
 
-var player_on_powerslide: bool = false
+signal screen_totally_black
 signal player_fall_off
+
+var player_on_powerslide: bool = false
+var black_screen: bool = false
 
 var debug: bool = false
 
 # Func used to shake camera
 func fall_off_player() -> void:
 	emit_signal("player_fall_off")
+
+func emit_screen_totally_black() -> void:
+	emit_signal("screen_totally_black")
 
 func _update_jumping_pos(global_position: Vector3) -> void:
 	jumping_pos = global_position

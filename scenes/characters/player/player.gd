@@ -7,6 +7,8 @@ var speed: float
 var on_floor: bool
 var player_fall_off: bool = false
 var player_is_tricking: bool = false
+var player_on_skate: bool = true
+var skate_on_inventory: bool = true
 
 const WALK_SPEED = 3.0
 const SPRINT_SPEED = 8.0
@@ -62,7 +64,6 @@ func _process(_delta: float) -> void:
 	health_lbl.text = str(health_component.health)
 
 func _physics_process(delta: float) -> void:
-	print(player_fall_off)
 	# Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
