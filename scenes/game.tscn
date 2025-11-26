@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cjaosrlk0gbfw"]
+[gd_scene load_steps=20 format=3 uid="uid://cjaosrlk0gbfw"]
 
 [ext_resource type="Script" uid="uid://bl4u6ivyxygyh" path="res://scripts/system/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://bnt5irwaji2gq" path="res://scenes/ui/main_menu.tscn" id="2_vtaks"]
@@ -15,7 +15,6 @@
 [ext_resource type="AudioStream" uid="uid://b0xrj85wars2w" path="res://assets/audios/sfx/menu_move_sfx.mp3" id="11_trtic"]
 [ext_resource type="AudioStream" uid="uid://cgf84breh1yuc" path="res://assets/audios/sfx/menu_select_sfx.mp3" id="12_ir15t"]
 [ext_resource type="AudioStream" uid="uid://dkqo8wqkildjn" path="res://assets/audios/sfx/menu_select_with_zombie_sfx.mp3" id="13_ca42v"]
-[ext_resource type="Shader" uid="uid://do80albfxa747" path="res://vhs_main_menu.gdshader" id="16_ca42v"]
 
 [sub_resource type="Animation" id="Animation_kvuet"]
 length = 0.001
@@ -84,17 +83,6 @@ _data = {
 &"start_game": SubResource("Animation_kvpfn")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rysoc"]
-shader = ExtResource("16_ca42v")
-shader_parameter/aberration_strength = 3.0
-shader_parameter/blur_strength = 2.0
-shader_parameter/noise_strength = 0.048
-shader_parameter/vignette_strength = 0.78
-shader_parameter/scanline_strength = 0.016
-shader_parameter/distortion_strength = 0.1
-shader_parameter/ghost_strength = 0.12
-shader_parameter/flicker_strength = 0.005
-
 [node name="Game" type="Node"]
 script = ExtResource("1_uwrxv")
 
@@ -160,14 +148,3 @@ color = Color(0, 0, 0, 0)
 libraries = {
 &"": SubResource("AnimationLibrary_trtic")
 }
-
-[node name="Shaders" type="CanvasLayer" parent="."]
-
-[node name="VHS" type="ColorRect" parent="Shaders"]
-material = SubResource("ShaderMaterial_rysoc")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2

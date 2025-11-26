@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bugo7ip70xp3q" path="res://scenes/ui/main_menu.gd" id="1_fe2o3"]
 [ext_resource type="Theme" uid="uid://dsgtgqkj76ccl" path="res://scripts/data/theme_main_menu.tres" id="1_sl1te"]
-[ext_resource type="PackedScene" uid="uid://bxncs2ssy1jb" path="res://scenes/levels/level_01_intro/level_intro.tscn" id="2_8g5eo"]
+[ext_resource type="PackedScene" uid="uid://bxncs2ssy1jb" path="res://scenes/levels/level_01/level_01.tscn" id="2_8g5eo"]
 [ext_resource type="Script" uid="uid://isrt5hf5dgmd" path="res://scenes/ui/button.gd" id="3_btxxm"]
 [ext_resource type="AudioStream" uid="uid://b0xrj85wars2w" path="res://assets/audios/sfx/menu_move_sfx.mp3" id="4_uhagc"]
 [ext_resource type="FontFile" uid="uid://poc37fiouwjx" path="res://assets/fonts/Toreadore.otf" id="4_wb0q5"]
@@ -14,7 +14,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_otr3d"]
 shader = ExtResource("8_7suek")
-shader_parameter/wiggle = 0.03
+shader_parameter/wiggle = 0.0499999988824
 shader_parameter/wiggle_speed = 25.0
 shader_parameter/smear = 0.400000019
 shader_parameter/blur_samples = 7
