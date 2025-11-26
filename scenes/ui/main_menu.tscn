@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bnt5irwaji2gq"]
+[gd_scene load_steps=13 format=3 uid="uid://bnt5irwaji2gq"]
 
 [ext_resource type="Script" uid="uid://bugo7ip70xp3q" path="res://scenes/ui/main_menu.gd" id="1_fe2o3"]
 [ext_resource type="Theme" uid="uid://dsgtgqkj76ccl" path="res://scripts/data/theme_main_menu.tres" id="1_sl1te"]
@@ -10,6 +10,14 @@
 [ext_resource type="FontFile" uid="uid://cmomp6mff66r2" path="res://assets/fonts/Bottled It - Central.otf" id="5_q85j6"]
 [ext_resource type="Script" uid="uid://c32wtj8q5q1dp" path="res://scripts/system/volume_slider.gd" id="6_q85j6"]
 [ext_resource type="AudioStream" uid="uid://dkqo8wqkildjn" path="res://assets/audios/sfx/menu_select_with_zombie_sfx.mp3" id="6_wb0q5"]
+[ext_resource type="Shader" uid="uid://do80albfxa747" path="res://vhs_main_menu.gdshader" id="8_7suek"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otr3d"]
+shader = ExtResource("8_7suek")
+shader_parameter/wiggle = 0.03
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 0.400000019
+shader_parameter/blur_samples = 7
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_fe2o3")
@@ -147,6 +155,15 @@ text = "Back"
 script = ExtResource("3_btxxm")
 is_start_button = null
 is_quit_button = null
+
+[node name="Shader" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_otr3d")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="AudioButtonMove" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_uhagc")

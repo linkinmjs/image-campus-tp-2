@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 
 func shake(duration: float, shake_intensity: float = intensity) -> void:
 	shake_time_left = duration
-	current_intensity += shake_intensity
+	current_intensity += shake_intensity * 0.1
 	current_intensity = min(current_intensity, max_intensity)
 	
 	if intensity_tween and intensity_tween.is_valid():

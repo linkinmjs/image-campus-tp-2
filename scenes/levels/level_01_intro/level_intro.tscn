@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://bxncs2ssy1jb"]
+[gd_scene load_steps=65 format=3 uid="uid://bxncs2ssy1jb"]
 
 [ext_resource type="Texture2D" uid="uid://bc75pcj80u8no" path="res://art/6twelve/6twelve/Textures/Tiles.jpg" id="1_bnqyd"]
 [ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/player/Player.tscn" id="1_ty7qy"]
@@ -43,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://dfip5eur1ilw5" path="res://art/style_cars/Wheel/wheel.png" id="41_aq6ah"]
 [ext_resource type="ArrayMesh" uid="uid://bnr80r8bmwnc1" path="res://art/style_cars/Wheel/Wheel.obj" id="42_08v51"]
 [ext_resource type="PackedScene" uid="uid://cvtq1rxes8lml" path="res://scenes/props/level/skateboard.tscn" id="43_mawwr"]
+[ext_resource type="Shader" uid="uid://8h2xr8o02qkw" path="res://vhs_levels.gdshader" id="44_our46"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ty7qy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -114,13 +115,24 @@ albedo_texture = ExtResource("41_aq6ah")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_byr7k"]
 points = PackedVector3Array(-0.13679999, -0.096783064, -0.41485882, 0.13679999, 0.02703722, 0.43293458, 0.13679999, 0.09467266, 0.4058126, -0.13679999, 0.096783064, 0.41485882, 0.13679999, 0.43293458, -0.026952466, 0.13679999, -0.43293458, -0.013476233, -0.13679999, -0.31807575, 0.31807575, -0.13679999, 0.44258538, 0.0137766395, 0.12842244, 0.014135353, -0.45127115, -0.13679999, 0.31807575, -0.31807575, -0.13679999, -0.31807575, -0.31807575, 0.1279454, 0.32309896, 0.32309896, 0.13679999, -0.31113994, 0.31113994, 0.13679999, -0.31113994, -0.31113994, -0.13679999, -0.44258538, 0.027553279, 0.1279454, 0.32309896, -0.32309896, -0.13679999, 0.31807575, 0.31807575, -0.13679999, -0.0137766395, 0.44258538, -0.13679999, 0.0137766395, -0.44258538, 0.12752941, -0.12597214, 0.4060759, 0.1276236, 0.43438435, 0.05592216, -0.13679999, 0.44258538, -0.027553279, 0.12761699, 0.028003504, 0.44840723, 0.12716502, -0.09770473, -0.41880953, 0.13679999, 0.25698072, -0.33817717, -0.13679999, -0.42872208, -0.055193204, 0.13679999, -0.43293458, 0.026952466, -0.13679999, 0.2626226, -0.34571567, -0.13679999, 0.34571567, 0.2626226, 0.13679999, -0.33817717, -0.256896, 0.13679999, 0.31105518, 0.31113994, 0.13679999, -0.026952466, -0.43293458)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ctw71"]
+shader = ExtResource("44_our46")
+shader_parameter/aberration_strength = 3.0
+shader_parameter/blur_strength = 2.0
+shader_parameter/noise_strength = 0.048
+shader_parameter/vignette_strength = 0.78
+shader_parameter/scanline_strength = 0.016
+shader_parameter/distortion_strength = 0.1
+shader_parameter/ghost_strength = 0.12
+shader_parameter/flicker_strength = 0.005
+
 [node name="LevelIntro" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_p0c1w")
 
 [node name="Player" parent="." instance=ExtResource("1_ty7qy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5626082, -0.027994633, 3.2348318)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.126436, 0.46288323, 3.7429025)
 
 [node name="Level" type="Node3D" parent="."]
 
@@ -222,7 +234,7 @@ transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 4.5)
 
 [node name="Box01" parent="Level" instance=ExtResource("10_gm1k7")]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -11.197159, 0.0049996376, -2.7650833)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -8.024996, 0.0049996376, -2.7650833)
 
 [node name="Bucket2" parent="Level" instance=ExtResource("11_c4vw5")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 5.620325, 0.005000353, 12.951286)
@@ -553,3 +565,14 @@ shape = SubResource("ConvexPolygonShape3D_byr7k")
 
 [node name="Skateboard" parent="." instance=ExtResource("43_mawwr")]
 transform = Transform3D(-28.131191, -95.88658, 3.7944822, 0.780941, 3.725286, 99.927536, -95.95844, 28.140434, -0.29915, 7.5758867, 1.2032734, 12.714085)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ctw71")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
