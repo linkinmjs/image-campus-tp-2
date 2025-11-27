@@ -17,7 +17,7 @@ func sm_physics_process(delta: float) -> void:
 	player_owner.move_and_slide()
 
 func sm_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_released("jump"):
 		state_machine.transition_to("InAir", {"doJump":true})
 
 func sm_enter(msg: Dictionary) -> void:
