@@ -1,0 +1,160 @@
+[gd_scene load_steps=19 format=3 uid="uid://kbqgtghw287w"]
+
+[ext_resource type="Script" uid="uid://bmm3emwlidm38" path="res://scenes/characters/player_machine/player_script.gd" id="1_s8bfl"]
+[ext_resource type="PackedScene" uid="uid://cvtq1rxes8lml" path="res://scenes/props/level/skateboard.tscn" id="2_5edqu"]
+[ext_resource type="Script" uid="uid://ctneaclj2qp82" path="res://scripts/utils/shaker.gd" id="3_wwjds"]
+[ext_resource type="PackedScene" uid="uid://b5js1opfkn7ci" path="res://scenes/characters/zombie/components/health_component.tscn" id="4_n51df"]
+[ext_resource type="AudioStream" uid="uid://bi3x8loctb0py" path="res://assets/audios/sfx/moving.mp3" id="5_qd3e3"]
+[ext_resource type="AudioStream" uid="uid://bue6pc0cds3jp" path="res://assets/audios/sfx/jump-start.mp3" id="6_djydg"]
+[ext_resource type="AudioStream" uid="uid://de1owai8dvdwb" path="res://assets/audios/sfx/jump-end.mp3" id="7_bsn6e"]
+[ext_resource type="AudioStream" uid="uid://do8pbhrac6sks" path="res://assets/audios/sfx/slide-start.mp3" id="8_blysn"]
+[ext_resource type="AudioStream" uid="uid://b34236uhnvwgs" path="res://assets/audios/sfx/slide-mid.mp3" id="9_hv5x3"]
+[ext_resource type="AudioStream" uid="uid://ccbog2xquhwso" path="res://assets/audios/sfx/slide-end.mp3" id="10_ykrpk"]
+[ext_resource type="AudioStream" uid="uid://cw83e30cv7as3" path="res://assets/audios/sfx/rotate.mp3" id="11_i1nod"]
+[ext_resource type="PackedScene" uid="uid://bectmn5k03nf" path="res://scenes/state_machine/player_state_machine.tscn" id="12_jevs6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_spoc0"]
+radius = 0.2
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8afob"]
+points = PackedVector3Array(0.22852795, 0.8569689, 0.03805797, -0.2158295, -0.8887895, 0.06981022, -0.2158295, 0.8887895, 0.06981022, -0.08886402, 0.8569689, -0.2158295, 0.1967757, -0.8887895, -0.120572776, 0.03805797, -0.8569689, 0.22852795, -0.057111777, 0.8253471, 0.22852795, -0.08886402, -0.8569689, -0.2158295, 0.10156246, 0.8569689, -0.2158295, 0.1967757, -0.8569689, 0.13327122, 0.13327122, 0.8569689, 0.1967757, -0.2158295, 0.8569689, -0.08886402, -0.120572776, -0.8887895, 0.1967757, 0.10156246, -0.8569689, -0.2158295, 0.1967757, 0.8887895, -0.120572776, -0.18407726, -0.8569689, -0.15232502, -0.054408707, -0.9726028, -0.08480849, 0.036637127, 0.9703526, 0.09729603, 0.22852795, -0.8253471, -0.057111777, -0.2158295, 0.8569689, 0.10156246, -0.05440873, 0.9726031, -0.08480852, 0.03663719, -0.97035456, 0.097296216, -0.15232502, 0.8569689, -0.18407726, -0.2158295, -0.8569689, -0.08886402, -0.120572776, 0.8887895, 0.1967757, 0.13327122, -0.8569689, 0.1967757, 0.1967757, 0.8569689, 0.13327122, 0.03805797, 0.8569689, 0.22852795, 0.22852795, -0.8569689, 0.03805797, -0.2158295, -0.8569689, 0.10156246, 0.22852795, 0.8253471, -0.057111777, -0.057111777, -0.8253471, 0.22852795)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wwjds"]
+noise_type = 3
+frequency = 0.5
+
+[sub_resource type="Animation" id="Animation_qvvak"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitColorBox:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n51df"]
+resource_name = "hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitColorBox:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1),
+"transitions": PackedFloat32Array(1, 2.5491211, 0.37892917, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.5764706), Color(1, 0, 0, 0.5764706), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_snqei"]
+_data = {
+&"RESET": SubResource("Animation_qvvak"),
+&"hit": SubResource("Animation_n51df")
+}
+
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 2147483650
+script = ExtResource("1_s8bfl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0055978, 0)
+mesh = SubResource("CapsuleMesh_spoc0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0055978, 0)
+shape = SubResource("ConvexPolygonShape3D_8afob")
+
+[node name="Skate" type="Node3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.15900779, 0)
+
+[node name="Skateboard" parent="Skate" instance=ExtResource("2_5edqu")]
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5054641, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="Shaker" type="Node3D" parent="Head" node_paths=PackedStringArray("camera")]
+script = ExtResource("3_wwjds")
+camera = NodePath("../Camera3D")
+noise = SubResource("FastNoiseLite_wwjds")
+intensity = 1.0
+max_intensity = 500.0
+frequency = 5.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_n51df")]
+MaxHealth = 1000.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthLbl" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="HitColorBox" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_snqei")
+}
+
+[node name="Debug" type="Node3D" parent="."]
+
+[node name="Sfx" type="Node3D" parent="."]
+
+[node name="Moving" type="AudioStreamPlayer3D" parent="Sfx"]
+stream = ExtResource("5_qd3e3")
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="JumpStart" type="AudioStreamPlayer3D" parent="Sfx"]
+stream = ExtResource("6_djydg")
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="JumpEnd" type="AudioStreamPlayer3D" parent="Sfx"]
+stream = ExtResource("7_bsn6e")
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="SlideStart" type="AudioStreamPlayer3D" parent="Sfx"]
+stream = ExtResource("8_blysn")
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="SlideMid" type="AudioStreamPlayer3D" parent="Sfx"]
+stream = ExtResource("9_hv5x3")
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="SlideEnd" type="AudioStreamPlayer3D" parent="Sfx"]
+stream = ExtResource("10_ykrpk")
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="Rotate" type="AudioStreamPlayer3D" parent="Sfx"]
+stream = ExtResource("11_i1nod")
+panning_strength = 0.0
+bus = &"SFX"
+
+[node name="PlayerStateMachine" parent="." node_paths=PackedStringArray("player", "camera_3d", "collision_shape_player") instance=ExtResource("12_jevs6")]
+player = NodePath("..")
+camera_3d = NodePath("../Head/Camera3D")
+collision_shape_player = NodePath("../CollisionShape3D")

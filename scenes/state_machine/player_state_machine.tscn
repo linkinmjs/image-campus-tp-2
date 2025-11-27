@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://bectmn5k03nf"]
+
+[ext_resource type="Script" uid="uid://576iukgiqsuy" path="res://scenes/state_machine/player_state_machine.gd" id="1_i7ghq"]
+[ext_resource type="Script" uid="uid://bosexce01m7wr" path="res://scenes/state_machine/States/idle.gd" id="2_vbglr"]
+[ext_resource type="Script" uid="uid://ywecaaru078m" path="res://scenes/state_machine/States/walk.gd" id="3_ajudt"]
+[ext_resource type="Script" uid="uid://cv1cef1nyie84" path="res://scenes/state_machine/States/sprint.gd" id="4_3ojqi"]
+[ext_resource type="Script" uid="uid://b0csqniylos2g" path="res://scenes/state_machine/States/in_air.gd" id="5_a46t1"]
+[ext_resource type="Script" uid="uid://uifq3w7ckag5" path="res://scenes/state_machine/States/crouch.gd" id="6_ajudt"]
+[ext_resource type="Script" uid="uid://b3alotfjrnuky" path="res://scenes/state_machine/States/skate_boarding.gd" id="7_3ojqi"]
+[ext_resource type="Script" uid="uid://b726xkwc42t8o" path="res://scenes/state_machine/States/skate_boarding_sprint.gd" id="8_a46t1"]
+
+[node name="PlayerStateMachine" type="Node"]
+script = ExtResource("1_i7ghq")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource("2_vbglr")
+
+[node name="Walk" type="Node" parent="."]
+script = ExtResource("3_ajudt")
+
+[node name="Sprint" type="Node" parent="."]
+script = ExtResource("4_3ojqi")
+
+[node name="InAir" type="Node" parent="."]
+script = ExtResource("5_a46t1")
+
+[node name="Crouch" type="Node" parent="."]
+script = ExtResource("6_ajudt")
+
+[node name="SkateBoarding" type="Node" parent="."]
+script = ExtResource("7_3ojqi")
+
+[node name="SkateBoardingSprint" type="Node" parent="."]
+script = ExtResource("8_a46t1")
