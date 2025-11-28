@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://mib2ijdtu3yo"]
+[gd_scene load_steps=5 format=3 uid="uid://mib2ijdtu3yo"]
 
 [ext_resource type="Script" uid="uid://djqm3ct68nsog" path="res://scenes/props/slide_rail/slide_rail.gd" id="1_bq722"]
 
@@ -8,6 +8,8 @@ bottom_radius = 0.1
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bq722"]
 radius = 0.1
+
+[sub_resource type="Curve3D" id="Curve3D_bq722"]
 
 [node name="SlideRail" type="Node3D"]
 script = ExtResource("1_bq722")
@@ -26,3 +28,11 @@ collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rail/Area3D"]
 shape = SubResource("CylinderShape3D_bq722")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_bq722")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+loop = false
+
+[node name="Marker3D" type="Marker3D" parent="Path3D/PathFollow3D"]
