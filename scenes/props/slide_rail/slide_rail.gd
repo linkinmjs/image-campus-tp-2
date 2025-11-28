@@ -7,6 +7,7 @@ extends Node3D
 @onready var area_3d: Area3D = $Rail/Area3D
 
 @onready var path_3d: Path3D = $Path3D
+
 @onready var path_follow_3d: PathFollow3D = $Path3D/PathFollow3D
 @onready var marker_3d: Marker3D = $Path3D/PathFollow3D/Marker3D
 
@@ -29,6 +30,8 @@ func _process(delta: float) -> void:
 	var length := dir.length()
 	var mid := a + dir * 0.5
 	
+	if path_3d.curve == null:
+		path_3d.curve = Curve3D.new()
 	var curve := path_3d.curve
 	
 	# Pasamos las posiciones globales de los Marker3D

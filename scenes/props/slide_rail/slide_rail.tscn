@@ -10,12 +10,17 @@ bottom_radius = 0.1
 radius = 0.1
 
 [sub_resource type="Curve3D" id="Curve3D_bq722"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.14199573, 0.017166018, 0, 0, 0, 0, 0, 0, 0, 30.002035, 0.18216753, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="SlideRail" type="Node3D"]
 script = ExtResource("1_bq722")
 
 [node name="Start" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09611693, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09127763, 0)
 
 [node name="End" type="Marker3D" parent="."]
 
@@ -33,6 +38,7 @@ shape = SubResource("CylinderShape3D_bq722")
 curve = SubResource("Curve3D_bq722")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(7.549663e-08, -0.0054736855, -0.9999845, 2.3283064e-10, 0.9999845, -0.0054736855, 1, 1.8041775e-10, 7.549673e-08, -0.14199573, 0.017166018, 0)
 loop = false
 
 [node name="Marker3D" type="Marker3D" parent="Path3D/PathFollow3D"]
