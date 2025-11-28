@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://mib2ijdtu3yo"]
+
+[ext_resource type="Script" uid="uid://djqm3ct68nsog" path="res://scenes/props/slide_rail/slide_rail.gd" id="1_bq722"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5guyf"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bq722"]
+radius = 0.1
+
+[node name="SlideRail" type="Node3D"]
+script = ExtResource("1_bq722")
+
+[node name="Start" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09611693, 0)
+
+[node name="End" type="Marker3D" parent="."]
+
+[node name="Rail" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.048058465, -8.742278e-08, 0, 4.2014046e-09, -1, 0, 0.048058465, 0)
+mesh = SubResource("CylinderMesh_5guyf")
+
+[node name="Area3D" type="Area3D" parent="Rail"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rail/Area3D"]
+shape = SubResource("CylinderShape3D_bq722")
