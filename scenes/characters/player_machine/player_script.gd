@@ -13,12 +13,12 @@ var skate_on_inventory: bool = true
 
 const WALK_SPEED = 3.0
 const SPRINT_SPEED = 8.0
-const MAX_JUMP_VELOCITY = 7.0
-const MIN_JUMP_VELOCITY = 1.0
+const MAX_JUMP_VELOCITY = 200.0
+const MIN_JUMP_VELOCITY = 30.0
 const SENSITIVITY_X = 0.003
 const SENSITIVITY_Y = 0.0025
 var jump_velocity: float = 0.0 # Jump force
-var jump_charge_velocity: float = 8.0
+var jump_charge_velocity: float = 30.0
 
 var input_direction := Vector3.ZERO
 var is_running := false
@@ -35,6 +35,8 @@ var t_bob: float = 0.0
 # Fov variables
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
+var delta_pysics: float
+var delta_process: float
 
 @onready var head: Node3D = $Head
 @onready var camera: Camera3D = $Head/Camera3D
@@ -77,16 +79,21 @@ func _unhandled_input(event: InputEvent) -> void:
 	input_direction.z = Input.get_axis("up", "down")
 	input_direction = input_direction.rotated(Vector3.UP, rotation.y).normalized()
 	
+	if Input.is_action_pressed("jump") and is_on_floor():
+		jump_velocity += jump_charge_velocity
+		print(jump_velocity)
+		
 	if Input.is_action_just_pressed("sprint"):
 		is_running = true
 	if Input.is_action_just_released("sprint"):
 		is_running = false
 
 func _process(_delta: float) -> void:
+	delta_process = _delta
 	health_lbl.text = str(health_component.health)
 
 func _physics_process(delta: float) -> void:
-	pass
+	delta_pysics = delta
 	## Add the gravity
 	#if not is_on_floor():
 		#velocity += get_gravity() * delta
