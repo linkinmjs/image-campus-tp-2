@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://bm1hnp6c0nmoy"]
 
 [ext_resource type="Texture2D" uid="uid://1nvvoc8w2bcp" path="res://art/cones_&_barriers/Cones & Barriers/Concrete Barriers/Jersey_barrier_concrete_barriers.png" id="1_6qbbn"]
-[ext_resource type="PackedScene" uid="uid://bhkklo71158s2" path="res://scenes/props/slide_path/slide_path.tscn" id="2_wmwdo"]
+[ext_resource type="PackedScene" uid="uid://mib2ijdtu3yo" path="res://scenes/props/slide_rail/slide_rail.tscn" id="2_crhfa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1d4y"]
 resource_name = "concrete_barriers"
@@ -60,5 +60,19 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Jersey_barrier2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3dwnv")
 
-[node name="SlidePath" parent="." instance=ExtResource("2_wmwdo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01484108, 1.1485459, 0)
+[node name="SlideRail" parent="." instance=ExtResource("2_crhfa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="Start" parent="SlideRail" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16729498, 0.008014202, 0)
+
+[node name="End" parent="SlideRail" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.150146, 0.026544333, 0)
+
+[node name="Rail" parent="SlideRail" index="2"]
+transform = Transform3D(-0.00061126146, 15.158721, -8.742278e-08, 0.9999998, 0.009265943, 0, 5.3438174e-11, -1.3252176e-06, -1, 14.991426, 0.017279267, 0)
+
+[node name="PathFollow3D" parent="SlideRail/Path3D" index="0"]
+transform = Transform3D(-4.371137e-08, -0.00061109796, -0.9998272, -2.910383e-11, 0.9998272, -0.00061109796, 1, 2.3868728e-12, -4.3703835e-08, -0.16729498, 0.008014202, 0)
+
+[editable path="SlideRail"]

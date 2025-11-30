@@ -3,15 +3,16 @@
 [ext_resource type="Script" uid="uid://djqm3ct68nsog" path="res://scenes/props/slide_rail/slide_rail.gd" id="1_bq722"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_5guyf"]
-top_radius = 0.1
-bottom_radius = 0.1
+top_radius = 0.03
+bottom_radius = 0.03
+radial_segments = 4
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bq722"]
 radius = 0.1
 
 [sub_resource type="Curve3D" id="Curve3D_bq722"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.14199573, 0.017166018, 0, 0, 0, 0, 0, 0, 0, 30.002035, 0.18216753, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.09127763, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -25,7 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09127763, 0)
 [node name="End" type="Marker3D" parent="."]
 
 [node name="Rail" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.048058465, -8.742278e-08, 0, 4.2014046e-09, -1, 0, 0.048058465, 0)
+transform = Transform3D(1, 0, 0, 0, -0.045638815, -8.742278e-08, 0, 3.989872e-09, -1, 0, 0.045638815, 0)
 mesh = SubResource("CylinderMesh_5guyf")
 
 [node name="Area3D" type="Area3D" parent="Rail"]
@@ -38,7 +39,7 @@ shape = SubResource("CylinderShape3D_bq722")
 curve = SubResource("Curve3D_bq722")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(7.549663e-08, -0.0054736855, -0.9999845, 2.3283064e-10, 0.9999845, -0.0054736855, 1, 1.8041775e-10, 7.549673e-08, -0.14199573, 0.017166018, 0)
+transform = Transform3D(-4.371139e-08, 0.9999986, 4.3711328e-08, 0, -4.3711328e-08, 0.9999986, 1, 4.3711328e-08, 1.910683e-15, 0, 0.09127763, 0)
 loop = false
 
 [node name="Marker3D" type="Marker3D" parent="Path3D/PathFollow3D"]
