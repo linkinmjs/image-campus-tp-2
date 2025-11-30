@@ -21,6 +21,10 @@ func sm_input(event: InputEvent) -> void:
 		state_machine.transition_to("InAir", {"doJump":true})
 	elif Input.is_action_just_pressed("crouch"):
 		state_machine.transition_to("Crouch")
+	elif Input.is_action_just_pressed("x"):
+		if !player_owner.has_board_equipped:
+			return
+		state_machine.transition_to("SkateBoarding")
 
 func sm_enter(msg: Dictionary) -> void:
 	pass

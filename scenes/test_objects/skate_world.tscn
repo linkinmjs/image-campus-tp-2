@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpeslegxhadca"]
+
+[ext_resource type="Script" uid="uid://bl00nmk4wrsa6" path="res://scenes/test_objects/skate_world.gd" id="1_64nl8"]
+[ext_resource type="PackedScene" uid="uid://cvtq1rxes8lml" path="res://scenes/props/level/skateboard.tscn" id="2_5p4i5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6m41x"]
+size = Vector3(3, 3, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gsads"]
+size = Vector3(0.8, 0.35202637, 2.5)
+
+[node name="skate_world" type="RigidBody3D"]
+collision_mask = 2147483648
+script = ExtResource("1_64nl8")
+
+[node name="Skateboard" parent="." instance=ExtResource("2_5p4i5")]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0.18022335, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, -1.4210855e-14, 0, 1.4210855e-14, 1.0000001, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_6m41x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18202843, 0)
+shape = SubResource("BoxShape3D_gsads")

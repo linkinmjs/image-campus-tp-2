@@ -61,8 +61,70 @@ var delta_process: float
 @onready var slide_end: AudioStreamPlayer3D = $Sfx/SlideEnd
 @onready var rotate: AudioStreamPlayer3D = $Sfx/Rotate
 
+@export var player_state_machine: StateMachinePlayer
+
+#Variables SOBRE la patineta
+var on_board := false
+const WALK_SPEED_BOARDING := 5.0
+const SPRINT_SPEED_BOARDING := 12.0
+var has_board_equipped: bool = true 
+
+#escena que se instancia cuando te caes
+@export var skate_world_scene: PackedScene
+
 func _ready() -> void:
+	skate.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func equip_board() -> void:
+	has_board_equipped = true
+
+func unequip_board() -> void:
+	has_board_equipped = false
+
+func _update_skate_visual() -> void:
+	skate.visible = false
+
+#func spawn_world_board() -> void:
+	## Instanciar patineta en el mundo (por caída, por ejemplo)
+	#if skate_world_scene == null:
+		#return
+	#var board_instance := skate_world_scene.instantiate()
+	#board_instance.global_transform = global_transform
+	## ejemplo: un empujoncito hacia adelante si es RigidBody
+	#if board_instance is RigidBody3D:
+		#var forward := -transform.basis.z
+		#board_instance.linear_velocity = forward * 5.0
+	#get_tree().current_scene.add_child(board_instance)
+
+func spawn_world_board() -> void:
+	if skate_world_scene == null:
+		return
+	var board_instance := skate_world_scene.instantiate()
+	board_instance.global_transform = global_transform
+	#if board_instance.has_variable("player_owner"):
+		#board_instance.player_owner = self
+	if board_instance is RigidBody3D:
+		var forward := -transform.basis.z
+		board_instance.linear_velocity = forward * 5.0
+	get_tree().current_scene.add_child(board_instance)
+
+
+func fall_from_board() -> void:
+	# Llamado desde un estado de skate cuando te caés
+	if not on_board:
+		return
+	on_board = false
+	has_board_equipped = false
+	_update_skate_visual()
+	spawn_world_board()
+
+
+func obtain_world_board() -> void:
+	# El jugador vuelve a tener la tabla disponibl
+	has_board_equipped = true
+	print("Patineta recogida. has_board_equipped = ", has_board_equipped)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	#if event is InputEventMouseMotion:
@@ -84,7 +146,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		print(jump_velocity)
 		
 	if Input.is_action_just_pressed("sprint"):
-		is_running = true
+		is_running = !is_running
 	if Input.is_action_just_released("sprint"):
 		is_running = false
 

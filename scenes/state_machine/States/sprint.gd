@@ -19,6 +19,10 @@ func sm_physics_process(delta: float) -> void:
 func sm_input(event: InputEvent) -> void:
 	if Input.is_action_just_released("jump"):
 		state_machine.transition_to("InAir", {"doJump":true})
+	elif Input.is_action_just_pressed("x"):
+		if !player_owner.has_board_equipped:
+			return
+		state_machine.transition_to("SkateBoardingSprint")
 
 func sm_enter(msg: Dictionary) -> void:
 	pass

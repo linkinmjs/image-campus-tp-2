@@ -8,7 +8,7 @@ signal transitioned(state_name)
 @export var player: PlayerTest
 @export var camera_3d: Camera3D
 @export var collision_shape_player: CollisionShape3D
-
+@export var label_state: Label
 func _ready() -> void:
 	#Espera al que se inicie el padre
 	await owner.ready
@@ -16,12 +16,13 @@ func _ready() -> void:
 		child.state_machine = self
 		child.sm_ready()
 	state.sm_enter({})
-	
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	state.sm_input(event)
 
 func _process(delta: float) -> void:
+	label_state.text = state.name
 	state.sm_process(delta)
 
 func _physics_process(delta: float) -> void:
