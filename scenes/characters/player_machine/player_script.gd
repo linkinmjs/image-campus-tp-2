@@ -68,6 +68,16 @@ var on_board := false
 const WALK_SPEED_BOARDING := 5.0
 const SPRINT_SPEED_BOARDING := 12.0
 var has_board_equipped: bool = true 
+var ignore_jump_once: bool = false
+
+
+const SKATE_MAX_FLAT_SPEED := 10.0         # Velocidad maxima sin sprint
+const SKATE_MAX_SPRINT_SPEED := 16.0       # Velocidad maxima haciendo push
+const SKATE_PUSH_ACCEL := 22.0             # Velocidad del sprint arriba de patineta
+const SKATE_ROLL_FRICTION := 4.0           # Que tan rápido pierde velocidad en plano
+const SKATE_SLOPE_ACCEL := 30.0            # Fuerza de frenado a lo largo de la rampa
+const SKATE_MAX_PUSH_SLOPE_DEG := 20.0     # Ángulo máximo de rampa donde tiene sentido empujar
+
 
 #escena que se instancia cuando te caes
 @export var skate_world_scene: PackedScene
@@ -84,18 +94,6 @@ func unequip_board() -> void:
 
 func _update_skate_visual() -> void:
 	skate.visible = false
-
-#func spawn_world_board() -> void:
-	## Instanciar patineta en el mundo (por caída, por ejemplo)
-	#if skate_world_scene == null:
-		#return
-	#var board_instance := skate_world_scene.instantiate()
-	#board_instance.global_transform = global_transform
-	## ejemplo: un empujoncito hacia adelante si es RigidBody
-	#if board_instance is RigidBody3D:
-		#var forward := -transform.basis.z
-		#board_instance.linear_velocity = forward * 5.0
-	#get_tree().current_scene.add_child(board_instance)
 
 func spawn_world_board() -> void:
 	if skate_world_scene == null:
@@ -143,12 +141,36 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if Input.is_action_pressed("jump") and is_on_floor():
 		jump_velocity += jump_charge_velocity
+		print(player_state_machine.state.name)
 		print(jump_velocity)
 		
 	if Input.is_action_just_pressed("sprint"):
 		is_running = !is_running
 	if Input.is_action_just_released("sprint"):
 		is_running = false
+
+func get_slope_data() -> Dictionary:
+	if !is_on_floor():
+		return {
+			"angle_deg": 0.0,
+			"normal": Vector3.UP,
+			"tangent": Vector3.ZERO
+		}
+	var n: Vector3 = get_floor_normal()
+	var dot_up: float = clamp(n.dot(Vector3.UP), -1.0, 1.0)
+	var angle_rad := acos(dot_up)
+	var angle_deg := rad_to_deg(angle_rad)
+	# proyectar la gravedad sobre el plano de la rampa
+	var gravity_vec := Vector3.DOWN * GRAVITY
+	var tangent := gravity_vec - n * gravity_vec.dot(n)
+	if !tangent.is_zero_approx():
+		tangent = tangent.normalized()
+	
+	return {
+		"angle_deg": angle_deg,
+		"normal": n,
+		"tangent": tangent
+	}
 
 func _process(_delta: float) -> void:
 	delta_process = _delta
