@@ -13,12 +13,8 @@ var skate_on_inventory: bool = true
 
 const WALK_SPEED = 3.0
 const SPRINT_SPEED = 8.0
-const MAX_JUMP_VELOCITY = 200.0
-const MIN_JUMP_VELOCITY = 30.0
 const SENSITIVITY_X = 0.003
 const SENSITIVITY_Y = 0.0025
-var jump_velocity: float = 0.0 # Jump force
-var jump_charge_velocity: float = 30.0
 
 var input_direction := Vector3.ZERO
 var is_running := false
@@ -70,7 +66,6 @@ const SPRINT_SPEED_BOARDING := 12.0
 var has_board_equipped: bool = true 
 var ignore_jump_once: bool = false
 
-
 const SKATE_MAX_FLAT_SPEED := 10.0         # Velocidad maxima sin sprint
 const SKATE_MAX_SPRINT_SPEED := 16.0       # Velocidad maxima haciendo push
 const SKATE_PUSH_ACCEL := 22.0             # Velocidad del sprint arriba de patineta
@@ -78,6 +73,17 @@ const SKATE_ROLL_FRICTION := 4.0           # Que tan rápido pierde velocidad en
 const SKATE_SLOPE_ACCEL := 30.0            # Fuerza de frenado a lo largo de la rampa
 const SKATE_MAX_PUSH_SLOPE_DEG := 20.0     # Ángulo máximo de rampa donde tiene sentido empujar
 
+# Variables de SALTO
+const MAX_JUMP_VELOCITY = 50.0
+const MIN_JUMP_VELOCITY = 20.0
+var jump_velocity: float = 0.0 # Jump force
+var jump_charge_velocity: float = 5.0
+
+#variables para gestionar caida
+const FALL_MIN_IMPACT_SPEED := 25.0 		#qué tan fuerte tenés caer para considerar un impacto duro.
+const FALL_MIN_IMPACT_DOT := 0.7 			#qué tanto alineada la velocidad con la normal del suelo (si cae muy “de frente” al piso)
+const FALL_MIN_LANDING_SPEED := 12.0		#velocidad mínima para que importe el ángulo de la tabla.
+const FALL_MAX_BOARD_ANGLE_DEG := 65.0		#si cae muy de costado (perpendicular a la dirección real de movimiento), se considera caída.
 
 #escena que se instancia cuando te caes
 @export var skate_world_scene: PackedScene
