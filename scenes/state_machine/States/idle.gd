@@ -21,6 +21,10 @@ func sm_physics_process(delta: float) -> void:
 	player_owner.move_and_slide()
 
 func sm_input(event: InputEvent) -> void:
+	if player_owner.ignore_jump_once:
+		if Input.is_action_just_released("jump"):
+			player_owner.ignore_jump_once = false
+		return
 	if Input.is_action_just_released("jump"):
 		state_machine.transition_to("InAir", {"doJump":true})
 	elif Input.is_action_just_pressed("crouch"):
@@ -30,6 +34,8 @@ func sm_input(event: InputEvent) -> void:
 			return
 		player_owner.on_board = !player_owner.on_board
 		player_owner.skate.visible = !player_owner.skate.visible
+
+
 
 func sm_enter(msg: Dictionary) -> void:
 	pass

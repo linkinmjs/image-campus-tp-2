@@ -9,6 +9,7 @@ signal transitioned(state_name)
 @export var camera_3d: Camera3D
 @export var collision_shape_player: CollisionShape3D
 @export var label_state: Label
+
 func _ready() -> void:
 	#Espera al que se inicie el padre
 	await owner.ready

@@ -16,6 +16,7 @@ func sm_enter(msg: Dictionary) -> void:
 func sm_process(delta: float) -> void:
 	# Estando caído, se “levanta”
 	if player_owner.is_on_floor() and Input.is_action_just_pressed("jump"):
+		player_owner.ignore_jump_once = true
 		state_machine.transition_to("Idle")
 
 func sm_physics_process(delta: float) -> void:
