@@ -143,6 +143,7 @@ func _on_body_entered(body: CharacterBody3D) -> void:
 func _on_body_exited(body: CharacterBody3D) -> void:
 	if body != player:
 		return
+	_detach_player()
 
 func _detach_player() -> void:
 	if not player_on_barrier:
