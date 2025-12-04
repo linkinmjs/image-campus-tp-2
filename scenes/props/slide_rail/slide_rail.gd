@@ -31,24 +31,21 @@ func _process(delta: float) -> void:
 	# En editor y en juego: mantener rail/path sincronizados con Start/End
 	_update_rail_and_path()
 
-	# En el editor no hacemos lógica de powerslide
-	if Engine.is_editor_hint():
-		return
-
-	# Lógica de powerslide
-	if player_on_barrier and path_follow_3d and marker_3d:
-		var speed := 0.2
-		path_follow_3d.progress_ratio = clamp(
-			path_follow_3d.progress_ratio + slide_dir * speed * delta,
-			0.0,
-			1.0
-		)
-		player.global_position = marker_3d.global_position
+	
 
 func _physics_process(delta: float) -> void:
-	if player_on_barrier and path_follow_3d and marker_3d:
-		var speed := 0.2
-		path_follow_3d.progress_ratio += slide_dir * speed * delta
+	if Engine.is_editor_hint():
+		return
+	
+	if not player_on_barrier or not path_follow_3d or not marker_3d:
+		return
+	
+	var speed := 0.2
+	path_follow_3d.progress_ratio = clamp(
+		path_follow_3d.progress_ratio + slide_dir * speed * delta,
+		0.0,
+		1.0
+	)
 	
 	# Chequear si llegó al final del path
 	if path_follow_3d.progress_ratio <= 0.0 or path_follow_3d.progress_ratio >= 1.0:
@@ -56,6 +53,37 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	player.global_position = marker_3d.global_position
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not player_on_barrier:
+		return
+	
+	if event.is_action_pressed("jump"):
+		_jump_off()
+
+func _jump_off() -> void:
+	if player == null:
+		return
+	
+	# Tangente base del riel en la posición actual
+	var base_tangent := -path_follow_3d.global_transform.basis.z
+	
+	# Ajustar según la dirección real del slide (slide_dir puede ser 1 o -1)
+	var tangent := (base_tangent * slide_dir).normalized()
+	
+	# Velocidad de lanzamiento: un poco hacia adelante + hacia arriba
+	var launch_speed_forward := 6.0
+	var launch_speed_up := 10.0
+	var launch_velocity := tangent * launch_speed_forward + Vector3.UP * launch_speed_up
+	
+	# Aplicamos la velocidad al player
+	player.velocity = launch_velocity
+	
+	# Lo levantamos un poco para sacarlo del Area3D y evitar que quede pegado
+	player.global_position += Vector3.UP * 0.3
+	
+	_detach_player()
+
 
 func _update_rail_and_path() -> void:
 	if not start or not end or not rail or not path_3d:
