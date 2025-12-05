@@ -114,8 +114,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_snqei")
 }
 
-[node name="Debug" type="Node3D" parent="."]
-
 [node name="Sfx" type="Node3D" parent="."]
 
 [node name="Moving" type="AudioStreamPlayer3D" parent="Sfx"]
