@@ -1,5 +1,16 @@
-[gd_scene format=3 uid="uid://d2hjicqun6s23"]
+[gd_scene load_steps=2 format=3 uid="uid://d2hjicqun6s23"]
+
+[ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/player/Player.tscn" id="1_005fm"]
 
 [node name="Level02" type="Node3D"]
 
 [node name="Level" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -6)
+use_collision = true
+collision_layer = 2147483648
+size = Vector3(14, 1, 49)
+
+[node name="Player" parent="." instance=ExtResource("1_005fm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9167361, 1.5337706, 0)

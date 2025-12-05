@@ -5,7 +5,9 @@ var landing_pos: Vector3
 
 signal screen_totally_black
 signal player_fall_off
+signal player_skillcheck_toggled
 
+var powerslide_skillcheck_active = false
 var player_on_powerslide: bool = false
 var black_screen: bool = false
 
@@ -17,6 +19,9 @@ func fall_off_player() -> void:
 
 func emit_screen_totally_black() -> void:
 	emit_signal("screen_totally_black")
+	
+func emit_player_skillchecked() -> void:
+	emit_signal("player_skillcheck_toggled")
 
 func _update_jumping_pos(global_position: Vector3) -> void:
 	jumping_pos = global_position
@@ -35,6 +40,13 @@ func _debug_jump_land_vector() -> void:
 	# Se puede usar algo como: last_jump_vec.length() > 0.2
 	# para evitar "baches"
 	print("Aterrizaje en: ", landing_pos, "  Vector salto: ", jumping_pos, "  Dist: ", last_jump_vec.length())
+
+func _toggle_player_skillchecked() -> void:
+	if powerslide_skillcheck_active:
+		powerslide_skillcheck_active = false
+	else:
+		powerslide_skillcheck_active = true
+	player_skillcheck_toggled.emit()
 
 #################
 # DEBUG FUNCTIONS

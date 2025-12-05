@@ -132,13 +132,13 @@ func _update_rail_and_path() -> void:
 
 
 func _on_body_entered(body: CharacterBody3D) -> void:
-	print(body.name)
-	print("enter")
 	if player_on_barrier:
 		return
 
+
 	player_on_barrier = true
 	GameManager.player_on_powerslide = true
+	GameManager._toggle_player_skillchecked()
 	player = body
 
 	# Calcular posición inicial sobre el path
@@ -178,4 +178,5 @@ func _detach_player() -> void:
 		return
 	player_on_barrier = false
 	GameManager.player_on_powerslide = false
+	GameManager._toggle_player_skillchecked()
 	player = null
