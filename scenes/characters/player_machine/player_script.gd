@@ -40,6 +40,7 @@ var delta_process: float
 @onready var health_lbl: Label = $CanvasLayer/HealthLbl
 @onready var health_component: Node = $HealthComponent
 @onready var animation_player: AnimationPlayer = $CanvasLayer/AnimationPlayer
+@onready var mesh: MeshInstance3D = $MeshInstance3D
 
 # Shake variables:
 @onready var shaker: Node3D = $Head/Shaker
@@ -129,27 +130,26 @@ func obtain_world_board() -> void:
 	has_board_equipped = true
 	print("Patineta recogida. has_board_equipped = ", has_board_equipped)
 
-
 func _unhandled_input(event: InputEvent) -> void:
-	#if event is InputEventMouseMotion:
-		#head.rotate_y(-event.relative.x * SENSITIVITY_Y)
-		#camera.rotate_x(-event.relative.y * SENSITIVITY_X)
-		#camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 	if event is InputEventMouseMotion:
-		#head.rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
+		# Yaw del player (giro horizontal) SIEMPRE
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
-		camera.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY))
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+		# Pitch de la cámara (mirar arriba/abajo) SOLO cuando NO está en el aire
+		if player_state_machine.state.name != "InAir":
+			camera.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY))
+			camera.rotation.x = clamp(
+				camera.rotation.x,
+				deg_to_rad(-60),
+				deg_to_rad(60)
+			)
 	input_direction = Vector3.ZERO
 	input_direction.x = Input.get_axis("left", "right")
 	input_direction.z = Input.get_axis("up", "down")
 	input_direction = input_direction.rotated(Vector3.UP, rotation.y).normalized()
-	
 	if Input.is_action_pressed("jump") and is_on_floor():
 		jump_velocity += jump_charge_velocity
 		print(player_state_machine.state.name)
 		print(jump_velocity)
-		
 	if Input.is_action_just_pressed("sprint"):
 		is_running = !is_running
 	if Input.is_action_just_released("sprint"):
@@ -178,102 +178,82 @@ func get_slope_data() -> Dictionary:
 		"tangent": tangent
 	}
 
+func reset_air_rotation() -> void:
+	# El cuerpo físico: solo debe estar "derecho" (sin inclinarse)
+	#    Mantenemos el yaw (rotación Y) para no cambiar la dirección de movimiento
+	var body_rot := rotation_degrees
+	body_rot.x = 0.0
+	body_rot.z = 0.0
+	rotation_degrees = body_rot
+	# Parte visual: que no tenga ningún offset raro respecto al cuerpo
+	if mesh:
+		mesh.rotation_degrees = Vector3.ZERO
+	if head:
+		head.rotation_degrees = Vector3.ZERO
+	if skate:
+		skate.rotation_degrees = Vector3.ZERO
+	# Cámara: que mire "de frente" localmente (sin yaw/roll extra)
+	# Después el jugador puede volver a mirar con el mouse como siempre.
+	if camera:
+		var cam_rot := camera.rotation_degrees
+		cam_rot.y = 0.0
+		cam_rot.z = 0.0
+		# el pitch (x) lo dejamos como esté, o si querés forzarlo a 0:
+		# cam_rot.x = 0.0
+		camera.rotation_degrees = cam_rot
+
+func straighten_after_landing() -> void:
+	# El cuerpo físico: aseguramos que no se haya inclinado (por las dudas)
+	var body_rot := rotation_degrees
+	body_rot.x = 0.0
+	body_rot.z = 0.0
+	rotation_degrees = body_rot
+	# Parte visual: quitamos pitch/roll, mantenemos yaw
+	if mesh:
+		var mrot := mesh.rotation_degrees
+		mrot.x = 0.0
+		mrot.z = 0.0
+		mesh.rotation_degrees = mrot
+	if head:
+		var hrot := head.rotation_degrees
+		hrot.x = 0.0
+		hrot.z = 0.0
+		head.rotation_degrees = hrot
+	if skate:
+		var srot := skate.rotation_degrees
+		srot.x = 0.0
+		srot.z = 0.0
+		skate.rotation_degrees = srot
+	# Cámara: la dejamos con su yaw local como viene, solo limpiamos roll
+	if camera:
+		var cam_rot := camera.rotation_degrees
+		cam_rot.z = 0.0
+		camera.rotation_degrees = cam_rot
+
+
+func apply_air_rotation(yaw_deg: float, pitch_deg: float) -> void:
+	# yaw_deg y pitch_deg están en grados
+	var yaw_rad := deg_to_rad(yaw_deg)
+	var pitch_rad := deg_to_rad(pitch_deg)
+	# YAW (spin sobre eje Y): giramos mesh, cabeza y skate
+	if abs(yaw_deg) > 0.001:
+		mesh.rotate_y(yaw_rad)
+		head.rotate_y(yaw_rad)
+		skate.rotate_y(yaw_rad)
+	# PITCH (flip adelante/atrás): giramos mesh, cabeza y skate
+	if abs(pitch_deg) > 0.001:
+		mesh.rotate_x(pitch_rad)
+		head.rotate_x(pitch_rad)
+		skate.rotate_x(pitch_rad)
+
+
+
 func _process(_delta: float) -> void:
 	delta_process = _delta
 	health_lbl.text = str(health_component.health)
 
 func _physics_process(delta: float) -> void:
 	delta_pysics = delta
-	## Add the gravity
-	#if not is_on_floor():
-		#velocity += get_gravity() * delta
-	#
-	## Handle jump
-	#if Input.is_action_pressed("jump") and is_on_floor():
-		#jump_velocity += jump_charge_velocity * delta
-	#if Input.is_action_just_released("jump") and is_on_floor():
-		#if GameManager.player_on_powerslide: jump_velocity = 10
-		#velocity.y = clamp(jump_velocity, MIN_JUMP_VELOCITY, MAX_JUMP_VELOCITY)
-		#jump_velocity = 0.0
-		#GameManager._update_jumping_pos(global_position)
-		#on_floor = false
-		#jump_start.play()
-		#
-	## Handle landing
-	#elif not on_floor and is_on_floor():
-		#GameManager._update_landing_pos(global_position)
-		#on_floor = true
-		#jump_end.play()
-		#if GameManager.debug:
-			#drawn_line(GameManager.jumping_pos, GameManager.landing_pos)
-	#
-	## Handle Trick
-	#if Input.is_action_just_pressed("jump") and !is_on_floor():
-		#player_is_tricking = true
-		#var tween = get_tree().create_tween()
-		#var pop_shovit = skate.rotation_degrees + Vector3(0.0, 180.0, 0.0)
-		#var backflip = skate.rotation_degrees + Vector3(0.0, 0.0, 360.0)
-		#tween.tween_property(skate, "rotation_degrees",[pop_shovit, backflip].pick_random(), 0.4)
-		#tween.play()
-		#await tween.finished
-		#player_is_tricking = false
-#
-	## Handle Fall Off (caída del skate)
-	#if player_is_tricking and is_on_floor():
-		#rotate.play()
-		#player_fall_off = true
-		#shaker.shake(fall_off_shake_duration, fall_off_shake_intensity)
-		#await get_tree().create_timer(fall_off_shake_duration).timeout
-		#player_fall_off = false
-#
-	## Handle speed
-	#if is_on_floor() and not player_fall_off:
-		#if Input.is_action_pressed("sprint"):
-			#speed = SPRINT_SPEED
-			#moving.pitch_scale= 1.2
-		#else:
-			#speed = WALK_SPEED
-			#moving.pitch_scale= 1.0
-	#
-	## Get the input direction and handle the movement/deceleration.
-	#var input_dir := Input.get_vector("left", "right", "up", "down")
-	#var direction := (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	#if is_on_floor() and not GameManager.player_on_powerslide:
-		#if player_fall_off:
-			#return
-		#if direction:
-			#velocity.x = direction.x * speed
-			#velocity.z = direction.z * speed
-		#else:
-			#velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-			#velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
-	#else:
-		#if player_fall_off:
-			#return
-		#velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
-		#velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
-	#
-	## Add sound to skating
-	#if is_on_floor() and velocity != Vector3.ZERO and !moving.is_playing():
-		#moving.play()
-	#elif (not is_on_floor()) or (direction == Vector3.ZERO):
-		#moving.stop()
-	#
-	## Head Bob
-	#t_bob += delta * velocity.length() * float(is_on_floor())
-	#camera.transform.origin = _headbob(t_bob)
-	#
-	## FOV
-	#var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
-	#var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
-	#camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
-	#
-	## Orientar el skate según la velocidad horizontal
-	#var move_dir := Vector3(velocity.x, 0.0, velocity.z)
-	#if move_dir.length() > 0.05:
-		#skate.look_at(skate.global_transform.origin + move_dir, Vector3.UP)
-	#
-	#move_and_slide()
 
 func _headbob(time: float) -> Vector3:
 	var pos = Vector3.ZERO

@@ -16,6 +16,9 @@ func sm_enter(msg: Dictionary) -> void:
 func sm_process(delta: float) -> void:
 	# Estando caído, se “levanta”
 	if player_owner.is_on_floor() and Input.is_action_just_pressed("jump"):
+		# Cuando se levanta, enderezamos al player y la tabla
+		if player_owner.has_method("reset_air_rotation"):
+			player_owner.reset_air_rotation()
 		player_owner.ignore_jump_once = true
 		state_machine.transition_to("Idle")
 

@@ -22,6 +22,8 @@ func sm_physics_process(delta: float) -> void:
 	player_owner.velocity.z = lerp(player_owner.velocity.z, player_owner.WALK_SPEED * 0.4 * player_owner.input_direction.z, player_owner.FRICTION)
 	player_owner.velocity.y -= player_owner.GRAVITY
 	player_owner.move_and_slide()
+	
+	
 
 func sm_input(event: InputEvent) -> void:
 	if Input.is_action_just_released("crouch"):
