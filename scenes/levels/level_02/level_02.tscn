@@ -1,16 +1,62 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2hjicqun6s23"]
+[gd_scene load_steps=9 format=3 uid="uid://d2hjicqun6s23"]
 
-[ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/player/Player.tscn" id="1_005fm"]
+[ext_resource type="PackedScene" uid="uid://kbqgtghw287w" path="res://scenes/characters/player_machine/Player.tscn" id="1_005fm"]
+[ext_resource type="Texture2D" uid="uid://cnxepiabwocme" path="res://art/6twelve/6twelve/Textures/Asphalt.jpg" id="1_rq12i"]
+[ext_resource type="PackedScene" uid="uid://calqydw1xcddc" path="res://scenes/characters/zombie_01/zombie_01.tscn" id="1_tmh7d"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_005fm"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_62xr1"]
+sky_material = SubResource("ProceduralSkyMaterial_005fm")
+
+[sub_resource type="Environment" id="Environment_tmh7d"]
+background_mode = 2
+sky = SubResource("Sky_62xr1")
+tonemap_mode = 2
+fog_light_color = Color(0.29803923, 0.3254902, 0.5019608, 1)
+fog_light_energy = 0.9
+fog_sun_scatter = 0.1
+fog_density = 0.1
+fog_height_density = -0.1
+volumetric_fog_density = 0.5554
+adjustment_enabled = true
+adjustment_contrast = 0.8
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_005fm"]
+vertices = PackedVector3Array(0, 0.53999996, -30, 0, 0.53999996, 18, 13, 0.53999996, 18, 13, 0.53999996, -30)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+cell_height = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0kshx"]
+albedo_color = Color(0.39080548, 0.39080545, 0.39080545, 1)
+albedo_texture = ExtResource("1_rq12i")
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [node name="Level02" type="Node3D"]
 
-[node name="Level" type="Node3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
 
-[node name="Floor" type="CSGBox3D" parent="Level"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tmh7d")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_005fm")
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, -6)
 use_collision = true
 collision_layer = 2147483648
 size = Vector3(14, 1, 49)
+material = SubResource("StandardMaterial3D_0kshx")
+
+[node name="Zombie01" parent="NavigationRegion3D" node_paths=PackedStringArray("player") instance=ExtResource("1_tmh7d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.004486, 0.5000001, -21.214684)
+player = NodePath("../../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_005fm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9167361, 1.5337706, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.950772, 1.3298416, 10.295362)
