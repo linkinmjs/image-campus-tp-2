@@ -1,7 +1,7 @@
 [gd_scene load_steps=68 format=3 uid="uid://bxncs2ssy1jb"]
 
 [ext_resource type="Texture2D" uid="uid://bc75pcj80u8no" path="res://art/6twelve/6twelve/Textures/Tiles.jpg" id="1_bnqyd"]
-[ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/player/Player.tscn" id="1_ty7qy"]
+[ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/test_player/test_player.tscn" id="1_ty7qy"]
 [ext_resource type="Texture2D" uid="uid://1d72kfkonhsp" path="res://art/6twelve/6twelve/Textures/GrassDead.jpg" id="3_gm1k7"]
 [ext_resource type="PackedScene" uid="uid://bojwkd2odf4oi" path="res://scenes/props/level/bed.tscn" id="3_p0c1w"]
 [ext_resource type="PackedScene" uid="uid://rxoklxom3t07" path="res://scenes/props/traffic_cone_tutorial/traffic_cone_tutorial.tscn" id="4_aucsr"]
@@ -157,7 +157,7 @@ size = Vector2(0.05, 0.05)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_p0c1w")
 
-[node name="Player" parent="." instance=ExtResource("1_ty7qy")]
+[node name="TestPlayer" parent="." instance=ExtResource("1_ty7qy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5925198, 0.46288323, 8.635071)
 
 [node name="Level" type="Node3D" parent="."]

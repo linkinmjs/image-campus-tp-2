@@ -1,10 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://kbqgtghw287w"]
+[gd_scene load_steps=18 format=3 uid="uid://dhs31wl5368w3"]
 
-[ext_resource type="Script" uid="uid://bmm3emwlidm38" path="res://scenes/characters/player_machine/player_script.gd" id="1_s8bfl"]
+[ext_resource type="Script" uid="uid://cqgta8fiv0ebj" path="res://scenes/characters/test_player/test_player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://cvtq1rxes8lml" path="res://scenes/props/level/skateboard.tscn" id="2_5edqu"]
-[ext_resource type="PackedScene" uid="uid://bpeslegxhadca" path="res://scenes/test_objects/skate_world.tscn" id="2_u0tj0"]
 [ext_resource type="Script" uid="uid://ctneaclj2qp82" path="res://scripts/utils/shaker.gd" id="3_wwjds"]
-[ext_resource type="PackedScene" uid="uid://b5js1opfkn7ci" path="res://scenes/characters/zombie/components/health_component.tscn" id="4_n51df"]
+[ext_resource type="PackedScene" uid="uid://b5js1opfkn7ci" path="res://scenes/characters/zombie_01/components/health_component.tscn" id="4_n51df"]
 [ext_resource type="AudioStream" uid="uid://bi3x8loctb0py" path="res://assets/audios/sfx/moving.mp3" id="5_qd3e3"]
 [ext_resource type="AudioStream" uid="uid://bue6pc0cds3jp" path="res://assets/audios/sfx/jump-start.mp3" id="6_djydg"]
 [ext_resource type="AudioStream" uid="uid://de1owai8dvdwb" path="res://assets/audios/sfx/jump-end.mp3" id="7_bsn6e"]
@@ -12,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://b34236uhnvwgs" path="res://assets/audios/sfx/slide-mid.mp3" id="9_hv5x3"]
 [ext_resource type="AudioStream" uid="uid://ccbog2xquhwso" path="res://assets/audios/sfx/slide-end.mp3" id="10_ykrpk"]
 [ext_resource type="AudioStream" uid="uid://cw83e30cv7as3" path="res://assets/audios/sfx/rotate.mp3" id="11_i1nod"]
-[ext_resource type="PackedScene" uid="uid://bectmn5k03nf" path="res://scenes/state_machine/player_state_machine.tscn" id="12_jevs6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_spoc0"]
 radius = 0.2
@@ -61,23 +59,12 @@ _data = {
 &"hit": SubResource("Animation_n51df")
 }
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("player_state_machine")]
+[node name="Player" type="CharacterBody3D"]
 collision_mask = 2147483650
-script = ExtResource("1_s8bfl")
-player_state_machine = NodePath("PlayerStateMachine")
-skate_world_scene = ExtResource("2_u0tj0")
-
-[node name="Label" type="Label" parent="."]
-offset_right = 63.0
-offset_bottom = 36.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 26
-text = "state"
+script = ExtResource("1_8afob")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0055978, 0)
-visible = false
 mesh = SubResource("CapsuleMesh_spoc0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -88,7 +75,6 @@ shape = SubResource("ConvexPolygonShape3D_8afob")
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.15900779, 0)
 
 [node name="Skateboard" parent="Skate" instance=ExtResource("2_5edqu")]
-surface_material_override/0 = null
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5054641, 0)
@@ -128,8 +114,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_snqei")
 }
 
-[node name="Debug" type="Node3D" parent="."]
-
 [node name="Sfx" type="Node3D" parent="."]
 
 [node name="Moving" type="AudioStreamPlayer3D" parent="Sfx"]
@@ -166,11 +150,3 @@ bus = &"SFX"
 stream = ExtResource("11_i1nod")
 panning_strength = 0.0
 bus = &"SFX"
-
-[node name="PlayerStateMachine" parent="." node_paths=PackedStringArray("player", "camera_3d", "collision_shape_player", "label_state") instance=ExtResource("12_jevs6")]
-player = NodePath("..")
-camera_3d = NodePath("../Head/Camera3D")
-collision_shape_player = NodePath("../CollisionShape3D")
-label_state = NodePath("../Label")
-
-[editable path="PlayerStateMachine"]

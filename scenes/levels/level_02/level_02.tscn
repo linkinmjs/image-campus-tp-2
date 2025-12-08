@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://d2hjicqun6s23"]
 
-[ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/player/Player.tscn" id="1_005fm"]
+[ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/test_player/test_player.tscn" id="1_005fm"]
 [ext_resource type="Texture2D" uid="uid://cnxepiabwocme" path="res://art/6twelve/6twelve/Textures/Asphalt.jpg" id="1_rq12i"]
 [ext_resource type="PackedScene" uid="uid://calqydw1xcddc" path="res://scenes/characters/zombie_01/zombie_01.tscn" id="1_tmh7d"]
 
