@@ -1,7 +1,7 @@
 extends State
 class_name ZombieHurted
 
-@export var stun_time: float = 0.4  # tiempo “aturdido”
+@export var stun_time: float = 2.4  # tiempo “aturdido”
 
 @onready var enemy: CharacterBody3D = get_parent().get_parent()
 @onready var player: CharacterBody3D = enemy.player
@@ -14,9 +14,10 @@ func _ready() -> void:
 	animation_playback = animation_tree.get("parameters/playback")
 	
 func enter() -> void:
+	print("ZombieHurted state entered")
 	timer = stun_time
 	enemy.velocity = Vector3.ZERO
-	animation_playback.travel("hurt")  # estado en AnimationTree
+	animation_playback.travel("hurted")  # estado en AnimationTree
 
 func exit() -> void:
 	pass

@@ -57,11 +57,15 @@ func _on_head_area_body_entered(body: Node3D) -> void:
 	var player_body := body as CharacterBody3D
 	if player_body.velocity.y >= 0.0:
 		return  # no viene desde arriba, ignorar
-
+	
 	# Rebote del jugador hacia arriba
 	player_body.velocity.y = 10.0
-
+	
 	# Daño al zombie
 	print("TODO: Dañar al zombie")
-	#var attack := Attack.new(HeadStompDamage, player_body)
-	#health_component.damage(attack)
+	
+	# Daño al zombie
+	var head_stomp_damage: float = 200.0  # o expórtalo como @export var
+	var attack := AttackComponent.new(head_stomp_damage, player_body)
+	print("Head stomp: applying damage =", attack.damage)
+	health_component.damage(attack)

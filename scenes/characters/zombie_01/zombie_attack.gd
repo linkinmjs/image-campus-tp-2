@@ -5,6 +5,8 @@ class_name ZombieAttack
 @onready var player: CharacterBody3D = enemy.player
 @onready var animation_tree: AnimationTree = $"../../AnimationTree"
 
+const DAMAGE: float = 25.0
+
 var animation_playback: AnimationNodeStateMachinePlayback
 var attacking: bool = false
 
@@ -20,7 +22,7 @@ func process(_delta: float):
 		emit_signal("Transitioned", self, "ZombieChase")
 
 func _attack_player():
-	var enemy_attack = Attack.new(15.0, enemy)
+	var enemy_attack = AttackComponent.new(DAMAGE, enemy)
 	if enemy.global_position.distance_to(player.global_position) <= enemy.AttackReach:
 		player.health_component.damage(enemy_attack)
 	attacking = false
