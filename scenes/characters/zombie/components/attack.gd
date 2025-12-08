@@ -1,5 +1,5 @@
 extends Node
-class_name Attack
+class_name AttackComponent
 
 var damage: float = 25.0
 var attacker: Node3D = null

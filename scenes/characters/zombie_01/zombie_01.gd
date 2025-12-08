@@ -9,6 +9,9 @@ extends CharacterBody3D
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var state_machine: ZombieStateMachine = $ZombieStateMachine
+@onready var health_component: Node = $HealthComponent
+@onready var head_area: Area3D = $body/Armature/Skeleton3D/Head/Area3D
 
 var animation_playback: AnimationNodeStateMachinePlayback
 
@@ -17,6 +20,7 @@ var animation_playback: AnimationNodeStateMachinePlayback
 
 func _ready() -> void:
 	animation_playback = animation_tree.get("parameters/playback")
+	head_area.body_entered.connect(_on_head_area_body_entered)
 
 func _physics_process(delta: float) -> void:
 	var state = animation_playback.get_current_node()
@@ -32,6 +36,32 @@ func _physics_process(delta: float) -> void:
 			rotation.y = lerp(rotation.y, atan2(-velocity.x, -velocity.z), delta * 10.0)
 		
 	move_and_slide()
-	
+
+# Llamado por HealthComponent cuando sufre daño
+func on_damage(attack: AttackComponent):
+	state_machine.change_state("ZombieHurted")
+
+# Llamado por HealthComponent cuando muere
 func on_death() -> void:
-	queue_free()
+	state_machine.change_state("ZombieKilled")
+
+# Golpe estilo “Mario” al saltar sobre la cabeza
+func _on_head_area_body_entered(body: Node3D) -> void:
+	if body != player:
+		return
+	
+	# Asegurarse de que el player viene cayendo
+	if not (body is CharacterBody3D):
+		return
+		
+	var player_body := body as CharacterBody3D
+	if player_body.velocity.y >= 0.0:
+		return  # no viene desde arriba, ignorar
+
+	# Rebote del jugador hacia arriba
+	player_body.velocity.y = 10.0
+
+	# Daño al zombie
+	print("TODO: Dañar al zombie")
+	#var attack := Attack.new(HeadStompDamage, player_body)
+	#health_component.damage(attack)

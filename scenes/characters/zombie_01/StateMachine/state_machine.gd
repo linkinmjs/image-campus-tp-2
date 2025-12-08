@@ -35,3 +35,17 @@ func on_child_transitioned(state, new_state_name):
 	
 	new_state.enter()
 	current_state = new_state
+
+func change_state(new_state_name: String) -> void:
+	var new_state: State = states.get(new_state_name.to_lower())
+	if new_state == null:
+		push_error("ZombieStateMachine: Estado no encontrado: %s" % new_state_name)
+		return
+	
+	if current_state:
+		current_state.exit()
+		
+	current_state = new_state
+	current_state.enter()
+	
+	
