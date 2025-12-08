@@ -2,6 +2,7 @@ extends PlayerState
 #INAIR
 
 var locked_horizontal_velocity: Vector3 = Vector3.ZERO
+var allow_air_rotation: bool = false
 
 func sm_ready() -> void:
 	pass
@@ -66,7 +67,7 @@ func sm_physics_process(delta: float) -> void:
 	vel.x = locked_horizontal_velocity.x
 	vel.z = locked_horizontal_velocity.z
 	# habilita rotaciones en el aire (solo visuales)
-	if player_owner.on_board and not player_owner.player_is_tricking:
+	if allow_air_rotation and player_owner.on_board and not player_owner.player_is_tricking:
 		var yaw_axis := Input.get_axis("left", "right")    # A/D
 		var pitch_axis := Input.get_axis("up", "down")     # W/S
 
@@ -88,6 +89,8 @@ func sm_physics_process(delta: float) -> void:
 var trick_tween: Tween = null
 
 func sm_input(event: InputEvent) -> void:
+	if not allow_air_rotation:
+		return
 	if Input.is_action_just_pressed("jump") and not player_owner.is_on_floor():
 		if trick_tween != null and trick_tween.is_valid() and trick_tween.is_running():
 			return
@@ -105,22 +108,21 @@ func _on_trick_tween_finished() -> void:
 	player_owner.player_is_tricking = false
 	trick_tween = null
 
-
 func sm_enter(msg: Dictionary) -> void:
-	# Siempre que entramos a InAir, congelamos la velocidad horizontal actual
 	locked_horizontal_velocity = Vector3(player_owner.velocity.x, 0.0, player_owner.velocity.z)
+	# Esta variable permite rotaciones/trucos en el aire
+	allow_air_rotation = msg.get("allow_air_rotation", false)
 	if msg.has("doJump"):
 		print("inAir - ", player_owner.jump_velocity)
 		if GameManager.player_on_powerslide:
 			player_owner.jump_velocity = 10
 		# Fuerza de salto basada en la carga
-		var jump_force:float = clamp(
+		var jump_force: float = clamp(
 			player_owner.jump_velocity,
 			player_owner.MIN_JUMP_VELOCITY,
 			player_owner.MAX_JUMP_VELOCITY
 		)
 		player_owner.jump_velocity = 0.0
-		# Aplicamos solo componente vertical del salto
 		player_owner.velocity.y = jump_force
 		GameManager._update_jumping_pos(player_owner.global_position)
 		player_owner.jump_start.play()

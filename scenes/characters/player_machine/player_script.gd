@@ -75,16 +75,19 @@ const SKATE_SLOPE_ACCEL := 30.0            # Fuerza de frenado a lo largo de la 
 const SKATE_MAX_PUSH_SLOPE_DEG := 20.0     # Ángulo máximo de rampa donde tiene sentido empujar
 
 # Variables de SALTO
-const MAX_JUMP_VELOCITY = 50.0
-const MIN_JUMP_VELOCITY = 20.0
+const MAX_JUMP_VELOCITY = 20.0
+const MIN_JUMP_VELOCITY = 1.0
 var jump_velocity: float = 0.0 # Jump force
-var jump_charge_velocity: float = 5.0
+var jump_charge_velocity: float = 1.0
 
 #variables para gestionar caida
 const FALL_MIN_IMPACT_SPEED := 25.0 		#qué tan fuerte tenés caer para considerar un impacto duro.
 const FALL_MIN_IMPACT_DOT := 0.7 			#qué tanto alineada la velocidad con la normal del suelo (si cae muy “de frente” al piso)
 const FALL_MIN_LANDING_SPEED := 12.0		#velocidad mínima para que importe el ángulo de la tabla.
 const FALL_MAX_BOARD_ANGLE_DEG := 65.0		#si cae muy de costado (perpendicular a la dirección real de movimiento), se considera caída.
+
+# inclinación para habilitar trucos en el aire
+const TRICK_MIN_SLOPE_DEG := 12.0  
 
 #escena que se instancia cuando te caes
 @export var skate_world_scene: PackedScene

@@ -1,4 +1,5 @@
 extends PlayerState
+#SKATE BOARDING
 
 func sm_enter(msg: Dictionary) -> void:
 	player_owner.on_board = true
@@ -9,17 +10,31 @@ func sm_process(delta: float) -> void:
 		player_owner.on_board = false
 		player_owner.skate.visible = false
 		state_machine.transition_to("Idle")
-	elif !player_owner.is_on_floor():
-		state_machine.transition_to("InAir")
 	elif player_owner.is_running:
 		state_machine.transition_to("SkateBoardingSprint")
-
+	elif not player_owner.is_on_floor():
+		# vamos a InAir aunque no haya doJump
+		var slope := player_owner.get_slope_data()
+		var angle_deg: float = slope["angle_deg"]
+		var allow_air_rotation := angle_deg >= player_owner.TRICK_MIN_SLOPE_DEG
+		
+		state_machine.transition_to("InAir", {
+			"allow_air_rotation": allow_air_rotation
+		})
 
 func sm_input(event: InputEvent) -> void:
+	var slope := player_owner.get_slope_data()
+	var angle_deg: float = slope["angle_deg"]
+	var allow_air_rotation := angle_deg >= player_owner.TRICK_MIN_SLOPE_DEG
 	if Input.is_action_just_pressed("x"):
 		player_owner.on_board = !player_owner.on_board
 		player_owner.skate.visible = !player_owner.skate.visible
 		state_machine.transition_to("Walk")
+	elif Input.is_action_just_released("jump") and allow_air_rotation and player_owner.is_on_floor() and player_owner.on_board:
+		state_machine.transition_to("InAir", {
+			"doJump": true,
+			"allow_air_rotation": allow_air_rotation
+		})
 	elif Input.is_action_just_released("jump"):
 		state_machine.transition_to("InAir", {"doJump":true})
 	#USADO POR AHORA PARA SIMULAR CAIDA
