@@ -1,7 +1,7 @@
 extends State
 class_name ZombieHurted
 
-@export var stun_time: float = 2.4  # tiempo “aturdido”
+@export var stun_time: float = 1.4  # tiempo “aturdido”
 
 @onready var enemy: CharacterBody3D = get_parent().get_parent()
 @onready var player: CharacterBody3D = enemy.player
