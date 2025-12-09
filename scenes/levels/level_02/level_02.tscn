@@ -14,19 +14,24 @@
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_62xr1"]
+[sub_resource type="Sky" id="Sky_7y2cq"]
 sky_material = SubResource("ProceduralSkyMaterial_005fm")
 
 [sub_resource type="Environment" id="Environment_tmh7d"]
 background_mode = 2
-sky = SubResource("Sky_62xr1")
+sky = SubResource("Sky_7y2cq")
 tonemap_mode = 2
+fog_enabled = true
+fog_mode = 1
 fog_light_color = Color(0.29803923, 0.3254902, 0.5019608, 1)
-fog_light_energy = 0.9
-fog_sun_scatter = 0.1
-fog_density = 0.1
-fog_height_density = -0.1
-volumetric_fog_density = 0.5554
+fog_light_energy = 0.7
+fog_sun_scatter = 0.05
+fog_density = 1.0
+fog_height_density = -0.05
+fog_depth_curve = 0.18946446
+fog_depth_begin = 0.0
+fog_depth_end = 50.0
+volumetric_fog_enabled = true
 adjustment_enabled = true
 adjustment_contrast = 0.8
 
@@ -82,6 +87,7 @@ texture_filter = 0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
+shadow_opacity = 0.8
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tmh7d")
@@ -170,7 +176,7 @@ size = Vector3(120, 1, 14.109)
 material = SubResource("StandardMaterial3D_vs6ma")
 
 [node name="Zombie01" parent="NavigationRegion3D" node_paths=PackedStringArray("player") instance=ExtResource("1_tmh7d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.004486, 1.6439606, 26.232513)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.004486, 0.39493263, 26.232513)
 player = NodePath("../../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_005fm")]

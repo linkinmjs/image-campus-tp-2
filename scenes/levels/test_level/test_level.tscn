@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://cocdmcnq4fyg3"]
 
-[ext_resource type="PackedScene" uid="uid://kbqgtghw287w" path="res://scenes/characters/player_machine/player.tscn" id="1_qv4mi"]
 [ext_resource type="Texture2D" uid="uid://cnxepiabwocme" path="res://art/6twelve/6twelve/Textures/Asphalt.jpg" id="3_vxsof"]
 [ext_resource type="Texture2D" uid="uid://k4ctoq3iop24" path="res://art/6twelve/6twelve/Textures/Bricks.jpg" id="4_q0l7r"]
+[ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/test_player/test_player.tscn" id="4_uxvkn"]
 [ext_resource type="PackedScene" uid="uid://bm1hnp6c0nmoy" path="res://scenes/props/jersey_barrier/jersey_barrier.tscn" id="5_q2iya"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_alwyk"]
@@ -47,11 +47,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vxsof")
-
-[node name="Player" parent="." instance=ExtResource("1_qv4mi")]
-
-[node name="CanvasLayer" parent="Player" index="6"]
-visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_vxsof")
@@ -101,5 +96,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28.911077)
 [node name="BORRAR" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.389168, 0, 32.467632)
 
-[editable path="Player"]
-[editable path="Player/PlayerStateMachine"]
+[node name="Player" parent="." instance=ExtResource("4_uxvkn")]

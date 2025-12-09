@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://bqulmptqu2ss7"]
+[gd_scene load_steps=2 format=3 uid="uid://bqulmptqu2ss7"]
+
+[ext_resource type="PackedScene" uid="uid://c1yddnv0jr155" path="res://art/6twelve/6twelve/6twelve.fbx" id="1_2p37i"]
 
 [node name="Level03" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+
+[node name="6twelve" parent="NavigationRegion3D" instance=ExtResource("1_2p37i")]
