@@ -1,10 +1,9 @@
-[gd_scene load_steps=71 format=3 uid="uid://bxncs2ssy1jb"]
+[gd_scene load_steps=73 format=3 uid="uid://bxncs2ssy1jb"]
 
 [ext_resource type="Texture2D" uid="uid://bc75pcj80u8no" path="res://art/6twelve/6twelve/Textures/Tiles.jpg" id="1_bnqyd"]
 [ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/test_player/test_player.tscn" id="1_ty7qy"]
 [ext_resource type="Texture2D" uid="uid://1d72kfkonhsp" path="res://art/6twelve/6twelve/Textures/GrassDead.jpg" id="3_gm1k7"]
 [ext_resource type="PackedScene" uid="uid://bojwkd2odf4oi" path="res://scenes/props/level/bed.tscn" id="3_p0c1w"]
-[ext_resource type="PackedScene" uid="uid://rxoklxom3t07" path="res://scenes/props/traffic_cone_tutorial/traffic_cone_tutorial.tscn" id="4_aucsr"]
 [ext_resource type="PackedScene" uid="uid://1iah734bt4rt" path="res://scenes/props/level/door_way_dark_grey.tscn" id="4_soydq"]
 [ext_resource type="PackedScene" uid="uid://bwmllj5mn6o5j" path="res://scenes/props/level/wall_dark_grey.tscn" id="6_63tf7"]
 [ext_resource type="PackedScene" uid="uid://bw10cwmtxx88j" path="res://scenes/props/level/window_wall_dark_grey.tscn" id="9_ebanu"]
@@ -46,6 +45,8 @@
 [ext_resource type="PackedScene" uid="uid://dj3bmb0tjiomr" path="res://art/cones_&_barriers/Cones & Barriers/Concrete Barriers/Jersey_barrier_dirty.glb" id="43_pa60p"]
 [ext_resource type="PackedScene" uid="uid://mib2ijdtu3yo" path="res://scenes/props/slide_rail/slide_rail.tscn" id="44_emt3b"]
 [ext_resource type="Shader" uid="uid://8h2xr8o02qkw" path="res://vhs_levels.gdshader" id="44_our46"]
+[ext_resource type="Script" uid="uid://bstvyditwc30k" path="res://scenes/levels/level_01/cone_hurtbox.gd" id="46_eunmw"]
+[ext_resource type="PackedScene" uid="uid://8bh6331i44gl" path="res://scenes/props/level/traffic_cone.tscn" id="47_emt3b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_42lsy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -131,6 +132,9 @@ points = PackedVector3Array(-0.13679999, -0.096783064, -0.41485882, 0.13679999, 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eunmw"]
 size = Vector3(0.538208, 1.5742188, 9.815308)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_emt3b"]
+size = Vector3(0.6755371, 0.690979, 0.8751221)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ctw71"]
 shader = ExtResource("44_our46")
 shader_parameter/exposure = 1.0
@@ -199,17 +203,6 @@ use_collision = true
 collision_layer = 2147483648
 collision_mask = 0
 size = Vector3(25, 0.01, 10.960083)
-
-[node name="TrafficConeTutorial" parent="Level" instance=ExtResource("4_aucsr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7464056, 2.1575594, 6.038329)
-visible = false
-collision_layer = 2147483652
-collision_mask = 2147483649
-center_of_mass_mode = 1
-
-[node name="TrafficConeTutorial2" parent="Level" instance=ExtResource("4_aucsr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.272634, 1.0540543, 14.890137)
-visible = false
 
 [node name="WallDarkGrey" parent="Level" instance=ExtResource("6_63tf7")]
 
@@ -299,6 +292,9 @@ transform = Transform3D(-1, 8.742278e-08, 3.821371e-15, 0, -4.371139e-08, 1, 8.7
 
 [node name="Barrel001" parent="Level" instance=ExtResource("14_aucsr")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 11.926157, 0.0049996376, 14.888681)
+
+[node name="Barrel003" parent="Level" instance=ExtResource("14_aucsr")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -3.953193, 0.0049996376, -25.739965)
 
 [node name="Desk" parent="Level" instance=ExtResource("15_xqxfp")]
 transform = Transform3D(-1, 8.742278e-08, 3.821371e-15, 0, -4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 7.364, 0, 12.746569)
@@ -629,6 +625,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.6
 
 [node name="SlideRail" parent="Level" instance=ExtResource("44_emt3b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6637435, 1.2152929, -13.437711)
+slide_speed = 8.0
 
 [node name="Start" parent="Level/SlideRail" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.013626814, 0)
@@ -648,6 +645,18 @@ collision_layer = 2147483648
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.711469, 0.28710938, -18.310974)
 shape = SubResource("BoxShape3D_eunmw")
+
+[node name="TrafficCone" parent="Level" node_paths=PackedStringArray("player") instance=ExtResource("47_emt3b")]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -3.9971833, 1.1198604, -25.755297)
+script = ExtResource("46_eunmw")
+player = NodePath("../../TestPlayer")
+
+[node name="Area3D" type="Area3D" parent="Level/TrafficCone"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/TrafficCone/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015258789, -0.00064086914, 0.3509946)
+shape = SubResource("BoxShape3D_emt3b")
 
 [node name="Skateboard" parent="." instance=ExtResource("43_mawwr")]
 transform = Transform3D(-28.131191, -95.88658, 3.7944822, 0.780941, 3.725286, 99.927536, -95.95844, 28.140434, -0.29915, 7.5758867, 1.2032734, 12.714085)
