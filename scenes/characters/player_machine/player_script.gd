@@ -21,7 +21,7 @@ var is_running := false
 const JUMP_VELOCITY = 20.
 const MOUSE_SENSITIVITY := .08
 const FRICTION := .1
-const GRAVITY := 1.
+const GRAVITY := 0.75
 
 # Bob variables
 const BOB_FREQ: float = 2.0
@@ -75,10 +75,10 @@ const SKATE_SLOPE_ACCEL := 30.0            # Fuerza de frenado a lo largo de la 
 const SKATE_MAX_PUSH_SLOPE_DEG := 20.0     # Ángulo máximo de rampa donde tiene sentido empujar
 
 # Variables de SALTO
-const MAX_JUMP_VELOCITY = 20.0
+const MAX_JUMP_VELOCITY = 30.0
 const MIN_JUMP_VELOCITY = 1.0
-var jump_velocity: float = 0.0 # Jump force
-var jump_charge_velocity: float = 1.0
+var jump_velocity: float = 5.0 # Jump force
+var jump_charge_velocity: float = 5.0
 
 #variables para gestionar caida
 const FALL_MIN_IMPACT_SPEED := 25.0 		#qué tan fuerte tenés caer para considerar un impacto duro.
@@ -133,30 +133,46 @@ func obtain_world_board() -> void:
 	has_board_equipped = true
 	print("Patineta recogida. has_board_equipped = ", has_board_equipped)
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		# Yaw del player (giro horizontal) SIEMPRE
-		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
-		# Pitch de la cámara (mirar arriba/abajo) SOLO cuando NO está en el aire
-		if player_state_machine.state.name != "InAir":
-			camera.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY))
-			camera.rotation.x = clamp(
-				camera.rotation.x,
-				deg_to_rad(-60),
-				deg_to_rad(60)
-			)
+		# --- MOUSE LOOK ---
+		if on_board:
+			# Arriba de la patineta:
+			#   - el mouse SOLO mueve la cabeza/cámara (free look)
+			head.rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
+			if player_state_machine.state.name != "InAir":
+				camera.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY))
+				camera.rotation.x = clamp(
+					camera.rotation.x,
+					deg_to_rad(-60),
+					deg_to_rad(60)
+				)
+		else:
+			# A pie (walk / sprint):
+			#   - el mouse rota el CUERPO solo cuando NO está en el aire
+			if player_state_machine.state.name != "InAir":
+				rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
+				camera.rotate_x(deg_to_rad(-event.relative.y * MOUSE_SENSITIVITY))
+				camera.rotation.x = clamp(
+					camera.rotation.x,
+					deg_to_rad(-60),
+					deg_to_rad(60)
+				)
+	# --- DIRECCIÓN DE MOVIMIENTO (WASD) ---
 	input_direction = Vector3.ZERO
 	input_direction.x = Input.get_axis("left", "right")
 	input_direction.z = Input.get_axis("up", "down")
 	input_direction = input_direction.rotated(Vector3.UP, rotation.y).normalized()
+	# --- SALTO / SPRINT como ya lo tenías ---
 	if Input.is_action_pressed("jump") and is_on_floor():
 		jump_velocity += jump_charge_velocity
-		print(player_state_machine.state.name)
-		print(jump_velocity)
 	if Input.is_action_just_pressed("sprint"):
 		is_running = !is_running
 	if Input.is_action_just_released("sprint"):
 		is_running = false
+
+
 
 func get_slope_data() -> Dictionary:
 	if !is_on_floor():
@@ -206,31 +222,48 @@ func reset_air_rotation() -> void:
 		camera.rotation_degrees = cam_rot
 
 func straighten_after_landing() -> void:
-	# El cuerpo físico: aseguramos que no se haya inclinado (por las dudas)
+	# Enderezar el cuerpo (sin inclinaciones raras)
 	var body_rot := rotation_degrees
 	body_rot.x = 0.0
 	body_rot.z = 0.0
+	# La dirección de movimiento manda: si hay velocidad horizontal, orientamos el cuerpo hacia ahí
+	var horiz_vel := Vector3(velocity.x, 0.0, velocity.z)
+	if horiz_vel.length() > 0.05:
+		var target_yaw := atan2(-horiz_vel.x, -horiz_vel.z)
+		body_rot.y = rad_to_deg(target_yaw)  # importante: en grados porque usamos rotation_degrees
 	rotation_degrees = body_rot
-	# Parte visual: quitamos pitch/roll, mantenemos yaw
+	# Parte visual: sin inclinación, pero heredando el yaw del cuerpo
 	if mesh:
 		var mrot := mesh.rotation_degrees
 		mrot.x = 0.0
 		mrot.z = 0.0
+		mrot.y = 0.0  # yaw en 0 local → mira como el cuerpo
 		mesh.rotation_degrees = mrot
 	if head:
 		var hrot := head.rotation_degrees
 		hrot.x = 0.0
 		hrot.z = 0.0
+		hrot.y = 0.0
 		head.rotation_degrees = hrot
 	if skate:
 		var srot := skate.rotation_degrees
 		srot.x = 0.0
 		srot.z = 0.0
+		srot.y = 0.0   # yaw local 0 → se alinea con el cuerpo
 		skate.rotation_degrees = srot
-	# Cámara: la dejamos con su yaw local como viene, solo limpiamos roll
+		# Y además, por si acaso, alineamos explícitamente la tabla a la velocidad
+		if horiz_vel.length() > 0.05:
+			var dir := horiz_vel.normalized()
+			skate.look_at(
+				skate.global_transform.origin + dir,
+				Vector3.UP
+			)
+	# Cámara: la dejamos sin roll; el pitch sepuede dejar o resetear
 	if camera:
 		var cam_rot := camera.rotation_degrees
 		cam_rot.z = 0.0
+		# si querés que mire de frente también:
+		# cam_rot.x = 0.0
 		camera.rotation_degrees = cam_rot
 
 
