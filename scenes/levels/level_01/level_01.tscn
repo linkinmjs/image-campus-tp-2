@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://bxncs2ssy1jb"]
+[gd_scene load_steps=71 format=3 uid="uid://bxncs2ssy1jb"]
 
 [ext_resource type="Texture2D" uid="uid://bc75pcj80u8no" path="res://art/6twelve/6twelve/Textures/Tiles.jpg" id="1_bnqyd"]
 [ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/test_player/test_player.tscn" id="1_ty7qy"]
@@ -43,6 +43,8 @@
 [ext_resource type="Texture2D" uid="uid://dfip5eur1ilw5" path="res://art/style_cars/Wheel/wheel.png" id="41_aq6ah"]
 [ext_resource type="ArrayMesh" uid="uid://bnr80r8bmwnc1" path="res://art/style_cars/Wheel/Wheel.obj" id="42_08v51"]
 [ext_resource type="PackedScene" uid="uid://cvtq1rxes8lml" path="res://scenes/props/level/skateboard.tscn" id="43_mawwr"]
+[ext_resource type="PackedScene" uid="uid://dj3bmb0tjiomr" path="res://art/cones_&_barriers/Cones & Barriers/Concrete Barriers/Jersey_barrier_dirty.glb" id="43_pa60p"]
+[ext_resource type="PackedScene" uid="uid://mib2ijdtu3yo" path="res://scenes/props/slide_rail/slide_rail.tscn" id="44_emt3b"]
 [ext_resource type="Shader" uid="uid://8h2xr8o02qkw" path="res://vhs_levels.gdshader" id="44_our46"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_42lsy"]
@@ -126,6 +128,9 @@ albedo_texture = ExtResource("41_aq6ah")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_byr7k"]
 points = PackedVector3Array(-0.13679999, -0.096783064, -0.41485882, 0.13679999, 0.02703722, 0.43293458, 0.13679999, 0.09467266, 0.4058126, -0.13679999, 0.096783064, 0.41485882, 0.13679999, 0.43293458, -0.026952466, 0.13679999, -0.43293458, -0.013476233, -0.13679999, -0.31807575, 0.31807575, -0.13679999, 0.44258538, 0.0137766395, 0.12842244, 0.014135353, -0.45127115, -0.13679999, 0.31807575, -0.31807575, -0.13679999, -0.31807575, -0.31807575, 0.1279454, 0.32309896, 0.32309896, 0.13679999, -0.31113994, 0.31113994, 0.13679999, -0.31113994, -0.31113994, -0.13679999, -0.44258538, 0.027553279, 0.1279454, 0.32309896, -0.32309896, -0.13679999, 0.31807575, 0.31807575, -0.13679999, -0.0137766395, 0.44258538, -0.13679999, 0.0137766395, -0.44258538, 0.12752941, -0.12597214, 0.4060759, 0.1276236, 0.43438435, 0.05592216, -0.13679999, 0.44258538, -0.027553279, 0.12761699, 0.028003504, 0.44840723, 0.12716502, -0.09770473, -0.41880953, 0.13679999, 0.25698072, -0.33817717, -0.13679999, -0.42872208, -0.055193204, 0.13679999, -0.43293458, 0.026952466, -0.13679999, 0.2626226, -0.34571567, -0.13679999, 0.34571567, 0.2626226, 0.13679999, -0.33817717, -0.256896, 0.13679999, 0.31105518, 0.31113994, 0.13679999, -0.026952466, -0.43293458)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_eunmw"]
+size = Vector3(0.538208, 1.5742188, 9.815308)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ctw71"]
 shader = ExtResource("44_our46")
 shader_parameter/exposure = 1.0
@@ -197,12 +202,14 @@ size = Vector3(25, 0.01, 10.960083)
 
 [node name="TrafficConeTutorial" parent="Level" instance=ExtResource("4_aucsr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7464056, 2.1575594, 6.038329)
+visible = false
 collision_layer = 2147483652
 collision_mask = 2147483649
 center_of_mass_mode = 1
 
 [node name="TrafficConeTutorial2" parent="Level" instance=ExtResource("4_aucsr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.272634, 1.0540543, 14.890137)
+visible = false
 
 [node name="WallDarkGrey" parent="Level" instance=ExtResource("6_63tf7")]
 
@@ -608,6 +615,40 @@ collision_layer = 2147483648
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Wheel2/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_byr7k")
 
+[node name="Jersey_barrier_dirty2" parent="Level" instance=ExtResource("43_pa60p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.6582794, 0.0050001144, -14.597635)
+
+[node name="Jersey_barrier_dirty3" parent="Level" instance=ExtResource("43_pa60p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.6582794, 0.0050001144, -17.076962)
+
+[node name="Jersey_barrier_dirty4" parent="Level" instance=ExtResource("43_pa60p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.6582794, 0.0050001144, -19.553162)
+
+[node name="Jersey_barrier_dirty5" parent="Level" instance=ExtResource("43_pa60p")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.6582794, 0.0050001144, -22.038874)
+
+[node name="SlideRail" parent="Level" instance=ExtResource("44_emt3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6637435, 1.2152929, -13.437711)
+
+[node name="Start" parent="Level/SlideRail" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.013626814, 0)
+
+[node name="End" parent="Level/SlideRail" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.775357)
+
+[node name="Rail" parent="Level/SlideRail" index="2"]
+transform = Transform3D(-1, -4.2729442e-07, -1.2074088e-10, 0, 0.0067504514, -0.99999905, 8.742278e-08, -4.8876786, -0.0013811147, 0, -0.006813407, -4.887679)
+
+[node name="PathFollow3D" parent="Level/SlideRail/Path3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.9999892, -0.0013939814, 0, 0.0013939814, 0.9999892, 0, -0.013626814, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level"]
+collision_layer = 2147483648
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.711469, 0.28710938, -18.310974)
+shape = SubResource("BoxShape3D_eunmw")
+
 [node name="Skateboard" parent="." instance=ExtResource("43_mawwr")]
 transform = Transform3D(-28.131191, -95.88658, 3.7944822, 0.780941, 3.725286, 99.927536, -95.95844, 28.140434, -0.29915, 7.5758867, 1.2032734, 12.714085)
 
@@ -644,3 +685,5 @@ size = Vector3(15, 8, 15)
 [node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Rain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11623287, 5.5, -19.651184)
 size = Vector3(21, 13, 25)
+
+[editable path="Level/SlideRail"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d2hjicqun6s23"]
+[gd_scene load_steps=28 format=3 uid="uid://d2hjicqun6s23"]
 
 [ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/test_player/test_player.tscn" id="1_005fm"]
 [ext_resource type="PackedScene" uid="uid://calqydw1xcddc" path="res://scenes/characters/zombie_01/zombie_01.tscn" id="1_tmh7d"]
@@ -9,6 +9,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ca7whmaektre3" path="res://art/buildings/building_07_smooth.obj" id="5_n0ft0"]
 [ext_resource type="ArrayMesh" uid="uid://ec4n2itqh412" path="res://art/buildings/building_06_smooth.obj" id="6_75xhx"]
 [ext_resource type="ArrayMesh" uid="uid://bbbws4w0jgu8c" path="res://art/buildings/building_05_smooth.obj" id="7_ljole"]
+[ext_resource type="PackedScene" uid="uid://cgpr586ttl2vi" path="res://art/cones_&_barriers/Cones & Barriers/Type 3 Barriers/Type_3_barrier_2_planks.fbx" id="9_s6p6h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_005fm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -179,5 +180,50 @@ material = SubResource("StandardMaterial3D_vs6ma")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.004486, 0.39493263, 26.232513)
 player = NodePath("../../Player")
 
+[node name="Type_3_barrier_2_planks" parent="NavigationRegion3D" instance=ExtResource("9_s6p6h")]
+transform = Transform3D(0.1692463, 0, 0.98557377, 0, 1, 0, -0.98557377, 0, 0.1692463, 97.630104, 0.40429783, 19.367683)
+
+[node name="Type_3_barrier_2_planks2" parent="NavigationRegion3D" instance=ExtResource("9_s6p6h")]
+transform = Transform3D(-0.13709879, 0, 0.9905573, 0, 1, 0, -0.9905573, 0, -0.13709879, 97.630104, 0.40429783, 22.662851)
+
+[node name="Type_3_barrier_2_planks3" parent="NavigationRegion3D" instance=ExtResource("9_s6p6h")]
+transform = Transform3D(-0.07181081, 0, 0.9974182, 0, 1, 0, -0.9974182, 0, -0.07181081, 97.630104, 0.40429783, 26.229794)
+
+[node name="Type_3_barrier_2_planks4" parent="NavigationRegion3D" instance=ExtResource("9_s6p6h")]
+transform = Transform3D(0.13673568, 0, 0.99060756, 0, 1, 0, -0.99060756, 0, 0.13673568, 97.630104, 0.40429783, 30.51921)
+
+[node name="Type_3_barrier_2_planks5" parent="NavigationRegion3D" instance=ExtResource("9_s6p6h")]
+transform = Transform3D(-0.06263378, 0, 0.99803656, 0, 1, 0, -0.99803656, 0, -0.06263378, 97.630104, 0.40429783, 34.44767)
+
+[node name="Type_3_barrier_2_planks6" parent="NavigationRegion3D" instance=ExtResource("9_s6p6h")]
+transform = Transform3D(-0.06263378, 0, 0.99803656, 0, 1, 0, -0.99803656, 0, -0.06263378, 97.630104, 0.40429783, 15.375149)
+
+[node name="Type_3_barrier_2_planks7" parent="NavigationRegion3D" instance=ExtResource("9_s6p6h")]
+transform = Transform3D(0.1692463, 0, 0.98557377, 0, 1, 0, -0.98557377, 0, 0.1692463, 5.875824, 0.40429783, 22.596844)
+
+[node name="Type_3_barrier_2_planks8" parent="NavigationRegion3D" instance=ExtResource("9_s6p6h")]
+transform = Transform3D(-0.13709879, 0, 0.9905573, 0, 1, 0, -0.9905573, 0, -0.13709879, 5.875824, 0.40429783, 25.892012)
+
+[node name="Type_3_barrier_2_planks9" parent="NavigationRegion3D" instance=ExtResource("9_s6p6h")]
+transform = Transform3D(-0.07181081, 0, 0.9974182, 0, 1, 0, -0.9974182, 0, -0.07181081, 5.875824, 0.40429783, 29.458954)
+
+[node name="Type_3_barrier_2_planks10" parent="NavigationRegion3D" instance=ExtResource("9_s6p6h")]
+transform = Transform3D(0.13673568, 0, 0.99060756, 0, 1, 0, -0.99060756, 0, 0.13673568, 5.875824, 0.40429783, 33.74837)
+
+[node name="Type_3_barrier_2_planks11" parent="NavigationRegion3D" instance=ExtResource("9_s6p6h")]
+transform = Transform3D(-0.06263378, 0, 0.99803656, 0, 1, 0, -0.99803656, 0, -0.06263378, 5.875824, 0.40429783, 37.67683)
+
 [node name="Player" parent="." instance=ExtResource("1_005fm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.967632, 0, 26.34389)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.967632, 0.84717584, 26.34389)
+
+[node name="Type_3_barrier_2_planks" parent="." instance=ExtResource("9_s6p6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.44904, 0.41410232, 41.2442)
+
+[node name="Type_3_barrier_2_planks2" parent="." instance=ExtResource("9_s6p6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.44904, 0.41410232, 15.300871)
+
+[node name="Type_3_barrier_2_planks3" parent="." instance=ExtResource("9_s6p6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.013515, 0.41410232, 15.300871)
+
+[node name="Type_3_barrier_2_planks4" parent="." instance=ExtResource("9_s6p6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.05454, 0.41410232, 11.711161)

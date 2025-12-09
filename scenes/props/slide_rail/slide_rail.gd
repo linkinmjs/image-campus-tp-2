@@ -10,6 +10,9 @@ extends Node3D
 @onready var path_follow_3d: PathFollow3D = $Path3D/PathFollow3D
 @onready var marker_3d: Marker3D = $Path3D/PathFollow3D/Marker3D
 
+@export var slide_speed: float = 8.0  # unidades/seg
+
+
 var slide_dir: float = 1.0
 var player_on_barrier: bool = false
 var player: CharacterBody3D
@@ -40,9 +43,16 @@ func _physics_process(delta: float) -> void:
 	if not player_on_barrier or not path_follow_3d or not marker_3d:
 		return
 	
-	var speed := 0.2
+	# Largo real del path (en unidades del mundo)
+	var baked_length := path_3d.curve.get_baked_length()
+	if baked_length <= 0.0:
+		return
+
+	# Velocidad sobre el ratio, en función del largo del rail
+	var progress_speed := slide_speed / baked_length
+
 	path_follow_3d.progress_ratio = clamp(
-		path_follow_3d.progress_ratio + slide_dir * speed * delta,
+		path_follow_3d.progress_ratio + slide_dir * progress_speed * delta,
 		0.0,
 		1.0
 	)
@@ -73,7 +83,7 @@ func _jump_off() -> void:
 	
 	# Velocidad de lanzamiento: un poco hacia adelante + hacia arriba
 	var launch_speed_forward := 6.0
-	var launch_speed_up := 10.0
+	var launch_speed_up := 5.0
 	var launch_velocity := tangent * launch_speed_forward + Vector3.UP * launch_speed_up
 	
 	# Aplicamos la velocidad al player
