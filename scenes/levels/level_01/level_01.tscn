@@ -1,5 +1,6 @@
-[gd_scene load_steps=73 format=3 uid="uid://bxncs2ssy1jb"]
+[gd_scene load_steps=74 format=3 uid="uid://bxncs2ssy1jb"]
 
+[ext_resource type="Script" uid="uid://da8ljsvteql1d" path="res://scenes/levels/level_01/level_01.gd" id="1_2iuuy"]
 [ext_resource type="Texture2D" uid="uid://bc75pcj80u8no" path="res://art/6twelve/6twelve/Textures/Tiles.jpg" id="1_bnqyd"]
 [ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/test_player/test_player.tscn" id="1_ty7qy"]
 [ext_resource type="Texture2D" uid="uid://1d72kfkonhsp" path="res://art/6twelve/6twelve/Textures/GrassDead.jpg" id="3_gm1k7"]
@@ -171,6 +172,7 @@ collision_mode = 2
 size = Vector2(0.05, 0.05)
 
 [node name="Level01" type="Node3D"]
+script = ExtResource("1_2iuuy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)

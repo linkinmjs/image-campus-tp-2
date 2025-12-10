@@ -1,9 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgpbmh0rc22xc"]
+[gd_scene load_steps=9 format=3 uid="uid://cgpbmh0rc22xc"]
 
 [ext_resource type="Script" uid="uid://c87b5xhwyfvh4" path="res://scenes/props/change_level_area/change_level_area.gd" id="1_xlsum"]
 [ext_resource type="PackedScene" uid="uid://d2hjicqun6s23" path="res://scenes/levels/level_02/level_02.tscn" id="2_cgqgh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eunmw"]
+
+[sub_resource type="Curve" id="Curve_h5toa"]
+_data = [Vector2(0, 0.48993295), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.85644925, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_udlgp"]
+curve = SubResource("Curve_h5toa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h5toa"]
+emission_shape_offset = Vector3(0, -0.2, 0)
+emission_shape = 3
+emission_box_extents = Vector3(0.6, 0.1, 0.6)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.099999994
+gravity = Vector3(0, 1, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_udlgp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5toa"]
+albedo_color = Color(0, 1, 0, 1)
+emission_enabled = true
+emission = Color(0.22349137, 0.9999998, 0.20155793, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_udlgp"]
+material = SubResource("StandardMaterial3D_h5toa")
+radius = 0.05
+height = 0.1
 
 [node name="ChangeLevelArea" type="Area3D"]
 script = ExtResource("1_xlsum")
@@ -12,4 +41,19 @@ next_level_scene = ExtResource("2_cgqgh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_eunmw")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="DebugShape" type="CSGBox3D" parent="."]
+visible = false
+
+[node name="LevelPortalParticles" type="GPUParticles3D" parent="."]
+amount = 20
+lifetime = 3.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_h5toa")
+draw_pass_1 = SubResource("SphereMesh_udlgp")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.5804417, 0)
+light_color = Color(0, 0.8121302, 0, 1)
+light_energy = 16.0
+spot_range = 4.0
+spot_angle = 19.5
