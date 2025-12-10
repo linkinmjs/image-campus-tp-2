@@ -14,6 +14,7 @@ extends Node
 @export var pause_menu: PackedScene
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	start_button.pressed.connect(_on_start_button_pressed)
 	options_button.pressed.connect(_on_options_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)

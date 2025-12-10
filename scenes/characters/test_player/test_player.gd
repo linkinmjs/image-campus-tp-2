@@ -19,7 +19,7 @@ const MIN_JUMP_VELOCITY = 1.0
 const SENSITIVITY_X = 0.003
 const SENSITIVITY_Y = 0.0025
 var jump_velocity: float = 0.0 # Jump force
-var jump_charge_velocity: float = 8.0
+var jump_charge_velocity: float = 10.0
 
 # Bob variables
 const BOB_FREQ: float = 2.0
@@ -186,7 +186,11 @@ func on_damage(_damage):
 	animation_player.play("hit")
 
 func on_death() -> void:
-	get_tree().quit()
+	shaker.shake(hitted_shake_duration, hitted_shake_intensity)
+	animation_player.play("hit")
+	await get_tree().create_timer(2.0).timeout
+	get_tree().change_scene_to_file("res://scenes/ui/game_over_menu.tscn")
+	
 
 
 #################

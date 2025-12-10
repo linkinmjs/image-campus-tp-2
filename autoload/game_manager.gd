@@ -7,6 +7,7 @@ signal screen_totally_black
 signal player_fall_off
 signal player_skillcheck_toggled
 signal ready_for_next_level
+signal game_over
 
 var powerslide_skillcheck_active = false
 var player_on_powerslide: bool = false
@@ -17,6 +18,9 @@ var debug: bool = false
 # Func used to shake camera
 func fall_off_player() -> void:
 	emit_signal("player_fall_off")
+
+func emit_game_over() -> void:
+	emit_signal("game_over")
 
 func emit_screen_totally_black() -> void:
 	emit_signal("screen_totally_black")

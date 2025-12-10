@@ -14,7 +14,7 @@ func damage(attack: AttackComponent) -> void:
 	
 	var parent: Node3D = get_parent()
 	
-	if health < 0:
+	if health <= 0:
 		if parent.has_method("on_death"):
 			parent.on_death()
 	elif  health > 0 and parent.has_method("on_damage"):

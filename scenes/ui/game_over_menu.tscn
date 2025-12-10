@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://d27adp3aee5an"]
+
+[ext_resource type="FontFile" uid="uid://cmw6spph54jsx" path="res://assets/fonts/Bardolatry.otf" id="1_eqkiq"]
+[ext_resource type="Script" uid="uid://x7k7yuakklbn" path="res://scenes/ui/game_over_menu.gd" id="1_fwoq4"]
+[ext_resource type="Shader" uid="uid://do80albfxa747" path="res://vhs_main_menu.gdshader" id="2_fwoq4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4hgn"]
+shader = ExtResource("2_fwoq4")
+shader_parameter/wiggle = 0.0499999988824
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 0.400000019
+shader_parameter/blur_samples = 7
+
+[node name="Node" type="Node"]
+script = ExtResource("1_fwoq4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.1254902, 0, 0.14509805, 1)
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -11.5
+offset_right = 46.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.79607844, 0.7176471, 0.6901961, 1)
+theme_override_fonts/font = ExtResource("1_eqkiq")
+theme_override_font_sizes/font_size = 150
+text = "GAME OVER"
+
+[node name="Shader" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_i4hgn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
