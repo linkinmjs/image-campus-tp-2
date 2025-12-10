@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c3she45csmg7a"
+path="res://.godot/imported/wait_for_rain_stop.dialogue-e93144873458c91db156ef50dad2c474.tres"
+
+[deps]
+
+source_file="res://scripts/dialogues/wait_for_rain_stop.dialogue"
+dest_files=["res://.godot/imported/wait_for_rain_stop.dialogue-e93144873458c91db156ef50dad2c474.tres"]
+
+[params]
+
+defaults=true

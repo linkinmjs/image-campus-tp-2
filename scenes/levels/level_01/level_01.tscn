@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bxncs2ssy1jb"]
+[gd_scene load_steps=78 format=3 uid="uid://bxncs2ssy1jb"]
 
 [ext_resource type="Script" uid="uid://da8ljsvteql1d" path="res://scenes/levels/level_01/level_01.gd" id="1_2iuuy"]
 [ext_resource type="Texture2D" uid="uid://bc75pcj80u8no" path="res://art/6twelve/6twelve/Textures/Tiles.jpg" id="1_bnqyd"]
@@ -49,6 +49,8 @@
 [ext_resource type="PackedScene" uid="uid://cgpbmh0rc22xc" path="res://scenes/props/change_level_area/change_level_area.tscn" id="46_2iuuy"]
 [ext_resource type="Script" uid="uid://bstvyditwc30k" path="res://scenes/levels/level_01/cone_hurtbox.gd" id="46_eunmw"]
 [ext_resource type="PackedScene" uid="uid://8bh6331i44gl" path="res://scenes/props/level/traffic_cone.tscn" id="47_emt3b"]
+[ext_resource type="Script" uid="uid://btxvx1fckren" path="res://scenes/levels/level_01/events/wait_for_rain_stop.gd" id="50_uwd0o"]
+[ext_resource type="Script" uid="uid://fte5yhxqwn26" path="res://scenes/levels/level_01/events/hit_cone_dialogue.gd" id="51_nqus7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_42lsy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -170,6 +172,12 @@ collision_mode = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_pa60p"]
 size = Vector2(0.05, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2iuuy"]
+size = Vector3(2.0473022, 2.90625, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uwd0o"]
+size = Vector3(1.6309204, 2.9849243, 1)
 
 [node name="Level01" type="Node3D"]
 script = ExtResource("1_2iuuy")
@@ -691,5 +699,34 @@ size = Vector3(21, 13, 25)
 
 [node name="Player" parent="." instance=ExtResource("1_ty7qy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.883032, 0, 4.54666)
+
+[node name="Events" type="Node3D" parent="."]
+
+[node name="WaitForRainStopDialogue" type="Node3D" parent="Events"]
+script = ExtResource("50_uwd0o")
+
+[node name="Area3D" type="Area3D" parent="Events/WaitForRainStopDialogue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0816364, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Events/WaitForRainStopDialogue/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1481018, 0.953125, 0)
+shape = SubResource("BoxShape3D_2iuuy")
+
+[node name="Area3D2" type="Area3D" parent="Events/WaitForRainStopDialogue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.202963, 0, 7.3478107)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Events/WaitForRainStopDialogue/Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1481018, 0.953125, 0)
+shape = SubResource("BoxShape3D_2iuuy")
+
+[node name="HitConeDialogue" type="Node3D" parent="Events"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3449688, 0, -7.943437)
+script = ExtResource("51_nqus7")
+
+[node name="Area3D" type="Area3D" parent="Events/HitConeDialogue"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Events/HitConeDialogue/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.067474365, 0.99246216, 0)
+shape = SubResource("BoxShape3D_uwd0o")
 
 [editable path="Level/SlideRail"]

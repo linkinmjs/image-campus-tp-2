@@ -1,0 +1,9 @@
+~ start
+Skater: Hmm... está lloviendo.
+Skater: Debo salir a buscar suministros, pero mejor espero a que pare la lluvia.
+=> END
+
+~ tutorial
+Skater: Podría aprovechar para entrenar un poco.
+[Salta sobre el cono de tránsito 3 veces]
+=> END

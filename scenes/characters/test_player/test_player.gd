@@ -3,6 +3,8 @@ extends CharacterBody3D
 # Player created from this tutorial:
 # https://www.youtube.com/watch?v=A3HLeyaBCq4&list=PLQZiuyZoMHcgqP-ERsVE4x4JSFojLdcBZ&index=1&t=2s
 
+var dialogue_active: bool = false
+
 var speed: float
 var on_floor: bool
 var player_fall_off: bool = false
@@ -53,6 +55,9 @@ const FOV_CHANGE = 1.5
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	DialogueManager.dialogue_started.connect(_on_dialogue_started)
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -64,20 +69,22 @@ func _process(_delta: float) -> void:
 	health_lbl.text = str(health_component.health)
 
 func _physics_process(delta: float) -> void:
+	
 	# Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
 	# Handle jump
-	if Input.is_action_pressed("jump") and is_on_floor():
-		jump_velocity += jump_charge_velocity * delta
-	if Input.is_action_just_released("jump") and is_on_floor():
-		if GameManager.player_on_powerslide: jump_velocity = 10
-		velocity.y = clamp(jump_velocity, MIN_JUMP_VELOCITY, MAX_JUMP_VELOCITY)
-		jump_velocity = 0.0
-		GameManager._update_jumping_pos(global_position)
-		on_floor = false
-		jump_start.play()
+	if not dialogue_active:
+		if Input.is_action_pressed("jump") and is_on_floor() and not dialogue_active:
+			jump_velocity += jump_charge_velocity * delta
+		if Input.is_action_just_released("jump") and is_on_floor():
+			if GameManager.player_on_powerslide: jump_velocity = 10
+			velocity.y = clamp(jump_velocity, MIN_JUMP_VELOCITY, MAX_JUMP_VELOCITY)
+			jump_velocity = 0.0
+			GameManager._update_jumping_pos(global_position)
+			on_floor = false
+			jump_start.play()
 		
 	# Handle landing
 	elif not on_floor and is_on_floor():
@@ -118,23 +125,24 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if is_on_floor() and not GameManager.player_on_powerslide:
-		if player_fall_off:
-			return
-		if direction:
-			velocity.x = direction.x * speed
-			velocity.z = direction.z * speed
+	if not dialogue_active:
+		if is_on_floor() and not GameManager.player_on_powerslide:
+			if player_fall_off:
+				return
+			if direction:
+				velocity.x = direction.x * speed
+				velocity.z = direction.z * speed
+			else:
+				velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
+				velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
 		else:
-			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
-	else:
-		if player_fall_off:
-			return
-		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
-		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
+			if player_fall_off:
+				return
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
 	
 	# Add sound to skating
-	if is_on_floor() and velocity != Vector3.ZERO and !moving.is_playing():
+	if is_on_floor() and velocity != Vector3.ZERO and !moving.is_playing() and not dialogue_active:
 		moving.play()
 	elif (not is_on_floor()) or (direction == Vector3.ZERO):
 		moving.stop()
@@ -153,13 +161,25 @@ func _physics_process(delta: float) -> void:
 	if move_dir.length() > 0.05:
 		skate.look_at(skate.global_transform.origin + move_dir, Vector3.UP)
 	
+	if dialogue_active:
+		return
 	move_and_slide()
 
 func _headbob(time: float) -> Vector3:
 	var pos = Vector3.ZERO
+	if dialogue_active:
+		return pos
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
+
+func _on_dialogue_started(_resource: DialogueResource):
+	print("_on_dialogue_started")
+	dialogue_active = true
+
+func _on_dialogue_ended(_resource: DialogueResource):
+	print("_on_dialogue_ended")
+	dialogue_active = false
 
 func on_damage(_damage):
 	shaker.shake(hitted_shake_duration, hitted_shake_intensity)
