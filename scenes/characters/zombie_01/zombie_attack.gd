@@ -4,6 +4,7 @@ class_name ZombieAttack
 @onready var enemy: CharacterBody3D = get_parent().get_parent()
 @onready var player: CharacterBody3D = enemy.player
 @onready var animation_tree: AnimationTree = $"../../AnimationTree"
+@onready var attack: AudioStreamPlayer3D = $"../../Sfx/Attack"
 
 const DAMAGE: float = 25.0
 
@@ -14,6 +15,7 @@ func _ready() -> void:
 	animation_playback = animation_tree.get("parameters/playback")
 
 func enter():
+	attack.play()
 	attacking = true
 	animation_playback.travel("attacking")
 
