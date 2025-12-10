@@ -134,12 +134,12 @@ points = PackedVector3Array(-0.13679999, -0.096783064, -0.41485882, 0.13679999, 
 [sub_resource type="BoxShape3D" id="BoxShape3D_emt3b"]
 size = Vector3(0.6755371, 0.690979, 0.8751221)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ctw71"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uwd0o"]
 shader = ExtResource("44_our46")
-shader_parameter/exposure = 1.0
+shader_parameter/exposure = 1.00000002375
 shader_parameter/contrast = 1.05
 shader_parameter/saturation = 0.9
-shader_parameter/enable_pixelate = true
+shader_parameter/enable_pixelate = false
 shader_parameter/pixel_factor = 3.0
 shader_parameter/enable_posterize = true
 shader_parameter/color_levels = 16.0
@@ -182,9 +182,6 @@ shadow_opacity = 0.8
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_glnq5")
-
-[node name="TestPlayer" parent="." instance=ExtResource("1_ty7qy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.284386, 0.46288323, 8.635071)
 
 [node name="Level" type="Node3D" parent="."]
 
@@ -642,7 +639,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9999892, -0.0013939814, 0, 0.0013939814, 0
 [node name="TrafficCone" parent="Level" node_paths=PackedStringArray("player") instance=ExtResource("47_emt3b")]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -3.9971833, 1.1198604, -25.755297)
 script = ExtResource("46_eunmw")
-player = NodePath("../../TestPlayer")
+player = NodePath("../../Player")
 
 [node name="Area3D" type="Area3D" parent="Level/TrafficCone"]
 collision_layer = 2
@@ -662,7 +659,7 @@ transform = Transform3D(-28.131191, -95.88658, 3.7944822, 0.780941, 3.725286, 99
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_ctw71")
+material = SubResource("ShaderMaterial_uwd0o")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -691,5 +688,8 @@ size = Vector3(15, 8, 15)
 [node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Rain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11623287, 5.5, -19.651184)
 size = Vector3(21, 13, 25)
+
+[node name="Player" parent="." instance=ExtResource("1_ty7qy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.883032, 0, 4.54666)
 
 [editable path="Level/SlideRail"]

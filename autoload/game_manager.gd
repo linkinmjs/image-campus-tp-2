@@ -6,6 +6,7 @@ var landing_pos: Vector3
 signal screen_totally_black
 signal player_fall_off
 signal player_skillcheck_toggled
+signal ready_for_next_level
 
 var powerslide_skillcheck_active = false
 var player_on_powerslide: bool = false
@@ -22,6 +23,10 @@ func emit_screen_totally_black() -> void:
 	
 func emit_player_skillchecked() -> void:
 	emit_signal("player_skillcheck_toggled")
+
+func emit_ready_for_next_level() -> void:
+	print("ready for next level emitted")
+	emit_signal("ready_for_next_level")
 
 func _update_jumping_pos(global_position: Vector3) -> void:
 	jumping_pos = global_position

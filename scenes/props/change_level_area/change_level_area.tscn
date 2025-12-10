@@ -39,21 +39,25 @@ script = ExtResource("1_xlsum")
 next_level_scene = ExtResource("2_cgqgh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+visible = false
 shape = SubResource("BoxShape3D_eunmw")
 
-[node name="DebugShape" type="CSGBox3D" parent="."]
+[node name="Effects" type="Node3D" parent="."]
 visible = false
 
-[node name="LevelPortalParticles" type="GPUParticles3D" parent="."]
+[node name="LevelPortalParticles" type="GPUParticles3D" parent="Effects"]
 amount = 20
 lifetime = 3.0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_h5toa")
 draw_pass_1 = SubResource("SphereMesh_udlgp")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="SpotLight3D" type="SpotLight3D" parent="Effects"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.5804417, 0)
 light_color = Color(0, 0.8121302, 0, 1)
 light_energy = 16.0
 spot_range = 4.0
 spot_angle = 19.5
+
+[node name="DebugShape" type="CSGBox3D" parent="."]
+visible = false

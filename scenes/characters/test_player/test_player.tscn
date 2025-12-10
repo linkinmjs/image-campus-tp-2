@@ -91,7 +91,7 @@ max_intensity = 500.0
 frequency = 5.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_n51df")]
-MaxHealth = 1000.0
+MaxHealth = 150.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

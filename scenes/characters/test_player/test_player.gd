@@ -165,9 +165,6 @@ func on_damage(_damage):
 	shaker.shake(hitted_shake_duration, hitted_shake_intensity)
 	animation_player.play("hit")
 
-func on_fall_off() -> void:
-	pass
-
 func on_death() -> void:
 	get_tree().quit()
 

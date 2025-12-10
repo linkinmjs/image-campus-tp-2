@@ -1,8 +1,11 @@
 extends Node
 
-@export var MaxHealth: float = 1000.0
+@export var MaxHealth: float = 600.0
+@onready var health: float = MaxHealth
 
-var health: float = MaxHealth
+func _ready() -> void:
+	print(health)
+	print(MaxHealth)
 
 func damage(attack: AttackComponent) -> void:
 	print("damage func from health_component, damage =", attack.damage)
@@ -15,6 +18,5 @@ func damage(attack: AttackComponent) -> void:
 		if parent.has_method("on_death"):
 			parent.on_death()
 	elif  health > 0 and parent.has_method("on_damage"):
-		print("has_method on_damage")
 		parent.on_damage(attack)
 	
