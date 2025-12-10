@@ -43,7 +43,6 @@ func on_damage(attack: AttackComponent):
 
 # Llamado por HealthComponent cuando muere
 func on_death() -> void:
-	print("on_death llamado")
 	state_machine.change_state("ZombieKilled")
 
 # Golpe estilo “Mario” al saltar sobre la cabeza
@@ -60,7 +59,7 @@ func _on_head_area_body_entered(body: Node3D) -> void:
 		return  # no viene desde arriba, ignorar
 	
 	# Rebote del jugador hacia arriba
-	player_body.velocity.y = 10.0
+	player_body.velocity.y = 5.0
 	
 	# Daño al zombie
 	var head_stomp_damage: float = 200.0  # o expórtalo como @export var
