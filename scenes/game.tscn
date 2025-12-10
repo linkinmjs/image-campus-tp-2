@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cjaosrlk0gbfw"]
+[gd_scene load_steps=16 format=3 uid="uid://cjaosrlk0gbfw"]
 
 [ext_resource type="Script" uid="uid://bl4u6ivyxygyh" path="res://scripts/system/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://bnt5irwaji2gq" path="res://scenes/ui/main_menu.tscn" id="2_vtaks"]
@@ -11,77 +11,10 @@
 [ext_resource type="AudioStream" uid="uid://bocmgvs7n4pig" path="res://assets/audios/music/Motorama - Sailor's Song.mp3" id="8_ir15t"]
 [ext_resource type="AudioStream" uid="uid://bhr5reyxwj387" path="res://assets/audios/music/The whitest boy alive - Burning.mp3" id="9_ca42v"]
 [ext_resource type="AudioStream" uid="uid://c1m81fh820os1" path="res://assets/audios/music/Ugly Night - Human Tetris.mp3" id="10_rysoc"]
-[ext_resource type="Script" uid="uid://dg1egwog48lda" path="res://scripts/system/scene_transition_helper.gd" id="11_kvpfn"]
 [ext_resource type="AudioStream" uid="uid://b0xrj85wars2w" path="res://assets/audios/sfx/menu_move_sfx.mp3" id="11_trtic"]
 [ext_resource type="AudioStream" uid="uid://cgf84breh1yuc" path="res://assets/audios/sfx/menu_select_sfx.mp3" id="12_ir15t"]
 [ext_resource type="AudioStream" uid="uid://dkqo8wqkildjn" path="res://assets/audios/sfx/menu_select_with_zombie_sfx.mp3" id="13_ca42v"]
-
-[sub_resource type="Animation" id="Animation_kvuet"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_dinhu"]
-resource_name = "change_scene"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6, 1),
-"transitions": PackedFloat32Array(0.45062527, 1, 2.0705297, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_kvpfn"]
-resource_name = "start_game"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.2, 2.4333334, 4),
-"transitions": PackedFloat32Array(2.6390157, 1, 1.6817936, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.4333333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"change_scene"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_trtic"]
-_data = {
-&"RESET": SubResource("Animation_kvuet"),
-&"change_level": SubResource("Animation_dinhu"),
-&"start_game": SubResource("Animation_kvpfn")
-}
+[ext_resource type="PackedScene" uid="uid://cgqc8b2fq8nns" path="res://scripts/system/scene_transition_helper/scene_transition_helper.tscn" id="15_ir15t"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_uwrxv")
@@ -131,20 +64,5 @@ unique_name_in_owner = true
 stream = ExtResource("13_ca42v")
 bus = &"SFX"
 
-[node name="SceneTransitionHelper" type="CanvasLayer" parent="."]
+[node name="SceneTransitionHelper" parent="." instance=ExtResource("15_ir15t")]
 unique_name_in_owner = true
-script = ExtResource("11_kvpfn")
-
-[node name="ColorRect" type="ColorRect" parent="SceneTransitionHelper"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SceneTransitionHelper"]
-libraries = {
-&"": SubResource("AnimationLibrary_trtic")
-}

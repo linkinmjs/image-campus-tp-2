@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func start_game() -> void:
-	print("helper start_game")
+	#print("helper start_game")
 	animation_player.play("start_game")
 
 func change_level() -> void:

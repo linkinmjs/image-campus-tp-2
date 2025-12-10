@@ -14,6 +14,5 @@ var is_game_paused: bool = false
 @onready var song_06: AudioStreamPlayer = $Audios/Song06
 @onready var song_07: AudioStreamPlayer = $Audios/Song07
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	audio_rain_background.play()

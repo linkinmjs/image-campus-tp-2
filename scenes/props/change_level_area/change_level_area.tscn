@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgpbmh0rc22xc"]
+
+[ext_resource type="Script" uid="uid://c87b5xhwyfvh4" path="res://scenes/props/change_level_area/change_level_area.gd" id="1_xlsum"]
+[ext_resource type="PackedScene" uid="uid://d2hjicqun6s23" path="res://scenes/levels/level_02/level_02.tscn" id="2_cgqgh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eunmw"]
+
+[node name="ChangeLevelArea" type="Area3D"]
+script = ExtResource("1_xlsum")
+next_level_scene = ExtResource("2_cgqgh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_eunmw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
