@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://bxncs2ssy1jb"]
+[gd_scene load_steps=79 format=3 uid="uid://bxncs2ssy1jb"]
 
 [ext_resource type="Script" uid="uid://da8ljsvteql1d" path="res://scenes/levels/level_01/level_01.gd" id="1_2iuuy"]
 [ext_resource type="Texture2D" uid="uid://bc75pcj80u8no" path="res://art/6twelve/6twelve/Textures/Tiles.jpg" id="1_bnqyd"]
@@ -49,6 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://cgpbmh0rc22xc" path="res://scenes/props/change_level_area/change_level_area.tscn" id="46_2iuuy"]
 [ext_resource type="Script" uid="uid://bstvyditwc30k" path="res://scenes/levels/level_01/cone_hurtbox.gd" id="46_eunmw"]
 [ext_resource type="PackedScene" uid="uid://8bh6331i44gl" path="res://scenes/props/level/traffic_cone.tscn" id="47_emt3b"]
+[ext_resource type="Script" uid="uid://bs4a6aav53ebs" path="res://scenes/levels/level_01/rain.gd" id="49_4i52p"]
 [ext_resource type="Script" uid="uid://btxvx1fckren" path="res://scenes/levels/level_01/events/wait_for_rain_stop.gd" id="50_uwd0o"]
 [ext_resource type="Script" uid="uid://fte5yhxqwn26" path="res://scenes/levels/level_01/events/hit_cone_dialogue.gd" id="51_nqus7"]
 
@@ -676,6 +677,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Rain" type="Node3D" parent="."]
+script = ExtResource("49_4i52p")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Rain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 10.050003)

@@ -25,3 +25,4 @@ func _on_area_body_entered(body: Node3D) -> void:
 	level_01.cone_hits_count += 1
 	if(level_01.cone_hits_count >= 3):
 		GameManager.emit_ready_for_next_level()
+		GameManager.emit_tutorial_finished()

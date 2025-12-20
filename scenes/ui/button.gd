@@ -4,9 +4,9 @@ extends Button
 #@onready var audio_button_move: AudioStreamPlayer = $"../../../../AudioButtonMove"
 #@onready var audio_button_select: AudioStreamPlayer = $"../../../../AudioButtonSelect"
 #@onready var audio_button_select_with_zombie: AudioStreamPlayer = $"../../../../AudioButtonSelectWithZombie"
-@onready var audio_button_move: AudioStreamPlayer = $"../../../../../Audios/AudioButtonMove"
-@onready var audio_button_select: AudioStreamPlayer = $"../../../../../Audios/AudioButtonSelect"
-@onready var audio_button_select_with_zombie: AudioStreamPlayer = $"../../../../../Audios/AudioButtonSelectWithZombie"
+@onready var audio_button_move: AudioStreamPlayer = $"../../../../../AudioManager/AudioButtonMove"
+@onready var audio_button_select: AudioStreamPlayer = $"../../../../../AudioManager/AudioButtonSelect"
+@onready var audio_button_select_with_zombie: AudioStreamPlayer = $"../../../../../AudioManager/AudioButtonSelectWithZombie"
 
 @export var is_start_button: bool = false
 @export var is_quit_button: bool = false

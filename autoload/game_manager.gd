@@ -8,6 +8,8 @@ signal player_fall_off
 signal player_skillcheck_toggled
 signal ready_for_next_level
 signal game_over
+signal tutorial_finished
+signal rain_stopped
 
 var powerslide_skillcheck_active = false
 var player_on_powerslide: bool = false
@@ -31,6 +33,12 @@ func emit_player_skillchecked() -> void:
 func emit_ready_for_next_level() -> void:
 	print("ready for next level emitted")
 	emit_signal("ready_for_next_level")
+
+func emit_tutorial_finished() -> void:
+	tutorial_finished.emit()
+
+func emit_rain_stopped() -> void:
+	rain_stopped.emit()
 
 func _update_jumping_pos(global_position: Vector3) -> void:
 	jumping_pos = global_position
