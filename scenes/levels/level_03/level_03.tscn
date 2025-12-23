@@ -45,7 +45,7 @@ shape = SubResource("ConcavePolygonShape3D_wlw4v")
 [node name="Player" parent="." instance=ExtResource("2_hc64q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1850977, 0)
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="ThanksSprite" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.462887, 17.228302)
 billboard = 1
 texture = ExtResource("3_ulqsn")
