@@ -22,6 +22,7 @@ func enter() -> void:
 	#	enemy.navigation_agent.set_enabled(false)
 
 	animation_playback.travel("die")
+	GameManager.emit_zombie_killed()
 	
 func process(delta: float) -> void:
 	timer -= delta

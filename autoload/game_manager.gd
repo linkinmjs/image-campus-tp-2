@@ -10,6 +10,7 @@ signal ready_for_next_level
 signal game_over
 signal tutorial_finished
 signal rain_stopped
+signal zombie_has_been_killed
 
 var powerslide_skillcheck_active = false
 var player_on_powerslide: bool = false
@@ -39,6 +40,9 @@ func emit_tutorial_finished() -> void:
 
 func emit_rain_stopped() -> void:
 	rain_stopped.emit()
+
+func emit_zombie_killed() -> void:
+	zombie_has_been_killed.emit()
 
 func _update_jumping_pos(global_position: Vector3) -> void:
 	jumping_pos = global_position

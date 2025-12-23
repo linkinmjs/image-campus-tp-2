@@ -43,13 +43,15 @@ func _on_tutorial_finished() -> void:
 	)
 
 func _on_rain_stopped() -> void:
-	if _playlist_running:
-		return
-	_playlist_running = true
-
 	var songs: Array[AudioStreamPlayer] = [
 		song_01, song_02, song_03, song_04, song_05, song_06, song_07
 	]
+	_play_songs(songs)
+
+func _play_songs(songs: Array[AudioStreamPlayer]) -> void:
+	if _playlist_running:
+		return
+	_playlist_running = true
 
 	for s in songs:
 		if not is_instance_valid(s) or s.stream == null:

@@ -1,8 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://d2hjicqun6s23"]
+[gd_scene load_steps=33 format=3 uid="uid://d2hjicqun6s23"]
 
 [ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/test_player/test_player.tscn" id="1_005fm"]
+[ext_resource type="Script" uid="uid://df6yg0umrpj5i" path="res://scenes/levels/level_02/level_02.gd" id="1_75xhx"]
 [ext_resource type="PackedScene" uid="uid://calqydw1xcddc" path="res://scenes/characters/zombie_01/zombie_01.tscn" id="1_tmh7d"]
 [ext_resource type="Texture2D" uid="uid://c43hqa6inll7" path="res://art/buildings/diffuse_.jpg" id="2_7y2cq"]
+[ext_resource type="PackedScene" uid="uid://bqulmptqu2ss7" path="res://scenes/levels/level_03/level_03.tscn" id="2_ljole"]
 [ext_resource type="Texture2D" uid="uid://cw0psainfpg00" path="res://art/6twelve/6twelve/Textures/Asphalt_01.jpg" id="3_0kshx"]
 [ext_resource type="ArrayMesh" uid="uid://detbdmgrkb7nx" path="res://art/buildings/building_09_smooth.obj" id="3_s6p6h"]
 [ext_resource type="ArrayMesh" uid="uid://bcq5m4ocpj4gd" path="res://art/buildings/building_08_smooth.obj" id="4_og411"]
@@ -10,6 +12,8 @@
 [ext_resource type="ArrayMesh" uid="uid://ec4n2itqh412" path="res://art/buildings/building_06_smooth.obj" id="6_75xhx"]
 [ext_resource type="ArrayMesh" uid="uid://bbbws4w0jgu8c" path="res://art/buildings/building_05_smooth.obj" id="7_ljole"]
 [ext_resource type="PackedScene" uid="uid://cgpr586ttl2vi" path="res://art/cones_&_barriers/Cones & Barriers/Type 3 Barriers/Type_3_barrier_2_planks.fbx" id="9_s6p6h"]
+[ext_resource type="Script" uid="uid://nbb4g2uwemfx" path="res://scenes/levels/level_02/events/start_level.gd" id="11_og411"]
+[ext_resource type="Script" uid="uid://b7bakcyci3a3r" path="res://scenes/levels/level_02/end_level.gd" id="12_n0ft0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_005fm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -83,7 +87,12 @@ uv1_scale = Vector3(0.5, 1, 0.2)
 uv1_triplanar = true
 texture_filter = 0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_75xhx"]
+size = Vector3(9.602478, 6.9885254, 16.299591)
+
 [node name="Level02" type="Node3D"]
+script = ExtResource("1_75xhx")
+next_level = ExtResource("2_ljole")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -239,3 +248,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.05454, 0.41410232, 11.7111
 
 [node name="Player" parent="." instance=ExtResource("1_005fm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.45534, 1.0179803, 21.663864)
+
+[node name="Events" type="Node3D" parent="."]
+
+[node name="StartLevel" type="Node3D" parent="Events"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.36915, 0, 21.478252)
+script = ExtResource("11_og411")
+
+[node name="Area3D" type="Area3D" parent="Events/StartLevel"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Events/StartLevel/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4355774, 2.9942627, 0.3946991)
+shape = SubResource("BoxShape3D_75xhx")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="EndLevel" type="Node3D" parent="Events"]
+script = ExtResource("12_n0ft0")

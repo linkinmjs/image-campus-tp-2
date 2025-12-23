@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://rumxgo15d0r2"
+path="res://.godot/imported/level_02.dialogue-df96fd6cf72b8028de8975a43b7b20ba.tres"
+
+[deps]
+
+source_file="res://scripts/dialogues/level_02.dialogue"
+dest_files=["res://.godot/imported/level_02.dialogue-df96fd6cf72b8028de8975a43b7b20ba.tres"]
+
+[params]
+
+defaults=true

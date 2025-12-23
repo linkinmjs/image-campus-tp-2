@@ -1,6 +1,6 @@
 [gd_scene load_steps=79 format=3 uid="uid://bxncs2ssy1jb"]
 
-[ext_resource type="Script" uid="uid://da8ljsvteql1d" path="res://scenes/levels/level_01/level_01.gd" id="1_2iuuy"]
+[ext_resource type="Script" path="res://scenes/levels/level_01/level_01.gd" id="1_2iuuy"]
 [ext_resource type="Texture2D" uid="uid://bc75pcj80u8no" path="res://art/6twelve/6twelve/Textures/Tiles.jpg" id="1_bnqyd"]
 [ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/test_player/test_player.tscn" id="1_ty7qy"]
 [ext_resource type="Texture2D" uid="uid://1d72kfkonhsp" path="res://art/6twelve/6twelve/Textures/GrassDead.jpg" id="3_gm1k7"]
@@ -45,11 +45,11 @@
 [ext_resource type="PackedScene" uid="uid://cvtq1rxes8lml" path="res://scenes/props/level/skateboard.tscn" id="43_mawwr"]
 [ext_resource type="PackedScene" uid="uid://dj3bmb0tjiomr" path="res://art/cones_&_barriers/Cones & Barriers/Concrete Barriers/Jersey_barrier_dirty.glb" id="43_pa60p"]
 [ext_resource type="PackedScene" uid="uid://mib2ijdtu3yo" path="res://scenes/props/slide_rail/slide_rail.tscn" id="44_emt3b"]
-[ext_resource type="Shader" uid="uid://8h2xr8o02qkw" path="res://vhs_levels.gdshader" id="44_our46"]
+[ext_resource type="Shader" path="res://vhs_levels.gdshader" id="44_our46"]
 [ext_resource type="PackedScene" uid="uid://cgpbmh0rc22xc" path="res://scenes/props/change_level_area/change_level_area.tscn" id="46_2iuuy"]
-[ext_resource type="Script" uid="uid://bstvyditwc30k" path="res://scenes/levels/level_01/cone_hurtbox.gd" id="46_eunmw"]
+[ext_resource type="Script" path="res://scenes/levels/level_01/cone_hurtbox.gd" id="46_eunmw"]
 [ext_resource type="PackedScene" uid="uid://8bh6331i44gl" path="res://scenes/props/level/traffic_cone.tscn" id="47_emt3b"]
-[ext_resource type="Script" uid="uid://bs4a6aav53ebs" path="res://scenes/levels/level_01/rain.gd" id="49_4i52p"]
+[ext_resource type="Script" path="res://scenes/levels/level_01/rain.gd" id="49_4i52p"]
 [ext_resource type="Script" uid="uid://btxvx1fckren" path="res://scenes/levels/level_01/events/wait_for_rain_stop.gd" id="50_uwd0o"]
 [ext_resource type="Script" uid="uid://fte5yhxqwn26" path="res://scenes/levels/level_01/events/hit_cone_dialogue.gd" id="51_nqus7"]
 
