@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqulmptqu2ss7"]
+[gd_scene load_steps=9 format=3 uid="uid://bqulmptqu2ss7"]
 
 [ext_resource type="Texture2D" uid="uid://jlej1vd3nyqg" path="res://art/6twelve/6twelve/Textures/Respirator.png" id="1_2p37i"]
 [ext_resource type="PackedScene" uid="uid://dhs31wl5368w3" path="res://scenes/characters/test_player/test_player.tscn" id="2_hc64q"]
+[ext_resource type="Texture2D" uid="uid://dw8o1hp6bq8dk" path="res://assets/thanks_final_message.png" id="3_ulqsn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ulqsn"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -43,3 +44,8 @@ shape = SubResource("ConcavePolygonShape3D_wlw4v")
 
 [node name="Player" parent="." instance=ExtResource("2_hc64q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1850977, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.462887, 17.228302)
+billboard = 1
+texture = ExtResource("3_ulqsn")
